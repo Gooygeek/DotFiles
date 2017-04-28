@@ -15,13 +15,14 @@ set modelines=1 "file-custom config line
 let mapleader=","
 set nocompatible "not try and act like vi
 " toggle absolute and relative line numbers
-nnoremap <leader>ln :call ToggleNumber()<CR>
+nnoremap <leader>ln :call ToggleNumber()<CR><CR>
+nnoremap <leader># ^i#<Esc>
 "}}}
 
 " Spaces & Tabs {{{
 set tabstop=4 "4 spaces to the tab
 set expandtab "replace tabs with spaces
-set softtabstop=3 "number of spaces to the tab when editing
+set softtabstop=4 "number of spaces to the tab when editing
 filetype indent on "load indentation settings based ont he filetype
 filetype plugin on
 set autoindent "automatically tabulate when coding
@@ -52,9 +53,13 @@ set foldmethod=indent "set folds based on indent level
 " }}}
 
 " Movement {{{
-" move vertically by visual line not by actual line (good for when text is wrapped)
+"move vertically by visual line not by actual line (good for when text is wrapped)
 nnoremap j gj
 nnoremap k gk
+nnoremap <down> g<down>
+nnoremap <up> g<up>
+inoremap <down> <Esc>gji
+inoremap <up> <Esc>gki
 " move to start/end of line
 nnoremap B ^
 nnoremap E $

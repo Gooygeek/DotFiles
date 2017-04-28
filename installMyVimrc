@@ -1,4 +1,11 @@
 #!/bin/bash
 # My first script
 
-echo "Hello World!"
+{ # try
+        echo "Started installation"
+        cp -rf .vimrc ~/
+        cp -rf .vim ~/
+        echo "Installation completed"
+} || { # catch
+        echo "Somthing went wrong"
+}
