@@ -90,15 +90,13 @@ nnoremap <leader>ln :call ToggleNumber()<CR><CR>
 nnoremap <leader># ^i#<Esc>
 "}}}
 
-" Plugin and colourscheme loading {{{
-" load coloursschemes into runtime
-set runtimepath^=~/.vim/color/vim-colors-solarized/
-set runtimepath^=~/.vim/color/peaksea/
+" Plugins {{{
 " load plugins into runtime
 set runtimepath^=~/.vim/bundle/nerdtree/
-" set mappings
+" set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 " }}}
 
-" config files for this file only
+" config for this file only
 " vim:foldmethod=marker:foldlevel=0
