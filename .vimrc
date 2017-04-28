@@ -1,23 +1,14 @@
+let mapleader=","
+
 " Colours {{{
 syntax enable "make pretty colours
 set  t_Co=256 "set terminal to use 256 colour
 set background=dark "tell vim the background will be dark
-colorscheme desert "set the base colourscheme to be desert
-" non-syntax text to grey and the background to black
-highlight Normal ctermfg=lightgrey ctermbg=black
-" set line numbers to be dark grey
-highlight LineNr ctermfg=darkgrey
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"colorscheme peaksea
+colorscheme badwolf
 " }}}
-
-" Misc {{{
-set backspace=indent,eol,start "backspace works properly
-set modelines=1 "file-custom config line
-let mapleader=","
-set nocompatible "not try and act like vi
-" toggle absolute and relative line numbers
-nnoremap <leader>ln :call ToggleNumber()<CR><CR>
-nnoremap <leader># ^i#<Esc>
-"}}}
 
 " Spaces & Tabs {{{
 set tabstop=4 "4 spaces to the tab
@@ -90,6 +81,24 @@ function! ToggleNumber()
 endfunc
 " }}}
 
+" Misc {{{
+set backspace=indent,eol,start "backspace works properly
+set modelines=1 "file-custom config line
+set nocompatible "don't try and act like vi
+" toggle absolute and relative line numbers
+nnoremap <leader>ln :call ToggleNumber()<CR><CR>
+nnoremap <leader># ^i#<Esc>
+"}}}
+
+" Plugin and colourscheme loading {{{
+" load coloursschemes into runtime
+set runtimepath^=~/.vim/color/vim-colors-solarized/
+set runtimepath^=~/.vim/color/peaksea/
+" load plugins into runtime
+set runtimepath^=~/.vim/bundle/nerdtree/
+" set mappings
+nnoremap <leader>t :NERDTreeToggle<CR>
+" }}}
 
 " config files for this file only
 " vim:foldmethod=marker:foldlevel=0
