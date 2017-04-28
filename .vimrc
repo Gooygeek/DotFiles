@@ -16,17 +16,19 @@ set cursorline "highlight current line
 set wildmenu "visual autocomplete menu
 set lazyredraw "redraw only when needed
 set showmatch "show matching brackets
-set wrap "lines that are too long will wrap
 set showcmd "shows the command at the bottom
 " }}}
 
 " Spaces & Tabs {{{
 set tabstop=4 "4 spaces to the tab
+set shiftwidth=4 "4 spaces for each (auto)indent
 set expandtab "replace tabs with spaces
+set smarttab "be smart about tabs
 set softtabstop=4 "number of spaces to the tab when editing
 filetype indent on "load indentation settings based ont he filetype
 filetype plugin on
 set autoindent "automatically tabulate when coding
+set wrap "lines that are too long will wrap
 " }}}
 
 " Searching {{{
@@ -40,7 +42,7 @@ set path+=** "recursive directory searching
 
 " Folding {{{
 set foldenable "ensable folding
-set foldmethod=indent "set folds based on indent level
+set foldmethod=indent "set what will be folded on
 " }}}
 
 " Movement {{{
