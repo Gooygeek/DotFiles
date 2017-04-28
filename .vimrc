@@ -10,15 +10,6 @@ set background=dark "tell vim the background will be dark
 colorscheme badwolf
 " }}}
 
-" Spaces & Tabs {{{
-set tabstop=4 "4 spaces to the tab
-set expandtab "replace tabs with spaces
-set softtabstop=4 "number of spaces to the tab when editing
-filetype indent on "load indentation settings based ont he filetype
-filetype plugin on
-set autoindent "automatically tabulate when coding
-" }}}
-
 " UI Layout {{{
 set number "show line numbers
 set cursorline "highlight current line
@@ -27,6 +18,15 @@ set lazyredraw "redraw only when needed
 set showmatch "show matching brackets
 set wrap "lines that are too long will wrap
 set showcmd "shows the command at the bottom
+" }}}
+
+" Spaces & Tabs {{{
+set tabstop=4 "4 spaces to the tab
+set expandtab "replace tabs with spaces
+set softtabstop=4 "number of spaces to the tab when editing
+filetype indent on "load indentation settings based ont he filetype
+filetype plugin on
+set autoindent "automatically tabulate when coding
 " }}}
 
 " Searching {{{
@@ -64,10 +64,19 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
-" Snippets {{{
+" Templates {{{
 " used to load in a template file
 nnoremap ,html :-1read $HOME/.vim/templates/template.html<CR>
 " }}}
+
+" Misc {{{
+set backspace=indent,eol,start "backspace works properly
+set modelines=1 "file-custom config line
+set nocompatible "don't try and act like vi
+" toggle absolute and relative line numbers
+nnoremap <leader>ln :call ToggleNumber()<CR><CR>
+nnoremap <leader># ^i#<Esc>
+"}}}
 
 " Custom functions {{{
 " toggle between number and relativenumber
@@ -80,15 +89,6 @@ function! ToggleNumber()
     endif
 endfunc
 " }}}
-
-" Misc {{{
-set backspace=indent,eol,start "backspace works properly
-set modelines=1 "file-custom config line
-set nocompatible "don't try and act like vi
-" toggle absolute and relative line numbers
-nnoremap <leader>ln :call ToggleNumber()<CR><CR>
-nnoremap <leader># ^i#<Esc>
-"}}}
 
 " Plugins {{{
 " load plugins into runtime
