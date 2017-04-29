@@ -3,7 +3,7 @@ let mapleader=","
 " Colours {{{
 syntax enable "make pretty colours
 set  t_Co=256 "set terminal to use 256 colour
-set background=dark "tell vim the background will be dark
+"set background=dark "tell vim the background will be dark
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "colorscheme peaksea
@@ -18,11 +18,65 @@ set lazyredraw "redraw only when needed
 set showmatch "show matching brackets
 set showcmd "shows the command at the bottom
 set laststatus=2 "always show the status line
-set statusline +=%4*\ %<%F%* "full path
-set statusline +=%2*%m%* "modified flag
-set statusline +=%1*%=%5l%* "current line
-set statusline +=%2*/%L%* "total lines
-set statusline +=%1*%4v\ %* "virtual column number
+" }}}
+
+" Statusline {{{
+" g:currentmode {{{
+let g:currentmode={
+            \ 'n'  : 'N ',
+            \ 'no' : 'N·Operator Pending ',
+            \ 'v'  : 'V ',
+            \ 'V'  : 'V·Line ',
+            \ '^V' : 'V·Block ',
+            \ 's'  : 'Select ',
+            \ 'S'  : 'S·Line ',
+            \ '^S' : 'S·Block ',
+            \ 'i'  : 'I ',
+            \ 'R'  : 'R ',
+            \ 'Rv' : 'V·Replace ',
+            \ 'c'  : 'Command ',
+            \ 'cv' : 'Vim Ex ',
+            \ 'ce' : 'Ex ',
+            \ 'r'  : 'Prompt ',
+            \ 'rm' : 'More ',
+            \ 'r?' : 'Confirm ',
+            \ '!'  : 'Shell ',
+            \ 't'  : 'Terminal '
+            \}
+" }}}
+" Filesize {{{
+function! FileSize()
+    let bytes = getfsize(expand('%:p'))
+    if (bytes >= 1024)
+        let kbytes = bytes / 1024
+    endif
+    if (exists('kbytes') && kbytes >= 1000)
+        let mbytes = kbytes / 1000
+    endif
+
+    if bytes <= 0
+        return '0'
+    endif
+
+    if (exists('mbytes'))
+        return mbytes . 'MB '
+    elseif (exists('kbytes'))
+        return kbytes . 'KB '
+    else
+        return bytes . 'B '
+    endif
+endfunction
+" }}}
+" Set data to show
+set laststatus=2
+set statusline=
+set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
+set statusline+=%8*\ %<%F\ %m\ %w\        " File+path +[is modified]+[is preview] 
+set statusline+=%#warningmsg#
+set statusline+=%*
+set statusline+=%9*\ %=                                  " Space
+set statusline+=%8*\ %-3(%{FileSize()}%)                 " File size
+set statusline+=%0*\ %3p%%\ %l/%L:\ %3c\                 " Percent% row/totalrow : column
 " }}}
 
 " Spaces & Tabs {{{
@@ -117,6 +171,7 @@ set runtimepath^=~/.vim/bundle/nerdcommenter/
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " }}}
+
 
 " config for this file only
 " vim:foldmethod=marker:foldlevel=0
