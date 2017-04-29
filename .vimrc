@@ -17,6 +17,12 @@ set wildmenu "visual autocomplete menu
 set lazyredraw "redraw only when needed
 set showmatch "show matching brackets
 set showcmd "shows the command at the bottom
+set laststatus=2 "always show the status line
+set statusline +=%4*\ %<%F%* "full path
+set statusline +=%2*%m%* "modified flag
+set statusline +=%1*%=%5l%* "current line
+set statusline +=%2*/%L%* "total lines
+set statusline +=%1*%4v\ %* "virtual column number
 " }}}
 
 " Spaces & Tabs {{{
@@ -56,6 +62,10 @@ inoremap <up> <Esc>gki
 " move to start/end of line
 nnoremap B ^
 nnoremap E $
+" }}}
+
+" Tags {{{
+command! MakeTags !ctags -R .
 " }}}
 
 " Backups {{{
