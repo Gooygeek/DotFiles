@@ -18,6 +18,9 @@ set lazyredraw "redraw only when needed
 set showmatch "show matching brackets
 set showcmd "shows the command at the bottom
 set laststatus=2 "always show the status line
+set noshowmode "dont show the mode. will still be indicated in the statusline (doesn't seem to work:()
+set scrolloff=3 "maintain a minimum of 3 lines above and below the cursor. Except for top and bottom of the file
+set visualbell "flash the screen if attempting an invlaid operation
 " }}}
 
 " Statusline {{{
