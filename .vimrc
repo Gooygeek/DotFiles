@@ -78,6 +78,13 @@ set nocompatible "don't try and act like vi
 " toggle absolute and relative line numbers
 nnoremap <leader>ln :call ToggleNumber()<CR><CR>
 "nnoremap <leader># ^i#<Esc>
+" }}}
+
+" Misc Remaps {{{
+",u will revert the current line to previous state
+nnoremap <leader>u U
+"U will undo the undo
+nnoremap U <C-r>
 "}}}
 
 " Custom functions {{{
