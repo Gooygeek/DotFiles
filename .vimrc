@@ -11,7 +11,7 @@ colorscheme badwolf
 " }}}
 
 " UI Layout {{{
-set number "show line numbers
+set relativenumber "show line numbers
 set cursorline "highlight current line
 set wildmenu "visual autocomplete menu
 set lazyredraw "redraw only when needed
@@ -77,7 +77,7 @@ set modelines=1 "file-custom config line
 set nocompatible "don't try and act like vi
 " toggle absolute and relative line numbers
 nnoremap <leader>ln :call ToggleNumber()<CR><CR>
-nnoremap <leader># ^i#<Esc>
+"nnoremap <leader># ^i#<Esc>
 "}}}
 
 " Custom functions {{{
@@ -95,6 +95,7 @@ endfunc
 " Plugins {{{
 " load plugins into runtime
 set runtimepath^=~/.vim/bundle/nerdtree/
+set runtimepath^=~/.vim/bundle/nerdcommenter/
 " set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
