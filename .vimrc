@@ -171,6 +171,9 @@ inoremap <leader>" ""<left>
 inoremap <leader>( ()<left>
 inoremap <leader>{ {}<left>
 inoremap <leader>[ []<left>
+" insert lines without going into insert mode
+nnoremap <leader>o o<ESC>k
+nnoremap <leader>O O<ESC>j
 "}}}
 
 " Custom functions {{{
