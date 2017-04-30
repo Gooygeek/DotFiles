@@ -7,7 +7,8 @@ set  t_Co=256 "set terminal to use 256 colour
 "let g:solarized_termcolors=256
 "colorscheme solarized
 "colorscheme peaksea
-colorscheme badwolf
+"colorscheme badwolf
+colorscheme monokai
 " }}}
 
 " UI Layout {{{
@@ -121,6 +122,10 @@ inoremap <up> <Esc>gki
 " move to start/end of line
 nnoremap B ^
 nnoremap E $
+" leader up/down will move the current line up or down
+nnoremap <leader><up> ddkP
+nnoremap <leader><down> ddp
+
 " }}}
 
 " Tags {{{
@@ -179,4 +184,4 @@ let NERDTreeShowHidden=1
 
 
 " config for this file only
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0:foldminlines=0
