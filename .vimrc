@@ -14,11 +14,8 @@ colorscheme monokai
 " UI Layout {{{
 set relativenumber "show line numbers
 set cursorline "highlight current line
-
 set wildmenu "visual autocomplete menu
-
 set lazyredraw "redraw only when needed
-
 set showmatch "show matching brackets
 set showcmd "shows the command at the bottom
 set laststatus=2 "always show the status line
@@ -104,7 +101,7 @@ set incsearch "search as characters are entered
 set hlsearch "highlight matches
 set ignorecase "ignore case
 "turn off search highlighing
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :nohlsearch<CR>
 set path+=** "recursive directory searching
 " }}}
 
@@ -139,9 +136,13 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 " }}}
 
-" Templates {{{
-" used to load in a template file
+" Snippets {{{
+" load in a template file
 nnoremap ,html :-1read $HOME/.vim/templates/template.html<CR>
+" abberviations/custom autocorrect
+iabbr teh the
+iabbr ture true
+iabbr flase false
 " }}}
 
 " Misc {{{
@@ -174,6 +175,9 @@ inoremap <leader>[ []<left>
 " insert lines without going into insert mode
 nnoremap <leader>o o<ESC>k
 nnoremap <leader>O O<ESC>j
+" open/close tab
+nnoremap g<C-t> :tabnew<CR>
+nnoremap gc :tabclose<CR>
 "}}}
 
 " Custom functions {{{
