@@ -107,6 +107,7 @@ set path+=** "recursive directory searching
 " Folding {{{
 set foldenable "ensable folding
 set foldmethod=indent "set what will be folded on
+set foldminlines=5 "must bave at least 6 lines to make a fold
 " }}}
 
 " Movement {{{
