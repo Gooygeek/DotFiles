@@ -14,8 +14,11 @@ colorscheme monokai
 " UI Layout {{{
 set relativenumber "show line numbers
 set cursorline "highlight current line
+
 set wildmenu "visual autocomplete menu
+
 set lazyredraw "redraw only when needed
+
 set showmatch "show matching brackets
 set showcmd "shows the command at the bottom
 set laststatus=2 "always show the status line
@@ -122,10 +125,6 @@ inoremap <up> <Esc>gki
 " move to start/end of line
 nnoremap B ^
 nnoremap E $
-" leader up/down will move the current line up or down
-nnoremap <leader><up> ddkP
-nnoremap <leader><down> ddp
-
 " }}}
 
 " Tags {{{
@@ -159,9 +158,25 @@ nnoremap <leader>ln :call ToggleNumber()<CR><CR>
 nnoremap <leader>u U
 "U will undo the undo
 nnoremap U <C-r>
+" leader up/down will move the current line up or down
+nnoremap <leader><up> ddkP
+nnoremap <leader><down> ddp
+" custom comma commands
+" delete/change inner ","
+nnoremap di, f,dT,
+nnoremap ci, f,cT,
+" quick pairs
+inoremap <leader>' ''<left>
+inoremap <leader>" ""<left>
+inoremap <leader>( ()<left>
+inoremap <leader>{ {}<left>
+inoremap <leader>[ []<left>
 "}}}
 
 " Custom functions {{{
+" leader up/down will move the current line up or down
+nnoremap <leader><up> ddkP
+nnoremap <leader><down> ddp
 " toggle between number and relativenumber
 function! ToggleNumber()
     if(&relativenumber == 1)
