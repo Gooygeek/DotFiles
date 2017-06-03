@@ -6,6 +6,9 @@
         cp -rf .vimrc ~/
         cp -rf .vim ~/
         cp -rf .tmux.conf ~/
+        cp -rf .bash_custom ~/
+        sed -i '$ a\if [ -f ~/.bash_custom ]; then\n    . ~/.bash_custom\nfi' ~/.bashrc
+        exec bash
         echo "Installation completed"
 } || { # catch
         echo "Somthing went wrong"

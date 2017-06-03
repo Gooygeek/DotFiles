@@ -1,0 +1,10 @@
+# Aliases {{{
+alias ls='ls -A --format=horizontal --color=auto'
+alias tmux='tmux -2' 
+# }}}
+
+# Other {{{
+# }}}
+
+# config for this file only
+# vim:foldmethod=marker:foldlevel=0:foldminlines=0
