@@ -1,6 +1,16 @@
 # Aliases {{{
+# show directory with hidden files (but not implied . and ..), horizontal ordering and colours
 alias ls='ls -A --format=horizontal --color=auto'
+# ensure tmux used 256 colours
 alias tmux='tmux -2' 
+# }}}
+
+# Functions {{{
+# moves up a specified number of directories
+up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
+
+# add and commit (should use vim if used with other dotfiles), changes are shown in the buffer but not added, makes for ealiy seesing what was changed to make better commit messages
+gitc() { git add . && git commit --verbose; }
 # }}}
 
 # Other {{{
@@ -15,13 +25,6 @@ shopt -s histappend
 
 # Append commands to the history every time a prompt is shown, instead of after closing the session.
 PROMPT_COMMAND='history -a'
-
-# moves up a specified number of directories
-up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
-
-
-
-
 # }}}
 
 # config for this file only

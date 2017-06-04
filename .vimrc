@@ -12,7 +12,8 @@ colorscheme monokai
 " }}}
 
 " UI Layout {{{
-set relativenumber "show line numbers
+set number "show absolute line number for current line
+set relativenumber "show relative line numbers
 set cursorline "highlight current line
 set wildmenu "visual autocomplete menu
 set lazyredraw "redraw only when needed
@@ -113,8 +114,10 @@ set foldminlines=5 "must bave at least 6 lines to make a fold
 
 " Movement {{{
 "move vertically by visual line not by actual line (good for when text is wrapped)
-nnoremap j gj
-nnoremap k gk
+"when using 'j' and 'k', in insert mode the normal method is used if it is multiple lines at
+"a time, thus it doesn't break when using relative linenumbers
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <down> g<down>
 nnoremap <up> g<up>
 inoremap <down> <Esc>gji

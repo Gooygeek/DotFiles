@@ -3,13 +3,20 @@
 
 { # try
         echo "Started installation"
+        # copy config files to home directory
         cp -rf .vimrc ~/
         cp -rf .vim ~/
         cp -rf .tmux.conf ~/
+        cp -rf .gitconfig ~/
         cp -rf .bash_custom ~/
+        # edit main bash config to reference custom one
         sed -i '$ a\if [ -f ~/.bash_custom ]; then\n    . ~/.bash_custom\nfi' ~/.bashrc
-        exec bash
+        # set main VISUAL and EDITOR enviroment varaibles to use vim for applications that look at these variables
+        export VISUAL=vim
+        export EDITOR="$VISUAL"
         echo "Installation completed"
+        # restart bash to load new config file
+        exec bash
 } || { # catch
         echo "Somthing went wrong"
 }
