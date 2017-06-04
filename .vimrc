@@ -181,6 +181,10 @@ nnoremap <leader>O O<ESC>j
 " open/close tab
 nnoremap g<C-t> :tabnew<CR>
 nnoremap gc :tabclose<CR>
+" replace all instances of the word under the cursor/visualbuffer. autofill
+" old word
+nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>rw y:%s/<C-r>"/<C-r>"
 "}}}
 
 " Custom functions {{{
