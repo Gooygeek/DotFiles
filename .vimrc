@@ -182,7 +182,8 @@ nnoremap <leader>O O<ESC>j
 nnoremap g<C-t> :tabnew<CR>
 nnoremap gc :tabclose<CR>
 " replace all instances of the word under the cursor/visualbuffer. autofill
-" old word
+" old word. CONSIDER using 'g&', the shortcut to repeat the last replacement
+" for all lines or '&' for just the current line
 nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>rw y:%s/<C-r>"/<C-r>"
 "}}}
