@@ -1,8 +1,12 @@
 # Aliases {{{
 # show directory with hidden files (but not implied . and ..), horizontal ordering and colours
 alias ls='ls -A --format=horizontal --color=auto'
+
 # ensure tmux used 256 colours
 alias tmux='tmux -2' 
+
+# small git shortcut
+alias gitp='git push'
 # }}}
 
 # Functions {{{
