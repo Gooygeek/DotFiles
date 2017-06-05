@@ -2,4 +2,14 @@
 	name = Gooygeek
 	email = Gooygeek@gmail.com
 [core]
+    # set vim as the default editor for commit messagees
 	editor = vim
+[include]
+    # if my username and email are different for some reason use those stored in...
+        path = .gitconfig.local
+[merge]
+    # using vim as my editor, it makes sense to use vimdiff as the merger
+        tool = vimdiff
+[color]
+    # enable colours
+        ui = true
