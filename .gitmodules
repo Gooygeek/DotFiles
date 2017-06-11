@@ -1,0 +1,3 @@
+[submodule "vimbundle/sub"]
+	path = vimbundle/sub
+	url = https://github.com/easymotion/vim-easymotion.git
