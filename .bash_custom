@@ -6,6 +6,7 @@ alias ls='ls -A --format=horizontal --color=auto'
 alias tmux='tmux -2' 
 alias t='tmux -2'
 alias tn='tmux -2 new -s'
+alias ta-'tmux -2 a'
 
 # small git shortcut
 alias g='git'
