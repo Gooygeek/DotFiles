@@ -154,7 +154,8 @@ set modelines=1 "file-custom config line
 set nocompatible "don't try and act like vi
 " toggle absolute and relative line numbers
 nnoremap <leader>ln :call ToggleNumber()<CR><CR>
-"nnoremap <leader># ^i#<Esc>
+" load filetype specific configs
+source ~/.vim/configs/.vimfiletype
 " }}}
 
 " Misc Remaps {{{
@@ -184,14 +185,19 @@ nnoremap gc :tabclose<CR>
 " replace all instances of the word under the cursor/visualbuffer. autofill
 " old word. CONSIDER using 'g&', the shortcut to repeat the last replacement
 " for all lines or '&' for just the current line
-nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/<C-r><C-w>
+nnoremap <Leader>rw :%s/<C-r><C-w>/<C-r><C-w>
 vnoremap <Leader>rw y:%s/<C-r>"/<C-r>"
-"}}}
-
-" Custom functions {{{
 " leader up/down will move the current line up or down
 nnoremap <leader><up> ddkP
 nnoremap <leader><down> ddp
+" create 'jump' point
+nnoremap <leader>+ i<++><Esc>
+inoremap <leader>+ <++>
+" jump to next jump point
+nnoremap <space><space> /<++><CR>df>i
+"}}}
+
+" Custom functions {{{
 " toggle between number and relativenumber
 function! ToggleNumber()
     if(&relativenumber == 1)

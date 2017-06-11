@@ -5,12 +5,16 @@ alias ls='ls -A --format=horizontal --color=auto'
 # ensure tmux used 256 colours
 alias tmux='tmux -2' 
 alias t='tmux -2'
+alias tn='tmux -2 new -s'
 
 # small git shortcut
 alias g='git'
 alias gitp='git push'
 alias gp='git push'
 alias gc='gitc'
+
+# vim
+alias v='vim'
 # }}}
 
 # Functions {{{
