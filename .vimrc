@@ -94,7 +94,9 @@ set softtabstop=4 "number of spaces to the tab when editing
 filetype indent on "load indentation settings based ont he filetype
 filetype plugin on
 set autoindent "automatically tabulate when coding
+" show text in multiple visual lines (soft wrap) but dont hard-wrap lines automatically 
 set wrap "lines that are too long will wrap
+set textwidth=0 "dont auto-hard-wrap lines
 " }}}
 
 " Searching {{{
