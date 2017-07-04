@@ -156,6 +156,8 @@ set modelines=1 "file-custom config line
 set nocompatible "don't try and act like vi
 " toggle absolute and relative line numbers
 nnoremap <leader>ln :call ToggleNumber()<CR><CR>
+" toggle spell checker
+nnoremap <leader>s :call ToggleSpell()<CR><CR>
 " load filetype specific configs
 source ~/.vim/configs/.vimfiletype
 " }}}
@@ -207,6 +209,14 @@ function! ToggleNumber()
         set number
     else
         set relativenumber
+    endif
+endfunc
+" toggle spell checker
+function! ToggleSpell()
+    if(&spell == 1)
+        set spell!
+    else
+        set spell spelllang=en_au
     endif
 endfunc
 " }}}
