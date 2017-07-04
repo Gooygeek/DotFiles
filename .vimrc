@@ -226,6 +226,7 @@ endfunc
 set runtimepath^=~/.vim/bundle/nerdtree/
 set runtimepath^=~/.vim/bundle/nerdcommenter/
 set runtimepath^=~/.vim/bundle/vim-easymotion/
+set runtimepath^=~/.vim/
 " set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
