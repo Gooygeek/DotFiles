@@ -8,7 +8,6 @@ alias t='tmux -2'
 alias tn='tmux -2 new -s'
 alias ta='tmux -2 a -t'
 alias taw='tmux -2 a -t webserver'
-alias tam='tmux -2 a -t minecraft'
 
 # small git shortcut
 alias g='git'
