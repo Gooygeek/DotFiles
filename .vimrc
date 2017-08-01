@@ -1,3 +1,5 @@
+execute pathogen#infect
+
 let mapleader=","
 
 " Colours {{{
