@@ -145,7 +145,7 @@ set writebackup
 
 " Snippets {{{
 " load in a template file
-nnoremap ,html :-1read $HOME/.vim/templates/template.html<CR>
+nnoremap ,html :-1read $HOME/.vim/templates/HTML/template.html<CR>
 " abberviations/custom autocorrect
 iabbr teh the
 iabbr ture true
@@ -246,6 +246,7 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 "let g:Tex_ViewRule_pdf='Document Viewer'
+let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
 " }}}
 
 " config for this file only
