@@ -3,12 +3,20 @@
 %     Created: !comp!strftime("%a %b %d %I:00 %p %Y ").substitute(strftime('%Z'), '\<\(\w\)\(\w*\)\>\(\W\|$\)', '\1', 'g')!comp!
 % Last Change: !comp!strftime("%a %b %d %I:00 %p %Y ").substitute(strftime('%Z'), '\<\(\w\)\(\w*\)\>\(\W\|$\)', '\1', 'g')!comp!
 %
-\documentclass[a4paper]{article}
+\documentclass[a4paper,twosided]{article}
 \title{<++>}
 \author{Kieran Goldsworthy}
 \date{<++>}
 
+\usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt}
+\pagestyle{fancy}
+\fancyhf{}
+
 \begin{document}
+\fancyhead[CE,CO]{Kieran Goldsworthy - 25903322\hfill WorkBookW2}
+\fancyfoot[CE,CO]{\thepage}
 
 \section{Goals for this week}
 \begin{itemize}
