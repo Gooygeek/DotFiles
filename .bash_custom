@@ -42,6 +42,9 @@ PROMPT_COMMAND='history -a'
 
 # Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
 stty -ixon
+
+# Shorten and colourise the propmt
+export PS1="\u:\w\[\e[31m\]\\$\[\e[m\] "
 # }}}
 
 # config for this file only
