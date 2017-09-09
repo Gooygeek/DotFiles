@@ -39,6 +39,9 @@ shopt -s histappend
 
 # Append commands to the history every time a prompt is shown, instead of after closing the session.
 PROMPT_COMMAND='history -a'
+
+# Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
+stty -ixon
 # }}}
 
 # config for this file only
