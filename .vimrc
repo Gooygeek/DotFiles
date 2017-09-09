@@ -193,8 +193,8 @@ nnoremap <leader>u U
 "U will undo the undo
 nnoremap U <C-r>
 " Ctrl-s will save the file
-inoremap <C-s> <Esc>:Update<CR>i
-nnoremap <C-s> :Update<CR>
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <Esc>:update<CR>a
 " leader up/down will move the current line up or down
 nnoremap <leader><up> ddkP
 nnoremap <leader><down> ddp
