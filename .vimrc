@@ -102,8 +102,8 @@ set autoindent "automatically tabulate when coding
 
 " Able to select (with visual mode) and indent/unindent using Tab/ShiftTab.
 " Able to specify the number of indents by typing the number just before  hitting Tab
-vnoremap <Tab> >><Esc>
-vnoremap <S-Tab> <<<Esc>
+vnoremap <Tab> >><Esc>gv
+vnoremap <S-Tab> <<<Esc>gv
 
 " show text in multiple visual lines (soft wrap) but don't hard-wrap lines automatically 
 set wrap "visually wrap lines that are longer than the window width
