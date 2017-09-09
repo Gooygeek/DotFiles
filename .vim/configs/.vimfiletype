@@ -1,23 +1,17 @@
 " Used for file specific configurations such as remaps
 
 " HTML {{{
-autocmd FileType html inoremap ;b <b></b><Space><++><Esc>FbT>i
-autocmd FileType html inoremap ;i <em></em><Space><++><Esc>FeT>i
-autocmd FileType html inoremap ;d <div><Enter><Enter></div><Enter><++><Esc>2kA
-autocmd FileType html inoremap ;s <span></span><++><Esc>10hi
-autocmd FileType html inoremap ;1 <h1></h1><Enter><Enter><++><Esc>2kf<i
-autocmd FileType html inoremap ;2 <h2></h2><Enter><Enter><++><Esc>2kf<i
-autocmd FileType html inoremap ;3 <h3></h3><Enter><Enter><++><Esc>2kf<i
-autocmd FileType html inoremap ;p <p></p><Enter><++><Esc>k^f>a
-autocmd FileType html inoremap ;a <a<Space>href=""><++></a><Space><++><Esc>F"i
-autocmd FileType html inoremap ;ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
-autocmd FileType html inoremap ;li <Esc>o<li></li><Esc>F>a
-autocmd FileType html inoremap ;ol <ol><Enter><li></li><Enter></ol><Enter><Enter><++><Esc>03kf<i
+autocmd FileType html source ~/.vim/configs/html.vim 
 " }}}
 
 " Javascript {{{
-autocmd FileType javascript inoremap ;f function<Space><Space>(<++>)<Space>{<Enter><++><Enter>}<Esc>2k^2fnlli
+autocmd FileType javascript source ~/.vim/configs/javascript.vim
 " }}}
+
+" LaTeX {{{
+autocmd FileType plaintex source ~/.vim/configs/tex.vim
+" }}}
+
 
 " config for this file only
 " vim:foldmethod=marker:foldlevel=0:foldminlines=0

@@ -110,8 +110,10 @@ set wrap "visually wrap lines that are longer than the window width
 set textwidth=0 "maximum line length (0 disables it)
 set wrapmargin=0 "number of chars from right window border where wrapping starts
 set linebreak "lines are only wrapped on  ^I!@*-+;:,./? (note the inclusion of a space)
-"removes auto-wrap text using textwidth
-set formatoptions-=tc
+
+" sets the formatting and should remove auto-wrap text using textwidth.
+" needs to be an autocmd so it runs after the other config files so it wont be overwritten by ftplugin config files
+autocmd FileType * set formatoptions=roql
 
 "toggle paste mode with <F11>
 " Paste mode esstially allows for pasting of text without automatically
@@ -257,21 +259,6 @@ nnoremap <space><space> /<++><CR>df>i
 " set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-" }}}
-
-" LaTeX {{{
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-"let g:Tex_ViewRule_pdf='Document Viewer'
-let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
 " }}}
 
 " config for this file only
