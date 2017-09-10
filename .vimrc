@@ -264,11 +264,7 @@ let NERDTreeShowHidden=1
 " }}}
 
 " LaTeX {{{
-<<<<<<< HEAD
 " These settings need to be here and NOT in an ftplugin file like tex.vim
-=======
-" These settings have to be in the .vimrc file NOT in a ftplugin file such as tex.vim, for some reason it won't work there
->>>>>>> ad11041ee0fd99f0b203fbaa0536e4608edeb505
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you search in a singe file. This will confuse Latex-Suite. Set your grep program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
@@ -277,7 +273,6 @@ set grepprg=grep\ -nH\ $*
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
-<<<<<<< HEAD
 
 " Important compile rules
 let g:Tex_DefaultTargetFormat='pdf'
@@ -292,18 +287,6 @@ let g:Tex_SectionMaps='0'
 
 " dont use the makefile if one exists in the current directory
 let g:Tex_UseMakefile='0'
-=======
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -fmt pdflatex $*'
-"let g:Tex_ViewRule_pdf='Document Viewer'
-let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
-
-"nnoremap <leader>lc <leader>ll
-
-" Remove the section mappings like FIT
-let g:Tex_SectionMaps='0'
->>>>>>> ad11041ee0fd99f0b203fbaa0536e4608edeb505
 " }}}
 
 " config for this file only
