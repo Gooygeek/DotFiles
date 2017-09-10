@@ -39,6 +39,15 @@ shopt -s histappend
 
 # Append commands to the history every time a prompt is shown, instead of after closing the session.
 PROMPT_COMMAND='history -a'
+
+# Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
+stty -ixon
+
+# Shorten and colourise the propmt
+export PS1="\u:\w\[\e[31m\]\\$\[\e[m\] "
+
+# adopt new push behaviour and don't show message about it not being set
+git config --global push.default simple
 # }}}
 
 # config for this file only
