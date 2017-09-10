@@ -16,3 +16,6 @@ let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
 nnoremap <leader>lc :!pdflatex -interaction=nonstopmode -fmt pdflatex %<CR>
 " also remapped the viewer
 nnoremap <leader>lx :!evince '%:r'.pdf<CR>
+
+" Remove the section mappings like FIT
+let g:Tex_SectionMaps='0'
