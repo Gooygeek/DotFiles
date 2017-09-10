@@ -2,18 +2,18 @@
 
 A bunch of customised config files and other assorted bits
 
-##Vim
-#About
+## Vim
+# About
 
-#Templates
+# Templates
 
-##Bash
-
-
-##LaTeX
+## Bash
 
 
-##TMux
+## LaTeX
 
 
-##Git
+## TMux
+
+
+## Git
