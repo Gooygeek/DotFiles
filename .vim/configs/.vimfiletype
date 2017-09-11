@@ -9,7 +9,7 @@ autocmd FileType javascript source ~/.vim/configs/javascript.vim
 " }}}
 
 " LaTeX {{{
-autocmd FileType plaintex source ~/.vim/configs/tex.vim
+" SEE the LaTeX section of the .vimrc
 " }}}
 
 

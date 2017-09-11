@@ -116,8 +116,7 @@ set linebreak "lines are only wrapped on  ^I!@*-+;:,./? (note the inclusion of a
 autocmd FileType * set formatoptions=roql
 
 "toggle paste mode with <F11>
-" Paste mode esstially allows for pasting of text without automatically
-" indenting
+" Paste mode esstially allows for pasting of text without automatically indenting
 nnoremap <F11> :set invpaste paste?<CR>
 set pastetoggle=<F11>
 " }}}
@@ -166,7 +165,7 @@ set writebackup
 
 " Snippets {{{
 " load in a template file
-nnoremap ,html :-1read $HOME/.vim/templates/HTML/template.html<CR>
+" nnoremap ,html :-1read $HOME/.vim/templates/HTML/template.html<CR>
 " abberviations/custom autocorrect
 iabbr teh the
 iabbr ture true
@@ -262,6 +261,32 @@ nnoremap <space><space> /<++><CR>df>i
 " set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+" }}}
+
+" LaTeX {{{
+" These settings need to be here and NOT in an ftplugin file like tex.vim
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you search in a singe file. This will confuse Latex-Suite. Set your grep program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" Important compile rules
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+"let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -fmt pdflatex $*'
+
+" path to create custom templates
+let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
+
+" Remove the section mappings like FIT
+let g:Tex_SectionMaps='0'
+
+" dont use the makefile if one exists in the current directory
+let g:Tex_UseMakefile='0'
 " }}}
 
 " config for this file only
