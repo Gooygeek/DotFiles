@@ -11,6 +11,7 @@
     cp -rf .tmux_colours2 ~/
     cp -rf .gitconfig ~/
     cp -rf .bash_custom ~/
+    cp -rf .bash_profile ~/
     cp -rf ~/.bashrcOLD ~/.bashrc || cp -rf ~/.bashrc ~/.bashrcOLD
     # edit main bash config to reference custom one
     sed -i '$ a\if [ -f ~/.bash_custom ]; then\n    . ~/.bash_custom\nfi' ~/.bashrc
