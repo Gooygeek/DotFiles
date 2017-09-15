@@ -187,6 +187,10 @@ source ~/.vim/configs/.vimfiletype
 " }}}
 
 " Misc Remaps {{{
+" set ; to be :, this makes typing commands easier
+nnoremap ; :
+" auto saves and closes w/o needing <Enter> after command
+nnoremap ;wq :wq<CR>
 ",u will revert the current line to previous state
 nnoremap <leader>u U
 "U will undo the undo
