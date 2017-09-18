@@ -187,6 +187,10 @@ source ~/.vim/configs/.vimfiletype
 " }}}
 
 " Misc Remaps {{{
+" set ; to be :, this makes typing commands easier
+nnoremap ; :
+" auto saves and closes w/o needing <Enter> after command
+nnoremap ;wq :wq<CR>
 ",u will revert the current line to previous state
 nnoremap <leader>u U
 "U will undo the undo
@@ -194,9 +198,9 @@ nnoremap U <C-r>
 " Ctrl-s will save the file
 nnoremap <C-s> :update<CR>
 inoremap <C-s> <Esc>:update<CR>a
-" leader up/down will move the current line up or down
-nnoremap <leader><up> ddkP
-nnoremap <leader><down> ddp
+" leader up/down will move the current line up or down. Can specify number of lines to move with a [count] prefix (COUNT DOES NOT CURRENTLY WORK FOR MOVING UP!)
+nnoremap <leader><up> :normal ddkP<CR>
+nnoremap <leader><down> :normal ddp<CR>
 " custom comma commands
 " delete/change inner ","
 nnoremap di, f,dT,
@@ -213,20 +217,14 @@ nnoremap <leader>O O<ESC>j
 " open/close tab
 nnoremap g<C-t> :tabnew<CR>
 nnoremap gc :tabclose<CR>
-" replace all instances of the word under the cursor/visualbuffer. autofill
-" old word. CONSIDER using 'g&', the shortcut to repeat the last replacement
-" for all lines or '&' for just the current line
+" replace all instances of the word under the cursor/visualbuffer. autofill old word. CONSIDER using 'g&', the shortcut to repeat the last replacement for all lines or '&' for just the current line
 nnoremap <Leader>rw :%s/<C-r><C-w>/<C-r><C-w>
 vnoremap <Leader>rw y:%s/<C-r>"/<C-r>"
-" leader up/down will move the current line up or down
-nnoremap <leader><up> ddkP
-nnoremap <leader><down> ddp
 " create 'jump' point
 nnoremap <leader>+ i<++><Esc>
 inoremap <leader>+ <++>
 " jump to next jump point
 nnoremap <space><space> /<++><CR>df>i
-
 
 "}}}
 
