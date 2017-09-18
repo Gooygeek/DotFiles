@@ -44,7 +44,17 @@ PROMPT_COMMAND='history -a'
 stty -ixon
 
 # Shorten and colourise the propmt
-export PS1="\u:\w\[\e[31m\]\\$\[\e[m\] "
+export PS1="\u:\w\[\e[32m\]ʃ\[\e[m\] "
+# Multiline promt
+export PS2="» "
+# Potentail prompt symbols
+# $
+# §
+# ¦
+# ¬
+# ʃ
+# ˧
+# »
 
 # adopt new push behaviour and don't show message about it not being set
 git config --global push.default simple
