@@ -191,6 +191,8 @@ source ~/.vim/configs/.vimfiletype
 nnoremap ; :
 " auto saves and closes w/o needing <Enter> after command
 nnoremap ;wq :wq<CR>
+" same as above but only writes if it can or a change has been made to it. This means it works to close the nerdtree and latex windows.
+nnoremap ;x :x<CR>
 ",u will revert the current line to previous state
 nnoremap <leader>u U
 "U will undo the undo
