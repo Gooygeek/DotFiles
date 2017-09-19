@@ -105,17 +105,17 @@ set autoindent "automatically tabulate when coding
 vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
-" show text in multiple visual lines (soft wrap) but don't hard-wrap lines automatically 
+" Show text in multiple visual lines (soft wrap) but don't hard-wrap lines automatically 
 set wrap "visually wrap lines that are longer than the window width
 set textwidth=0 "maximum line length (0 disables it)
 set wrapmargin=0 "number of chars from right window border where wrapping starts
 set linebreak "lines are only wrapped on  ^I!@*-+;:,./? (note the inclusion of a space)
 
-" sets the formatting and should remove auto-wrap text using textwidth.
-" needs to be an autocmd so it runs after the other config files so it wont be overwritten by ftplugin config files
+" Sets the formatting and should remove auto-wrap text using textwidth.
+" Needs to be an autocmd so it runs after the other config files so it wont be overwritten by ftplugin config files
 autocmd FileType * set formatoptions=roql
 
-"toggle paste mode with <F11>
+" Toggle paste mode with <F11>
 " Paste mode esstially allows for pasting of text without automatically indenting
 nnoremap <F11> :set invpaste paste?<CR>
 set pastetoggle=<F11>
@@ -125,7 +125,7 @@ set pastetoggle=<F11>
 set incsearch "search as characters are entered
 set hlsearch "highlight matches
 set ignorecase "ignore case
-"turn off search highlighting
+" Turn off search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
 set path+=** "recursive directory searching
 " }}}
@@ -137,16 +137,14 @@ set foldminlines=5 "must have at least 6 lines to make a fold
 " }}}
 
 " Movement {{{
-"move vertically by visual line not by actual line (good for when text is wrapped)
-"when using 'j' and 'k', in insert mode the normal method is used if it is multiple lines at
-"a time, thus it doesn't break when using relative linenumbers
+" Move vertically by visual line not by actual line (good for when text is wrapped) when using 'j' and 'k', in insert mode the normal method is used if it is multiple lines at a time, thus it doesn't break when using relative linenumbers
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 nnoremap <down> g<down>
 nnoremap <up> g<up>
 inoremap <down> <Esc>gji
 inoremap <up> <Esc>gki
-" move to start/end of line
+" Move to start/end of line
 nnoremap B ^
 nnoremap E $
 " }}}
@@ -164,9 +162,9 @@ set writebackup
 " }}}
 
 " Snippets {{{
-" load in a template file
+" Load in a template file
 " nnoremap ,html :-1read $HOME/.vim/templates/HTML/template.html<CR>
-" abberviations/custom autocorrect
+" Abberviations/custom autocorrect
 iabbr teh the
 iabbr ture true
 iabbr flase false
@@ -176,63 +174,66 @@ iabbr flase false
 set backspace=indent,eol,start "backspace works properly
 set modelines=1 "file-custom config line
 set nocompatible "don't try and act like vi
-" toggle absolute and relative line numbers
+" Toggle absolute and relative line numbers
 nnoremap <silent> <leader>ln :set invrelativenumber<CR>
-" toggle spell checker
+" Toggle spell checker
 nnoremap <silent> <leader>s :set invspell<CR>
 set spelllang=en_au "set the spelling language
 
-" load filetype specific configs
+" Load filetype specific configs
 source ~/.vim/configs/.vimfiletype
 " }}}
 
 " Misc Remaps {{{
-" set ; to be :, this makes typing commands easier
+" Set ; to be :, this makes typing commands easier
 nnoremap ; :
-" auto saves and closes w/o needing <Enter> after command
+" Auto saves and closes w/o needing <Enter> after command
 nnoremap ;wq :wq<CR>
-" same as above but only writes if it can or a change has been made to it. This means it works to close the nerdtree and latex windows.
+" Same as above but only writes if it can or a change has been made to it. This means it works to close the nerdtree and latex windows.
 nnoremap ;x :x<CR>
-",u will revert the current line to previous state
+" ,u will revert the current line to previous state
 nnoremap <leader>u U
-"U will undo the undo
+" U will undo the undo
 nnoremap U <C-r>
 " Ctrl-s will save the file
 nnoremap <C-s> :update<CR>
 inoremap <C-s> <Esc>:update<CR>a
-" leader up/down will move the current line up or down. Can specify number of lines to move with a [count] prefix (COUNT DOES NOT CURRENTLY WORK FOR MOVING UP!)
+" Leader up/down will move the current line up or down. Can specify number of lines to move with a [count] prefix (COUNT DOES NOT CURRENTLY WORK FOR MOVING UP!)
 nnoremap <leader><up> :normal ddkP<CR>
 nnoremap <leader><down> :normal ddp<CR>
-" custom comma commands
-" delete/change inner ","
+
+" Custom comma commands
+" Delete/change inner ","
 nnoremap di, f,dT,
 nnoremap ci, f,cT,
-" quick pairs
+
+" Quick pairs
 inoremap <leader>' ''<left>
 inoremap <leader>" ""<left>
 inoremap <leader>( ()<left>
 inoremap <leader>{ {}<left>
 inoremap <leader>[ []<left>
-" insert lines without going into insert mode
+
+" Insert lines without going into insert mode
 nnoremap <leader>o o<ESC>k
 nnoremap <leader>O O<ESC>j
-" open/close tab
+" Open/close tab
 nnoremap g<C-t> :tabnew<CR>
 nnoremap gc :tabclose<CR>
-" replace all instances of the word under the cursor/visualbuffer. autofill old word. CONSIDER using 'g&', the shortcut to repeat the last replacement for all lines or '&' for just the current line
+" Replace all instances of the word under the cursor/visualbuffer. autofill old word. CONSIDER using 'g&', the shortcut to repeat the last replacement for all lines or '&' for just the current line
 nnoremap <Leader>rw :%s/<C-r><C-w>/<C-r><C-w>
 vnoremap <Leader>rw y:%s/<C-r>"/<C-r>"
-" create 'jump' point
+" Create 'jump' point
 nnoremap <leader>+ i<++><Esc>
 inoremap <leader>+ <++>
-" jump to next jump point
+" Jump to next jump point
 nnoremap <space><space> /<++><CR>df>i
 
 "}}}
 
 " Custom functions {{{
 " THESE ARE NO LONGER NECESSARY, I HAVE FOUND BETTER WAYS TO DO IT IN MISC
-" toggle between number and relativenumber
+" Toggle between number and relativenumber
 "function! ToggleNumber()
     "if(&relativenumber == 1)
         "set norelativenumber
@@ -241,7 +242,7 @@ nnoremap <space><space> /<++><CR>df>i
         "set relativenumber
     "endif
 "endfunc
-"" toggle spell checker
+" Toggle spell checker
 "function! ToggleSpell()
     "if(&spell == 1)
         "set spell!
@@ -252,13 +253,13 @@ nnoremap <space><space> /<++><CR>df>i
 " }}}
 
 " Plugins {{{
-" load plugins into runtime
+" Load plugins into runtime
 "set runtimepath^=~/.vim/bundle/nerdtree/
 "set runtimepath^=~/.vim/bundle/nerdcommenter/
 "set runtimepath^=~/.vim/bundle/vim-easymotion/
 "set runtimepath^=~/.vim/
 
-" set mappings and settings
+" Set mappings and settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " }}}
@@ -266,12 +267,11 @@ let NERDTreeShowHidden=1
 " LaTeX {{{
 " These settings need to be here and NOT in an ftplugin file like tex.vim
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you search in a singe file. This will confuse Latex-Suite. Set your grep program to always generate a file-name.
+ "IMPORTANT: grep will sometimes skip displaying the file name if you search in a singe file. This will confuse Latex-Suite. Set your grep program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded. The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
 " Important compile rules
@@ -279,13 +279,13 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 "let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -fmt pdflatex $*'
 
-" path to create custom templates
+" Path to create custom templates
 let g:Tex_CustomTemplateDirectory='$HOME/.vim/templates/latex'
 
 " Remove the section mappings like FIT
 let g:Tex_SectionMaps='0'
 
-" dont use the makefile if one exists in the current directory
+" Don't use the makefile if one exists in the current directory
 let g:Tex_UseMakefile='0'
 " }}}
 
