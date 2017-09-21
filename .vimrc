@@ -5,12 +5,13 @@ let mapleader=","
 " Colours {{{
 syntax enable "make pretty colours
 set  t_Co=256 "set terminal to use 256 colour
-"set background=dark "tell vim the background will be dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
 "colorscheme peaksea
 "colorscheme badwolf
-colorscheme monokai
+"colorscheme monokai
+" solarized requires the following lines
+colorscheme solarized
+set background=dark "tell vim the background will be dark
+let g:solarized_termcolors=256
 " }}}
 
 " UI Layout {{{
