@@ -5,12 +5,13 @@ let mapleader=","
 " Colours {{{
 syntax enable "make pretty colours
 set  t_Co=256 "set terminal to use 256 colour
+"colorscheme peaksea
+colorscheme badwolf
+"colorscheme monokai
+" solarized requires the following lines
+"colorscheme solarized
 "set background=dark "tell vim the background will be dark
 "let g:solarized_termcolors=256
-"colorscheme solarized
-"colorscheme peaksea
-"colorscheme badwolf
-colorscheme monokai
 " }}}
 
 " UI Layout {{{
@@ -228,6 +229,13 @@ nnoremap <leader>+ i<++><Esc>
 inoremap <leader>+ <++>
 " Jump to next jump point
 nnoremap <space><space> /<++><CR>df>i
+
+" using Tab and Shift-Tab in insertmode  will cycle through auto complete
+inoremap <Tab> <C-n>
+inoremap <S-Tab> <C-p>
+" Ctrl-Tab and Ctrl-Shift-Tab in insertmode indents and unindents by a tabstop (should be 4)
+inoremap <C-Tab> <C-t>
+inoremap <C-S-Tab> <C-d>
 
 "}}}
 
