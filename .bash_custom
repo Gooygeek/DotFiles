@@ -44,7 +44,7 @@ PROMPT_COMMAND='history -a'
 stty -ixon
 
 # Shorten and colourise the propmt
-export PS1="\u:\w\[\e[32m\]ʃ\[\e[m\] "
+export PS1="\u:\[\e[1;94m\]\w \[\e[0;32m\]ʃ\[\e[0m\] "
 # Multiline promt
 export PS2="» "
 # Potentail prompt symbols
