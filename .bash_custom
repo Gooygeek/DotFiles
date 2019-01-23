@@ -1,9 +1,13 @@
 # Aliases {{{
+
+# Allows Aliases to be expanded when using a bare sudo <command>
+alias sudo='sudo '
+
 # show directory with hidden files (but not implied . and ..), horizontal ordering and colours
 alias ls='ls -A --format=horizontal --color=auto'
 
 # ensure tmux used 256 colours
-alias tmux='tmux -2' 
+alias tmux='tmux -2'
 alias t='tmux -2'
 alias tn='tmux -2 new -s'
 alias ta='tmux -2 a -t'
