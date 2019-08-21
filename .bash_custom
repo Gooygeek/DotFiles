@@ -1,10 +1,272 @@
+######  MISC. FUNCTIONS  ######
+
+# Functions {{{
+
+# Add and commit (should use vim if used with other dotfiles), changes are shown in the buffer but not added, makes for ealiy seesing what was changed to make better commit messages
+gitc() { git add . && git commit --verbose; }
+
+# bash bookmark manager, credit goes to getmizanur at Stackoverflow
+function bookmark_manager() {
+    bookmark_storage="${HOME}/.bookmarks"
+    USAGE="Usage: bm [-c|-g|-d|-l] [bookmark]
+      -c | --create <bookmark>
+        Bookmark the current directory under <bookmark>
+      -g | --go <bookmark>
+        Go to the directory saved under <boomark>
+      -d | --delete <boomark>
+        Delete directory under <bookmark>
+
+      Anything else shows this help text
+    " ;
+    if  [ ! -e ${bookmark_storage} ] ; then
+        mkdir ${bookmark_storage}
+    fi
+
+    case $1 in
+        # create bookmark
+        -c | --create) shift
+            if [ ! -f ${bookmark_storage}/$1 ] ; then
+                echo "$(pwd)" > ${bookmark_storage}/"$1" ;
+            else
+                echo "Try again! Looks like there is already a bookmark '$1'"
+            fi
+            ;;
+        # goto bookmark
+        -g | --go) shift
+            if [ -f ${bookmark_storage}/${1} ] ; then
+                cd $(cat ${bookmark_storage}/${1})
+            else
+                echo "Mmm...looks like your bookmark has spontaneously combusted. What I mean to say is that your bookmark does not exist." ;
+            fi
+            ;;
+        # delete bookmark
+        -d | --delete) shift
+            if [ -f ${bookmark_storage}/$1 ] ; then
+                rm ${bookmark_storage}/"$1" ;
+            else
+                echo "Oops, forgot to specify the bookmark" ;
+            fi
+            ;;
+        # list bookmarks
+        -l | --list) shift
+            for bookmark in ${bookmark_storage}/*
+            do
+                echo  "$(basename ${bookmark}) -> $(cat ${bookmark})" ;
+            done
+            ;;
+         *) echo "$USAGE" ;
+            ;;
+    esac
+}
+alias bm='bookmark_manager'
+
+# }}}
+
+######  ENV  ######
+
+# env {{{
+
+# Set the default editor to vim.
+export EDITOR=vim
+
+# Set the location of the .inputrc file
+export INPUTRC=~/.inputrc
+
+# }}}
+
+######  BASH  ######
+
+# Bash {{{
+
+# Easy way to reload the Bash Config
+alias rebash='source ~/.bashrc'
+
+# Autocomplete for bash
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+elif [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+  . /opt/local/etc/profile.d/bash_completion.sh
+fi
+
+# Up and Down arrow will search the history, filtering on the command currently typed
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+# Case insensitive when performing filename expansion
+shopt -s nocaseglob
+
+# When tab-completing, tab will complete until the ambiguity. Often an additional tab is required to then show the possibilities. This setting means it will show the possibilities immediately. (Not woorking)
+set show-all-if-ambiguous on
+
+# History expansion takes place after a space rather than on command execution
+bind '" ":magic-space'
+
+# Multi-line commands are saved to the history with embedded newlines rather than using semicolon separators where possible
+shopt -s lithist
+
+# Avoid succesive duplicates in the bash command history.
+export HISTCONTROL=ignoredups
+
+# Don't add to the history The commands (match exactly):
+# 	- &
+# 	- ls
+# 	- fg
+# 	- bg
+# 	- exit
+# 	- [Starts with a space]
+# 	- [Starts with a tab]
+export HISTIGNORE="&:ls:[bf]g:exit:[ \t]*"
+
+# Large History size
+export HISTSIZE=99999
+
+# Append commands to the bash command history file (~/.bash_history) instead of overwriting it.
+shopt -s histappend
+
+# Append commands to the history every time a prompt is shown, instead of after closing the session.
+PROMPT_COMMAND='history -a'
+
+# Better prompt (with git support)
+export GIT_PS1_SHOWDIRTYSTATE=true
+export export GIT_PS1_SHOWSTASHSTATE=true
+declare -F | grep __git_ps1 > /dev/null
+if [ "$?" -eq 0 ]; then
+  export PS1='\u:\[\e[1;94m\]\w\[\033[31m\]$(__git_ps1 "(%s)") \[\e[1;32m\]ʃ\[\e[0m\] '
+else
+  export PS1='\u:\[\e[1;94m\]\w \[\e[1;32m\]ʃ\[\e[0m\] '
+fi
+
+# Multiline promt
+export PS2="» "
+# Potential prompt symbols
+# $
+# §
+# ¦
+# ¬
+# ʃ
+# ˧
+# »
+
+# }}}
+
+######  CD  ######
+
+# cd {{{
+
+# If set, minor errors in the spelling of a directory component in a cd command will be corrected. The errors checked for are transposed characters, a missing character, and a character too many. If a correction is found, the corrected path is printed, and the command proceeds.
+shopt -s cdspell
+
+# Tab-completion only shows directories
+complete -d cd
+
+# Moves up a specified number of directories
+cdup() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
+
+# CDPATH is like the path for cd directories. Default is just '.'
+export CDPATH=.:~
+
+# Keep a history of the directories navigated to
+function changedir() {
+  if [ "$#" = "0" ]; then
+  pushd ${HOME} > /dev/null
+  elif [ -f "${1}" ]; then
+    ${EDITOR} ${1}
+  else
+    pushd "$1" > /dev/null
+  fi
+}
+alias cd='changedir'
+
+# Go back to the previous directory in the nav history.
+# Can also accept a number and will go back that many times
+function backdir() {
+  if [ "$#" = "0" ]; then
+    popd > /dev/null
+  else
+    for i in $(seq ${1}); do
+      popd > /dev/null
+    done
+  fi
+}
+alias bd='backdir'
+
+# List directory navigation history with numbers
+# This makes it easy to enter a number in bd to go back to that dir
+function dirhist() {
+  COUNT=0
+  for DIR in $(dirs); do
+    if [ $COUNT -ne 0 ]; then
+      echo "$COUNT - $DIR"
+    fi
+    COUNT=$(($COUNT + 1))
+  done
+}
+alias dh='dirhist'
+
+# }}}
+
+######  ls  ######
+
+# ls {{{
+
+# List dir with:
+# 	- Almost all
+# 	- Colour
+# 	- Filetype
+# 	- Horizonal
+alias ls='ls -AF --format=horizontal --color=auto'
+
+# List dir with:
+# 	- Long format
+# 	- Almost all
+# 	- Sorted by time (recents at the bottom)
+# 	- Human readable filesize
+# 	- Nicer timestamp
+alias lls='ls -AFltrh --time-style long-iso --color=auto'
+
+# }}}
+
+######  vi  ######
+
+# vi {{{
+
+# Save a copy of the file before oopening it in vi
+function safevi() {
+  cp  ${1} ${1}.$(date +"%Y%m%d-%H%M%S")
+  vi ${1}
+}
+# }}}
+
+
+
+######  OTHER  ######
+
+# Other {{{
+
+# 'ESC+.' will insert the last commands last argument. Same as 'ALT+.'. Looks to be the same as what '!$' is expanded to
+bind '"\e.": yank-last-arg'
+
+# Make sure left and right arrow keys work correctly (default)
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+# Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
+stty -ixon
+
+# Adopt new push behaviour and don't show message about it not being set
+git config --global push.default simple
+
+# }}}
+
+######  MISC. ALIAS  ######
+
 # Aliases {{{
+
+# Easier switch to root
+alias sr='sudo su root'
 
 # Allows Aliases to be expanded when using a bare sudo <command>
 alias sudo='sudo '
-
-# show directory with hidden files (but not implied . and ..), horizontal ordering and colours
-alias ls='ls -A --format=horizontal --color=auto'
 
 # ensure tmux used 256 colours
 alias tmux='tmux -2'
@@ -21,47 +283,6 @@ alias gc='gitc'
 
 # vim
 alias v='vim'
-# }}}
-
-# Functions {{{
-# moves up a specified number of directories
-up() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
-
-# add and commit (should use vim if used with other dotfiles), changes are shown in the buffer but not added, makes for ealiy seesing what was changed to make better commit messages
-gitc() { git add . && git commit --verbose; }
-# }}}
-
-# Other {{{
-# Set the default editor to vim.
- export EDITOR=vim
-
-# Avoid succesive duplicates in the bash command history.
-export HISTCONTROL=ignoredups
-
-# Append commands to the bash command history file (~/.bash_history) instead of overwriting it.
-shopt -s histappend
-
-# Append commands to the history every time a prompt is shown, instead of after closing the session.
-PROMPT_COMMAND='history -a'
-
-# Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
-stty -ixon
-
-# Shorten and colourise the propmt
-export PS1="\u:\[\e[1;94m\]\w \[\e[0;32m\]ʃ\[\e[0m\] "
-# Multiline promt
-export PS2="» "
-# Potentail prompt symbols
-# $
-# §
-# ¦
-# ¬
-# ʃ
-# ˧
-# »
-
-# adopt new push behaviour and don't show message about it not being set
-git config --global push.default simple
 # }}}
 
 # config for this file only
