@@ -65,6 +65,9 @@ alias gc='gitc'
 # vim
 alias v='vim'
 
+# Quick way to make something execuatable
+alias exe='chmod u+x'
+
 # Aliases for functions defined below
 alias bm='bookmark_manager'
 alias cd='changedir'
