@@ -3,6 +3,9 @@
 # Set the ultimate amazing command prompt
 #######################################################
 
+# Credit goes to zachbrowne on github
+# https://gist.github.com/zachbrowne/8bc414c9f30192067831fafebd14255c
+
 alias cpu="grep 'cpu ' /proc/stat | awk '{usage=(\$2+\$4)*100/(\$2+\$4+\$5)} END {print usage}' | awk '{printf(\"%.1f\n\", \$1)}'"
 function __setprompt
 {
