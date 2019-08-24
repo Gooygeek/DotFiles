@@ -1,18 +1,24 @@
 #!/bin/bash
 
-pull:
+pull: # Pull the latest changes
 	git config credential.helper cache
 	git pull
 
-reset: #resets the directory to the last commit
+pull_submod_init: # Pull the latest submodules
+	git submodule update --init --recursive
+
+pull_submod: # Pull the latest submodules
+	git submodule update --recursive --remote
+
+reset: # Resets the directory to the last commit
 	git fetch --all
 	git reset --hard origin/master
 	git reset --hard HEAD
 	git clean -f -d
 	git pull
 
-restorebash: #restores the bash config file
+restorebash: # Restores the bash config file
 	cp -rf ~/.bashrcOLD ~/.bashrc
 	
-spell: #copies the current working vim spellfile into this repository
+spell: # Copies the current working vim spellfile into this repository
 	cp -r ~.vim/spell* ~/DotFiles/.vim/spell/

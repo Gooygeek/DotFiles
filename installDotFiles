@@ -2,10 +2,6 @@
 
 { # try
     echo "Started installation"
-    # Pull latest git submodules
-    echo "Pulling latest submodules"
-    git submodule update --init --recursive
-    git submodule update --recursive --remote
     # Copy config files to home directory
     echo "Copying configs"
     cp -rf .vimrc ~/
