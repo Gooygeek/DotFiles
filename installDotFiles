@@ -9,6 +9,7 @@
     cp -rf .tmux.conf ~/
     cp -rf .tmux_colours* ~/
     cp -rf .gitconfig ~/
+    cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
     cp -rf ~/.bashrcOLD ~/.bashrc || cp -rf ~/.bashrc ~/.bashrcOLD
     # Edit main bash config to reference custom one

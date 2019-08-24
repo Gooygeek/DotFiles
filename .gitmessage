@@ -1,0 +1,21 @@
+
+
+# Capitalized, short (50 chars or less) summary
+#
+# More detailed explanatory text, if necessary.  Wrap it to about 72
+#     characters or so.  The blank line separating the summary from 
+#    the body is critical.
+#
+# Write your commit message in the imperative: "Fix bug" and not 
+#     "Fixed bug" or "Fixes bug".
+#
+# The body should include the following parts (where relevent):
+# * Description of the change
+# * Ticket #
+# * Why has the change necessary?
+# * How dows this change address the issue?
+# * What side effects does this change have?
+#
+# Bullet points are okay. They the line should start with either 
+#     '-' or '*'.
+
