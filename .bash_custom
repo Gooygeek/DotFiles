@@ -73,6 +73,15 @@ alias bm='bookmark_manager'
 alias cd='changedir'
 alias bd='backdir'
 
+# Either start an ssh-agent for every terminal or have a simple command to start it
+#SSHAGENT=/usr/bin/ssh-agent
+#SSHAGENTARGS="-s"
+#if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+#    eval `$SSHAGENT $SSHAGENTARGS`
+#    trap "kill $SSH_AGENT_PID" 0
+#fi
+alias ssh-start='eval `ssh-agent -s`'
+
 # }}}
 
 ######  MISC. FUNCTIONS  ######
@@ -294,8 +303,6 @@ function safevi() {
 }
 # }}}
 
-
-
 ######  OTHER  ######
 
 # Other {{{
@@ -323,15 +330,9 @@ stty -ixon
 # Adopt new push behaviour and don't show message about it not being set
 git config --global push.default simple
 
-
-# Either start an ssh-agent for every terminal or have a simple command to start it
-#SSHAGENT=/usr/bin/ssh-agent
-#SSHAGENTARGS="-s"
-#if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-#    eval `$SSHAGENT $SSHAGENTARGS`
-#    trap "kill $SSH_AGENT_PID" 0
-#fi
-alias ssh-start='eval `ssh-agent -s`'
+# Check the window size after each command and, if necessary,
+#   update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # }}}
 
