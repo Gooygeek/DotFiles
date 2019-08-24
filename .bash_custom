@@ -345,6 +345,10 @@ bind '"\e[B":history-search-forward'
 # SHIFT+TAB will cycle through tab completion options
 bind '"\e[Z":menu-complete'
 
+# Redirect '>' will not overwrite existing files
+# Can be forced with '>!'
+set -o noclobber
+
 # When tab-completing, tab will complete until the ambiguity. Often an additional tab is required to then show the possibilities. This setting means it will show the possibilities immediately. (Not woorking)
 #set show-all-if-ambiguous on
 
