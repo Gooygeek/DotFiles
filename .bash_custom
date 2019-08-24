@@ -68,6 +68,11 @@ alias v='vim'
 # Quick way to make something execuatable
 alias exe='chmod u+x'
 
+# Alias's for making archives
+alias mktar='tar -cvf'
+alias mkbz2='tar -cvjf'
+alias mkgz='tar -cvzf'
+
 # Aliases for functions defined below
 alias bm='bookmark_manager'
 alias cd='changedir'
@@ -160,18 +165,21 @@ simple_tree() {
         ls -AF --format=horizontal --color=auto -AR $1 | grep --color=auto ":$" | sed -e 's/:$//' -e "s/[^-][^\/]*\//$HORIZONTAL_CHAR/g" -e "s/^/ /" -e "s/-/|/"
 }
 
+alias unbz2='tar -xvjf'
+alias ungz='tar -xvzf'
+
 # No need to remember which tool is used to decompress different file types
 extract() {
     if [ -f $1 ] ; then
         case $1 in
-            *.tar.bz2)   tar xjf $1    ;;
-            *.tar.gz)    tar xzf $1    ;;
-            *.bz2)       bunzip2 $1    ;;
+            *.tar.bz2)   tar -xjf $1    ;;
+            *.tar.gz)    tar -xzf $1    ;;
+            *.bz2)       bunzip2 $1 || tar -xvjf $1  ;;
             *.rar)       rar x $1      ;;
-            *.gz)        gunzip $1     ;;
-            *.tar)       tar xf $1     ;;
-            *.tbz2)      tar xjf $1    ;;
-            *.tgz)       tar xzf $1    ;;
+            *.gz)        gunzip $1  || tar -xvzf $1  ;;
+            *.tar)       tar -xf $1     ;;
+            *.tbz2)      tar -xjf $1    ;;
+            *.tgz)       tar -xzf $1    ;;
             *.zip)       unzip $1      ;;
             *.Z)         uncompress $1 ;;
             *.7z)        7z x $1       ;;
@@ -211,8 +219,8 @@ bind '" ":magic-space'
 # Multi-line commands are saved to the history with embedded newlines rather than using semicolon separators where possible
 shopt -s lithist
 
-# Avoid succesive duplicates in the bash command history.
-export HISTCONTROL=ignoredups
+# Don't put duplicate lines in the history and do not add lines that start with a space
+export HISTCONTROL=erasedups:ignoredups:ignorespace
 
 # Don't add to the history The commands (match exactly):
 # 	- &
@@ -356,7 +364,11 @@ bind '"\e[Z":menu-complete'
 set -o noclobber
 
 # When tab-completing, tab will complete until the ambiguity. Often an additional tab is required to then show the possibilities. This setting means it will show the possibilities immediately. (Not woorking)
-#set show-all-if-ambiguous on
+#bind "set show-all-if-ambiguous on"
+
+# Disable the auditory tone aka bell
+bind "set bell-style visible"
+bind "set prefer-visible-bell"
 
 # Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
 stty -ixon
