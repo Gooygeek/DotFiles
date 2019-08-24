@@ -1,3 +1,59 @@
+######  INIT  ######
+
+shopt -s expand_aliases
+
+######  ENV  ######
+
+# env {{{{{{
+
+# Set the default editor to vim.
+export EDITOR=vim
+export VISUAL=vim
+
+# Set the location of the .inputrc file
+export INPUTRC=~/.inputrc
+
+# Colours
+BLUE=""
+GREEN=""
+RED=""
+NOCOLOUR=""
+
+# }}}}}}
+
+######  MISC. ALIAS  ######
+
+# Aliases {{{
+
+# Easier switch to root
+alias sr='sudo su root'
+
+# Allows Aliases to be expanded when using a bare sudo <command>
+alias sudo='sudo '
+
+# ensure tmux used 256 colours
+alias tmux='tmux -2'
+alias t='tmux -2'
+alias tn='tmux -2 new -s'
+alias ta='tmux -2 a -t'
+alias taw='tmux -2 a -t webserver'
+
+# small git shortcut
+alias g='git'
+alias gitp='git push'
+alias gp='git push'
+alias gc='gitc'
+
+# vim
+alias v='vim'
+
+# Aliases for functions defined below
+alias bm='bookmark_manager'
+alias cd='changedir'
+alias bd='backdir'
+
+# }}}
+
 ######  MISC. FUNCTIONS  ######
 
 # Functions {{{
@@ -5,8 +61,8 @@
 # Add and commit (should use vim if used with other dotfiles), changes are shown in the buffer but not added, makes for ealiy seesing what was changed to make better commit messages
 gitc() { git add . && git commit --verbose; }
 
-# bash bookmark manager, credit goes to getmizanur at Stackoverflow
-function bookmark_manager() {
+# Bash bookmark manager, credit goes to getmizanur at Stackoverflow
+bookmark_manager() {
     bookmark_storage="${HOME}/.bookmarks"
     USAGE="Usage: bm [-c|-g|-d|-l] [bookmark]
       -c | --create <bookmark>
@@ -15,6 +71,8 @@ function bookmark_manager() {
         Go to the directory saved under <boomark>
       -d | --delete <boomark>
         Delete directory under <bookmark>
+      -l | --list
+        List all the saved bookmarks
 
       Anything else shows this help text
     " ;
@@ -58,19 +116,15 @@ function bookmark_manager() {
             ;;
     esac
 }
-alias bm='bookmark_manager'
 
-# }}}
+# Replacement for when 'tree' is not installed
+# The 'find' command can also be used and replaces everything upto and including the first sed operation
+simple_tree ()
+{
+    HORIZONTAL_CHAR="--";
+        ls -AF --format=horizontal --color=auto -AR $1 | grep --color=auto ":$" | sed -e 's/:$//' -e "s/[^-][^\/]*\//$HORIZONTAL_CHAR/g" -e "s/^/ /" -e "s/-/|/"
+}
 
-######  ENV  ######
-
-# env {{{
-
-# Set the default editor to vim.
-export EDITOR=vim
-
-# Set the location of the .inputrc file
-export INPUTRC=~/.inputrc
 
 # }}}
 
@@ -88,15 +142,8 @@ elif [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
-# Up and Down arrow will search the history, filtering on the command currently typed
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
-
 # Case insensitive when performing filename expansion
 shopt -s nocaseglob
-
-# When tab-completing, tab will complete until the ambiguity. Often an additional tab is required to then show the possibilities. This setting means it will show the possibilities immediately. (Not woorking)
-set show-all-if-ambiguous on
 
 # History expansion takes place after a space rather than on command execution
 bind '" ":magic-space'
@@ -166,7 +213,7 @@ cdup() { cd $(eval printf '../'%.0s {1..$1}) && pwd; }
 export CDPATH=.:~
 
 # Keep a history of the directories navigated to
-function changedir() {
+changedir() {
   if [ "$#" = "0" ]; then
   pushd ${HOME} > /dev/null
   elif [ -f "${1}" ]; then
@@ -175,11 +222,10 @@ function changedir() {
     pushd "$1" > /dev/null
   fi
 }
-alias cd='changedir'
 
 # Go back to the previous directory in the nav history.
 # Can also accept a number and will go back that many times
-function backdir() {
+backdir() {
   if [ "$#" = "0" ]; then
     popd > /dev/null
   else
@@ -188,20 +234,10 @@ function backdir() {
     done
   fi
 }
-alias bd='backdir'
 
 # List directory navigation history with numbers
 # This makes it easy to enter a number in bd to go back to that dir
-function dirhist() {
-  COUNT=0
-  for DIR in $(dirs); do
-    if [ $COUNT -ne 0 ]; then
-      echo "$COUNT - $DIR"
-    fi
-    COUNT=$(($COUNT + 1))
-  done
-}
-alias dh='dirhist'
+alias dh='dirs -v'
 
 # }}}
 
@@ -250,6 +286,16 @@ bind '"\e.": yank-last-arg'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
+# Up and Down arrow will search the history, filtering on the command currently typed
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+# SHIFT+TAB will cycle through tab completion options
+bind '"\e[Z":menu-complete'
+
+# When tab-completing, tab will complete until the ambiguity. Often an additional tab is required to then show the possibilities. This setting means it will show the possibilities immediately. (Not woorking)
+#set show-all-if-ambiguous on
+
 # Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
 stty -ixon
 
@@ -266,33 +312,6 @@ git config --global push.default simple
 #fi
 alias ssh-start='eval `ssh-agent -s`'
 
-# }}}
-
-######  MISC. ALIAS  ######
-
-# Aliases {{{
-
-# Easier switch to root
-alias sr='sudo su root'
-
-# Allows Aliases to be expanded when using a bare sudo <command>
-alias sudo='sudo '
-
-# ensure tmux used 256 colours
-alias tmux='tmux -2'
-alias t='tmux -2'
-alias tn='tmux -2 new -s'
-alias ta='tmux -2 a -t'
-alias taw='tmux -2 a -t webserver'
-
-# small git shortcut
-alias g='git'
-alias gitp='git push'
-alias gp='git push'
-alias gc='gitc'
-
-# vim
-alias v='vim'
 # }}}
 
 # config for this file only
