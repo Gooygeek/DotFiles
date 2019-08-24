@@ -175,6 +175,10 @@ fi
 # Case insensitive when performing filename expansion
 shopt -s nocaseglob
 
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
 # History expansion takes place after a space rather than on command execution
 bind '" ":magic-space'
 
