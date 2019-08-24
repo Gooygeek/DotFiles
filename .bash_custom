@@ -14,10 +14,10 @@ export VISUAL=vim
 export INPUTRC=~/.inputrc
 
 # Colours
-BLUE=""
-GREEN=""
-RED=""
-NOCOLOUR=""
+BLUE='\[\e[1;94m\]'
+GREEN='\[\e[1;32m\]'
+RED='\[\033[31m\]'
+NOCOLOUR='\[\e[0m\]'
 
 # }}}}}}
 
@@ -178,9 +178,9 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]; then
-  export PS1='\u:\[\e[1;94m\]\w\[\033[31m\]$(__git_ps1 "(%s)") \[\e[1;32m\]ʃ\[\e[0m\] '
+  export PS1="\n\u:${BLUE}\w${RED}\$(__git_ps1 '(%s)') ${GREEN}ʃ${NOCOLOUR} "
 else
-  export PS1='\u:\[\e[1;94m\]\w \[\e[1;32m\]ʃ\[\e[0m\] '
+  export PS1="\n\u:${BLUE}\w ${GREEN}ʃ${NOCOLOUR} "
 fi
 
 # Multiline promt
