@@ -149,12 +149,32 @@ bookmark_manager() {
 
 # Replacement for when 'tree' is not installed
 # The 'find' command can also be used and replaces everything upto and including the first sed operation
-simple_tree ()
-{
+simple_tree() {
     HORIZONTAL_CHAR="--";
         ls -AF --format=horizontal --color=auto -AR $1 | grep --color=auto ":$" | sed -e 's/:$//' -e "s/[^-][^\/]*\//$HORIZONTAL_CHAR/g" -e "s/^/ /" -e "s/-/|/"
 }
 
+# No need to remember which tool is used to decompress different file types
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1    ;;
+            *.tar.gz)    tar xzf $1    ;;
+            *.bz2)       bunzip2 $1    ;;
+            *.rar)       rar x $1      ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xf $1     ;;
+            *.tbz2)      tar xjf $1    ;;
+            *.tgz)       tar xzf $1    ;;
+            *.zip)       unzip $1      ;;
+            *.Z)         uncompress $1 ;;
+            *.7z)        7z x $1       ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
 
 # }}}
 
