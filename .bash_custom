@@ -14,10 +14,12 @@ export VISUAL=vim
 export INPUTRC=~/.inputrc
 
 # Colours
+NOCOLOUR='\[\e[0m\]'
 BLUE='\[\e[1;94m\]'
 GREEN='\[\e[1;32m\]'
 RED='\[\033[31m\]'
-NOCOLOUR='\[\e[0m\]'
+PURPLE='\[\033[35m\]'
+YELLOWBROWN='\[\033[33m\]'
 
 # }}}}}}
 
