@@ -88,6 +88,12 @@ alias ssh-start='eval `ssh-agent -s`'
 
 # Functions {{{
 
+# Make a directory and then change to it.
+mcd() {
+    mkdir $1
+    cd $1
+}
+
 # Add and commit (should use vim if used with other dotfiles), changes are shown in the buffer but not added, makes for ealiy seesing what was changed to make better commit messages
 gitc() { git add . && git commit --verbose; }
 
