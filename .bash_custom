@@ -13,13 +13,29 @@ export VISUAL=vim
 # Set the location of the .inputrc file
 export INPUTRC=~/.inputrc
 
-# Colours
-NOCOLOUR='\[\e[0m\]'
-BLUE='\[\e[1;94m\]'
-GREEN='\[\e[1;32m\]'
-RED='\[\033[31m\]'
-PURPLE='\[\033[35m\]'
-YELLOWBROWN='\[\033[33m\]'
+# Text Colours and Effects
+# Effects
+RESET_EFFECTS='\e[0m'
+BOLD='\e[1m'
+BLINK='\e[5m'
+# Normal Colours
+BLACK='\e[30m'
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+MAGENTA='\e[35m'
+CYAN='\e[36m'
+LIGHTGRAY='\e[37m'
+# Equal to Normal colours with the Bold Effect
+DARKGREY='\e[90m'
+LIGHTRED='\e[91m'
+LIGHTGREEN='\e[92m'
+LIGHTYELLOW='\e[93m'
+LIGHTBLUE='\e[94m'
+LIGHTMAGENTA='\e[95m'
+LIGHTCYAN='\e[96m'
+WHITE='\e[97m'
 
 # }}}}}}
 
@@ -180,9 +196,9 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]; then
-  export PS1="\n\u:${BLUE}\w${RED}\$(__git_ps1 '(%s)') ${GREEN}ʃ${NOCOLOUR} "
+  export PS1="\n\u:${LIGHTBLUE}[\w]${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}${BLINK}ʃ${RESET_EFFECTS} "
 else
-  export PS1="\n\u:${BLUE}\w ${GREEN}ʃ${NOCOLOUR} "
+  export PS1="\n\u:${LIGHTBLUE}[\w] ${GREEN}${BOLD}${BLINK}ʃ${RESET_EFFECTS} "
 fi
 
 # Multiline promt
