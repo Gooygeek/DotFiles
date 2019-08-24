@@ -22,3 +22,10 @@ restorebash: # Restores the bash config file
 	
 spell: # Copies the current working vim spellfile into this repository
 	cp -r ~.vim/spell* ~/DotFiles/.vim/spell/
+
+init: # Prep the install
+	make pull_submod_init
+	make spell
+
+install: # Call the install script
+	./installDotFiles
