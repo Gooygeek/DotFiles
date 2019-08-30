@@ -258,9 +258,9 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]; then
-  export PS1="\n\u:${LIGHTBLUE}[\w]${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}${BLINK}ʃ${RESET_EFFECTS} "
+  export PS1=" \n\u:${LIGHTBLUE}[\w]${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}ʃ${RESET_EFFECTS} "
 else
-  export PS1="\n\u:${LIGHTBLUE}[\w] ${GREEN}${BOLD}${BLINK}ʃ${RESET_EFFECTS} "
+  export PS1=" \n\u:${LIGHTBLUE}[\w] ${GREEN}${BOLD}ʃ${RESET_EFFECTS} "
 fi
 
 # Multiline promt
@@ -396,10 +396,12 @@ shopt -s checkwinsize
 
 
 # OPTIONAL
-# Awesome command prompt
-# Simply source the .bash_prompt file
-# . ~/.bash_prompt
 
+# Awesome command prompt
+# . ~/.bash_prompt_advanced
+
+# Short Prompt
+# . ~/.bash_prompt_short
 
 ######  TEST SECTION  ######
 
