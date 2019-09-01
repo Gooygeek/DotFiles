@@ -102,6 +102,15 @@ alias ssh-start='eval `ssh-agent -s`'
 
 # Functions {{{
 
+# Quick way to search for running scripts/apps
+psgrep() {
+    echo "ps -aux:"
+    ps -aux | grep $1 
+    echo ""
+    echo "top:"
+    top -b -n 1 | grep $1
+}
+
 # Make a directory and then change to it.
 mcd() {
     mkdir $1
