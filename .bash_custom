@@ -2,6 +2,9 @@
 
 shopt -s expand_aliases
 
+# Easy way to reload the Bash Config
+alias rebash='source ~/.bashrc'
+
 ######  ENV  ######
 
 # env {{{{{{
@@ -207,9 +210,6 @@ ftext ()
 ######  BASH  ######
 
 # Bash {{{
-
-# Easy way to reload the Bash Config
-alias rebash='source ~/.bashrc'
 
 # Autocomplete for bash
 if [ -f /etc/bash_completion ]; then
