@@ -52,6 +52,12 @@ alias sr='sudo su root'
 # Allows Aliases to be expanded when using a bare sudo <command>
 alias sudo='sudo '
 
+# Curl sends back 3XX errors be default, '-L' means it will automatically follow the redirect.
+alias curl='curl -L'
+
+# A bit qucker and easier by to resolve dns names
+alias dns='nslookup'
+
 # ensure tmux used 256 colours
 alias tmux='tmux -2'
 alias t='tmux -2'
