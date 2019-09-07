@@ -29,4 +29,3 @@ init: # Prep the install
 
 install: # Call the install script
 	./installDotFiles
-	. ~/.bashrc
