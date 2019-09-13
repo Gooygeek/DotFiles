@@ -17,3 +17,36 @@
     default = simple
 [commit]
     template = ~/.gitmessage
+[alias]
+    a = add
+    aa = add --all
+    ap = add --patch  # Asked whether to add on a per-change basis
+    b = branch
+    br = branch
+    pl = pull
+    ps = push
+    f = fetch
+    sy = !exec "git fetch && git merge && git push"
+    m = merge
+    c = commit
+    ci = commit --interactive
+    cp = cherry-pick
+    co = checkout
+    s = status
+    st = status
+    w = whatchanged
+    unstage = reset HEAD --
+    d = diff
+    dc = diff --cached  # Show changes not yet staged
+    ds = diff --staged  # Show changes about to be commited
+    dd = diff --check --dirstat --find-copies --find-renames --histogram --color  # diff deep - show changes with our preferred options.
+    diff-deep = diff --check --dirstat --find-copies --find-renames --histogram --color  # Show changes with our preferred      options.
+    g = grep
+    gg = grep --break --heading --line-number --color  # grep group - search with our preferred options.
+    grep-group = grep --break --heading --line-number --color  # Search with our preferred options.
+    r = remote
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    lg = LINE184
+
