@@ -26,7 +26,7 @@
     pl = pull
     ps = push
     f = fetch
-    sy = !exec "git fetch && git merge && git push"
+    sy = !git fetch && git merge && git push  # Sync - Pulls then pushes
     m = merge
     c = commit
     ci = commit --interactive
