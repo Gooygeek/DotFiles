@@ -4,6 +4,7 @@
 [core]
     # set vim as the default editor for commit messagees
 	editor = vim
+    autocrlf = input
 [include]
     # if my username and email are different for some reason use those stored in...
     path = .gitconfig.local
