@@ -101,7 +101,9 @@
     
     # Status #
     s = status
+    stat = status
     ss = status --short --branch
+    sstat = status --short --branch
     w = whatchanged
     
     # Diff #
