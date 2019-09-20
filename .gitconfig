@@ -87,10 +87,13 @@
     
     # Merge #
     m = merge
+    mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
     
     # Commit #
     c = commit
     ci = commit --interactive
+    ac = !git add --all && git commit -a  # aka Add + Commit
+    fmaacp = !git fetch && git merge && git add --all && git commit -a && git push
     cp = cherry-pick
     
     # Checkout #
@@ -108,6 +111,17 @@
     ds = diff --staged  # Show changes about to be commited
     dd = diff --check --dirstat --find-copies --find-renames --histogram --color  # diff deep - show changes with our preferred options.
     diff-deep = diff --check --dirstat --find-copies --find-renames --histogram --color  # Show changes with our preferred      options.
+    # Diff the last commit for a given file. Usage 'git diff-file-last-commit <file>'
+    diff-file-last-commit = "!f() { \
+            project_root_dir=$(git rev-parse --show-toplevel); \
+            echo finding full file path of $1 in $project_root_dir; \
+            filepath=$(find $project_root_dir -type f -name $1); \
+            echo full file path $filepath; \
+            last_modified_commit_hash=$(git rev-list -1 HEAD $filepath); \
+            echo last commit file modified $last_modified_commit_hash; \
+            git difftool $last_modified_commit_hash^ $filepath -y; \
+       }; f"
+
     
     # Grep #
     g = grep
@@ -117,7 +131,7 @@
 
     # Log #
     l = log
-    lg = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset %m%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+    lg = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     
     # Stash #
