@@ -70,6 +70,13 @@ alias gitp='git push'
 alias gp='git push'
 alias gc='gitc'
 
+# Python
+if which python3 > /dev/null; then
+    alias py='python3'
+else
+    alias py='python'
+fi
+
 # vim
 alias v='vim'
 

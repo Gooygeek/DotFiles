@@ -25,6 +25,7 @@
     # Add #
     a = add
     aa = add --all
+    ai = add -i
     ap = add --patch  # Asked whether to add on a per-change basis
     unstage = reset HEAD --
 
