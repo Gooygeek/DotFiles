@@ -116,7 +116,7 @@ aws-creds() {
     #    This will therefore return a list of 'profile <profile>'. (except the first line, which would be 'default').
     # awk 2 = If the line is greater than 1 (i.e. not the first line), then print the second item.
     #    This therefore prints all and only the roles that can be assumed
-    ROFILES=$(awk -F"\\\]|\\\[" '/^\[/{print $2}' ~/.aws/config | awk '{if(NR>1)print $2}')
+    PROFILES=$(awk -F"\\\]|\\\[" '/^\[/{print $2}' ~/.aws/config | awk '{if(NR>1)print $2}')
 
     # This provides a multiple choice method of selecting a profile.
     #    The role will then be assumed and the resulting creds will be exported to the environment varibles
