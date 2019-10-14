@@ -212,6 +212,12 @@ simple_tree() {
     HORIZONTAL_CHAR="--";
         ls -AF --format=horizontal --color=auto -AR $1 | grep --color=auto ":$" | sed -e 's/:$//' -e "s/[^-][^\/]*\//$HORIZONTAL_CHAR/g" -e "s/^/ /" -e "s/-/|/"
 }
+# An alternative using 'find' instead of ls.
+# This version can be customised to include only showing dirs, a resursion depth and other things the 'find' command can do
+#function simple_tree() {
+#    HORIZONTAL_CHAR="--"
+#    find $1 | sed  -e "s/[^-][^\/]*\//$HORIZONTAL_CHAR/g" -e "s/^/ /" -e "s/-/|/"
+#}
 
 # No need to remember which tool is used to decompress different file types
 # Credit goes to zachbrowne on Github
@@ -340,7 +346,7 @@ export CDPATH=.:~
 # Keep a history of the directories navigated to
 changedir() {
   if [ "$#" = "0" ]; then
-  pushd ${HOME} > /dev/null
+    :
   elif [ -f "${1}" ]; then
     ${EDITOR} ${1}
   else
