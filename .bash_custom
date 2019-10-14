@@ -102,6 +102,10 @@ alias bd='backdir'
 #fi
 alias ssh-start='eval `ssh-agent -s`'
 
+
+# Check which ports are open
+alias openports='netstat -plntae --inet'
+
 # }}}
 
 ######  MISC. FUNCTIONS  ######
