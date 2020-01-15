@@ -155,11 +155,11 @@ command! MakeTags !ctags -R .
 " }}}
 
 " Backups {{{
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backup  " Create a backup of the current file each time the files is edited
 set writebackup
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp  " Locations for .swp files
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp  " Locations for backup files
+set backupskip=/tmp/*,/private/tmp/*  " Don't create a backup file if the filename matches any of these
 " }}}
 
 " Snippets {{{
