@@ -112,6 +112,13 @@ alias openports='netstat -plntae --inet'
 
 # Functions {{{
 
+# Get the currently activated virtual environment. Used in PS1
+__py_venv() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    printf "<%s>" "${VIRTUAL_ENV##*/}"
+  fi
+}
+
 # Quick way to search for running scripts/apps
 psgrep() {
     echo "ps -aux:"
@@ -304,12 +311,12 @@ shopt -s histappend
 # Append commands to the history every time a prompt is shown, instead of after closing the session.
 PROMPT_COMMAND='history -a'
 
-# Better prompt (with git support)
+# Better prompt (with git AND python venv support)
 export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]; then
-  export PS1=" \n\u:${LIGHTBLUE}[\w]${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}ʃ${RESET_EFFECTS} "
+  export PS1=" \n\u:${LIGHTBLUE}[\w]${LIGHTMAGENTA}\$(__py_venv)${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}ʃ${RESET_EFFECTS} "
 else
   export PS1=" \n\u:${LIGHTBLUE}[\w] ${GREEN}${BOLD}ʃ${RESET_EFFECTS} "
 fi
