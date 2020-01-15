@@ -143,6 +143,7 @@
     stl = stash list
     std = stash drop
     stp = stash push --message
+    scheckpoint = "!bash -c \"git stash save $(date +%Y-%m-%d-%H:%M:%S) - $1 && git stash apply && git stash list -5 && echo 'Stopped at 5 (there may be more stashes) ...'\""
     
     # Ls #
     ls = ls-files
