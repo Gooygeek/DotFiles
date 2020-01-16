@@ -2,7 +2,9 @@
 
 { # try
     echo "Started installation"
-    # Copy config files to home directory
+    echo "Backing up current settings"
+    mv ~/.bashrc.backup ~/.bashrc || mv ~/.bashrc ~/.bashrc.backup  # Restore backup first so reinstalls don't overwrite the backup
+    mv ~/.bash_profile.backup ~/.bash_profile || mv ~/.bash_profile ~/.bash_profile.backup
     echo "Copying configs"
     cp -rf .vimrc ~/
     cp -rf .vim ~/
@@ -11,10 +13,12 @@
     cp -rf .gitconfig ~/
     cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
-    cp -rf ~/.bashrcOLD ~/.bashrc || cp -rf ~/.bashrc ~/.bashrcOLD
-    # Edit main bash config to reference custom one
-    echo "Adding ref to custom .bashrc"
-    sed -i '$ a\if [ -f ~/.bash_custom ]; then\n    . ~/.bash_custom\nfi' ~/.bashrc
+    cp -rf .bash.d ~/
+    echo "Generating default files"
+    echo ". ~/.bashrc.backup" >> ~/.bashrc
+    echo ". ~/.bash_custom" >> ~/.bashrc
+    echo ". ~/.bash_profile.backup" >> ~/.bash_profile
+    echo ". ~/.bash_custom" >> ~/.bash_profile
     echo "Installation completed"
 } || { # Catch
 echo "Somthing went wrong"
