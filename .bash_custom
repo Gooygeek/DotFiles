@@ -71,7 +71,7 @@ alias gp='git push'
 alias gc='gitc'
 
 # Python
-if which python3 > /dev/null; then
+if which python3 > /dev/null 2>&1; then
     alias py='python3'
 else
     alias py='python'
