@@ -3,8 +3,10 @@
 { # try
     echo "Started installation"
     echo "Backing up current settings"
-    mv ~/.bashrc.backup ~/.bashrc || mv ~/.bashrc ~/.bashrc.backup  # Restore backup first so reinstalls don't overwrite the backup
-    mv ~/.bash_profile.backup ~/.bash_profile || mv ~/.bash_profile ~/.bash_profile.backup
+    if [ ! -f ~/.bashrc.backup ]; then
+        mv ~/.bashrc ~/.bashrc.backup
+    fi
+    mv ~/.bash_profile.backup ~/.bash_profile; mv ~/.bash_profile ~/.bash_profile.backup
     echo "Copying configs"
     cp -rf .vimrc ~/
     cp -rf .vim ~/
@@ -15,9 +17,9 @@
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
     echo "Generating default files"
-    echo ". ~/.bashrc.backup" >> ~/.bashrc
+    echo ". ~/.bashrc.backup" >| ~/.bashrc
     echo ". ~/.bash_custom" >> ~/.bashrc
-    echo ". ~/.bash_profile.backup" >> ~/.bash_profile
+    echo ". ~/.bash_profile.backup" >| ~/.bash_profile
     echo ". ~/.bash_custom" >> ~/.bash_profile
     echo "Installation completed"
 } || { # Catch
