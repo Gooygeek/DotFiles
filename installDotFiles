@@ -17,10 +17,26 @@
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
     echo "Generating default files"
-    echo ". ~/.bashrc.backup" >| ~/.bashrc
-    echo ". ~/.bash_custom" >> ~/.bashrc
-    echo ". ~/.bash_profile.backup" >| ~/.bash_profile
-    echo ". ~/.bash_custom" >> ~/.bash_profile
+    {
+    cat << EOF
+if [ -f ~/.bashrc.backup ]; then 
+    . ~/.bashrc.backup
+fi
+if [ -f ~/.bash_custom ]; then 
+    . ~/.bash_custom
+fi
+EOF
+    } >| ~/.bashrc
+    {
+    cat << EOF
+if [ -f ~/.bash_profile.backup ]; then 
+    . ~/.bash_profile.backup
+fi
+if [ -f ~/.bash_custom ]; then 
+    . ~/.bash_custom
+fi
+EOF
+    } >| ~/.bash_profile 
     echo "Installation completed"
 } || { # Catch
 echo "Somthing went wrong"
