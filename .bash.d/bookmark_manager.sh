@@ -29,7 +29,8 @@ bookmark_manager() {
             if [ -f ${bookmark_storage}/${1} ] ; then
                 cd $(cat ${bookmark_storage}/${1})
             else
-                echo "Mmm...looks like your bookmark has spontaneously combusted. What I mean to say is that your bookmark does not exist." ;        33             fi
+                echo "Mmm...looks like your bookmark has spontaneously combusted. What I mean to say is that your bookmark does not exist."
+            fi
             ;;
         # delete bookmark
         -d | --delete) shift
