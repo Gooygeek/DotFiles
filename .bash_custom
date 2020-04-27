@@ -89,7 +89,6 @@ alias mkbz2='tar -cvjf'
 alias mkgz='tar -cvzf'
 
 # Aliases for functions defined below
-alias bm='bookmark_manager'
 alias cd='changedir'
 alias bd='backdir'
 

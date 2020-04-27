@@ -51,3 +51,5 @@ bookmark_manager() {
             ;;
     esac
 }
+
+alias bm='bookmark_manager'
