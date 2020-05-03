@@ -9,6 +9,8 @@ alias rebash='source ~/.bashrc'
 
 # env {{{{{{
 
+PATH="$PATH:~/.local/bin"
+
 # Set the default editor to vim.
 export EDITOR=vim
 export VISUAL=vim
