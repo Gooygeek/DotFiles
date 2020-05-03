@@ -51,6 +51,10 @@ alias sr='sudo su root'
 # Allows Aliases to be expanded when using a bare sudo <command>
 alias sudo='sudo '
 
+# Terraform and Terragrunt
+alias tf='terraform'
+alias tg='terragrunt'
+
 # Curl sends back 3XX errors be default, '-L' means it will automatically follow the redirect.
 alias curl='curl -L'
 
