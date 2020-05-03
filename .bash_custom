@@ -152,7 +152,7 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 # 	- exit
 # 	- [Starts with a space]
 # 	- [Starts with a tab]
-export HISTIGNORE="&:ls:[bf]g:exit:[ \t]*"
+export HISTIGNORE="&:ls:[bf]g:exit:[ ]*"
 
 # Large History size
 export HISTSIZE=99999
