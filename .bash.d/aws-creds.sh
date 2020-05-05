@@ -57,11 +57,13 @@ aws-creds() {
             aws-creds-deamon &  # Start the deamon and send to background
             ;;
         r | reload)  # Reload auto-rotated creds for most recent profile
-            res="$(cat ~/.aws-creds/profiles/$AWS_CREDS_PROFILE)"
+            PROFILE=$AWS_CREDS_PROFILE
+            res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+            echo "$res" >| ~/.aws-creds/profiles/$PROFILE
             export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
             export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
             export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
-            export AWS_REGION=`aws configure get region --profile $AWS_CREDS_PROFILE`
+            export AWS_REGION=`aws configure get region --profile $PROFILE`
             ;;
         l | load)  # Load an AWS profile
 
