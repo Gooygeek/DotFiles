@@ -72,7 +72,7 @@ curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 mv jq-linux64 jq
 
 # Make recently installs tools executable
-chmod a+x ~/bin/ -R
+chmod a+x ~/.local/bin/ -R
 
 
 ##  Additional config  ##
