@@ -56,15 +56,6 @@ aws-creds() {
             mkdir ~/.aws-creds/profiles/ &> /dev/null  # Create the cred dir
             aws-creds-deamon &  # Start the deamon and send to background
             ;;
-        r | reload)  # Reload auto-rotated creds for most recent profile
-            PROFILE=$AWS_CREDS_PROFILE
-            res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
-            echo "$res" >| ~/.aws-creds/profiles/$PROFILE
-            export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
-            export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
-            export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
-            export AWS_REGION=`aws configure get region --profile $PROFILE`
-            ;;
         l | load)  # Load an AWS profile
 
             # awk 1 = The seperator is everything between ']' and '['. Therefore, only what is inside the square brackets are piped on.
@@ -100,6 +91,26 @@ aws-creds() {
                 break
             done
             ;;
+        r | reload)  # Reload auto-rotated creds for most recent profile
+            PROFILE=$AWS_CREDS_PROFILE
+            res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+            echo "$res" >| ~/.aws-creds/profiles/$PROFILE
+            export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
+            export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
+            export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
+            export AWS_REGION=`aws configure get region --profile $PROFILE`
+            ;;
+        s | show)  # Show the currently loaded profile
+            PROFILE=$AWS_CREDS_PROFILE
+            echo "Currently loaded profile: ${$PROFILE}"
+            echo "Credentials:"
+            echo "AWS_ACCESS_KEY_ID = ${AWS_ACCESS_KEY_ID}"
+            echo "AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}"
+            echo "AWS_SESSION_TOKEN = ${AWS_SESSION_TOKEN}"
+            echo "AWS_REGION = ${AWS_REGION}"
+            echo ""
+            echo "Note: The details above are taken from your environment variables; if you have manally exported credentials then the api keys might not match the profile."
+            ;;
 
         * )  # Else print help
             echo ""
@@ -112,6 +123,11 @@ aws-creds() {
             echo "  The credentials are also saved to disk temporarily which enables quick switching between profiles without needing to reenter an MFA token"
             echo "  Note that some intrusion detection tools might look for temp creds making temp creds and consider this a breach."
             echo ""
+            echo "    l | load )"
+            echo "      Load a profile."
+            echo "      Gives a selection of profiles configured in the users AWS cli config file."
+            echo "      If an auto-rotated credential exists for that profile, use that."
+            echo ""
             echo "  Options:"
             echo "    a | activate )"
             echo "     Activate the auto-rotate deamon."
@@ -120,10 +136,9 @@ aws-creds() {
             echo "    r | reload )"
             echo "      Load the auto-rotated creds of the most recent profile of the current shell session."
             echo ""
-            echo "    l | load )"
-            echo "      Load a profile."
-            echo "      Gives a selection of profiles configured in the users AWS cli config file."
-            echo "      If an auto-rotated credential exists for that profile, use that."
+            echo "    s | show )"
+            echo "      Shows the currently loaded profile."
+            echo ""
 
     esac
 }
