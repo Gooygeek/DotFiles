@@ -3,59 +3,11 @@
 # sudo yum install jq
 
 
-# TODO: Better dectection of 24 hours.
-#          Currently runs indefintaly
-#          What happens when the computer goes to sleep?
-
-aws-creds-deamon() {
-
-    # Becuase this function can run in the background and finding the process to kill it or determine if it is currently running might be tricky, this file is used to confirm if it is running and if deleted early will terminate this deamon
-    touch ~/.aws-creds/running
-
-    trap "" HUP   # script will ignore HANGUP signal
-
-    echo "Deamon started at $(date)" >> ~/.aws-creds/log
-
-    while [ 1 -eq 1 ]
-    do
-        if [ -f "~/.aws-creds/running" ]
-        then
-            for PROFILE in $(ls ~/.aws-creds/profiles/)
-            do
-                echo "$PROFILE" >> ~/.aws-creds/log
-                res="$(cat ~/.aws-creds/profiles/$PROFILE)"
-
-                export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
-                export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
-                export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
-                export AWS_REGION=`aws configure get region --profile $PROFILE`
-
-                res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
-                echo "$res" >| ~/.aws-creds/profiles/$PROFILE
-            done
-            sleep 30m
-            # sleep 30s
-
-        else
-            # If running file does not exist, then kill the deamon and delete the tmp cred files
-            echo "Deamon stopping at $(date)" >> ~/.aws-creds/log
-            rm -r ~/.aws-creds/profiles/
-            break
-
-        fi
-    done
-}
-
 
 # Assume a role/profile and export the creds to environment variables
 aws-creds() {
 
     case $1 in
-        a | activate)  # Acticvate deamon
-            mkdir ~/.aws-creds/ &> /dev/null  # Create the tool dir
-            mkdir ~/.aws-creds/profiles/ &> /dev/null  # Create the cred dir
-            aws-creds-deamon &  # Start the deamon and send to background
-            ;;
         l | load)  # Load an AWS profile
 
             # awk 1 = The seperator is everything between ']' and '['. Therefore, only what is inside the square brackets are piped on.
@@ -68,13 +20,26 @@ aws-creds() {
             #    The role will then be assumed and the resulting creds will be exported to the environment varibles
             select PROFILE in $PROFILES; do
 
-                if [ -f "~/.aws-creds/profiles/$PROFILE" ]  # if auto-rotated creds exist, load; else create
+                if [ -f "$HOME/.aws-creds/profiles/$PROFILE" ]  # if auto-rotated creds exist, load; else create
                 then
-                    res="$(cat ~/.aws-creds/profiles/$PROFILE)"
-                    export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
-                    export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
-                    export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
-                    export AWS_REGION=`aws configure get region --profile $PROFILE`
+                    timeSinceLastMod=$(expr $(date +%s) - $(stat -c %Y "$HOME/.aws-creds/profiles/$PROFILE"))
+                    echo $timeSinceLastMod
+                    if [ $timeSinceLastMod -gt 3600 ]
+                    then
+                        res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+                        echo "$res" >| ~/.aws-creds/profiles/$PROFILE
+                        export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
+                        export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
+                        export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
+                        export AWS_REGION=`aws configure get region --profile $PROFILE`
+
+                    else
+                        res="$(cat ~/.aws-creds/profiles/$PROFILE)"
+                        export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
+                        export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
+                        export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
+                        export AWS_REGION=`aws configure get region --profile $PROFILE`
+                    fi
 
                 else
                     res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
@@ -84,6 +49,7 @@ aws-creds() {
                     export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
                     export AWS_REGION=`aws configure get region --profile $PROFILE`
 
+                    #aws-creds-delayed-delete $HOME/.aws-creds/profiles/$PROFILE &
                 fi
 
                 export AWS_CREDS_PROFILE=$PROFILE
@@ -100,9 +66,16 @@ aws-creds() {
             export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
             export AWS_REGION=`aws configure get region --profile $PROFILE`
             ;;
+        a | assume)  # Assume a given role
+            res=`aws sts assume-role --role-arn $2 --role-session-name my_profile_session`
+            export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
+            export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
+            export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
+            export AWS_REGION=`aws configure get region --profile $PROFILE`
+            ;;
         s | show)  # Show the currently loaded profile
             PROFILE=$AWS_CREDS_PROFILE
-            echo "Currently loaded profile: ${$PROFILE}"
+            echo "Currently loaded profile: $PROFILE"
             echo "Credentials:"
             echo "AWS_ACCESS_KEY_ID = ${AWS_ACCESS_KEY_ID}"
             echo "AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}"
@@ -111,10 +84,17 @@ aws-creds() {
             echo ""
             echo "Note: The details above are taken from your environment variables; if you have manally exported credentials then the api keys might not match the profile."
             ;;
-
+        c | clear)  # Delete all current profiles
+            rm $HOME/.aws-creds/profiles/*
+            unset AWS_ACCESS_KEY_ID
+            unset AWS_SECRET_ACCESS_KEY
+            unset AWS_SESSION_TOKEN
+            unset AWS_REGION
+            unset AWS_CREDS_PROFILE
+            ;;
         * )  # Else print help
             echo ""
-            echo "  aws-creds [ activate | reload | load ]"
+            echo "  aws-creds [ load | reload | assume ]"
             echo ""
             echo "  aws-creds is a tool for quickly switching between AWS cli profiles."
             echo "  It exports the credentials into environment variables for easy use with most AWS tools."
@@ -129,15 +109,17 @@ aws-creds() {
             echo "      If an auto-rotated credential exists for that profile, use that."
             echo ""
             echo "  Options:"
-            echo "    a | activate )"
-            echo "     Activate the auto-rotate deamon."
-            echo "      This will run until the computer is restarted."
-            echo ""
             echo "    r | reload )"
             echo "      Load the auto-rotated creds of the most recent profile of the current shell session."
             echo ""
+            echo "    a | assume )"
+            echo "      Assume the given role and export the creds to the command line"
+            echo ""
             echo "    s | show )"
             echo "      Shows the currently loaded profile."
+            echo ""
+            echo "    c | clear )"
+            echo "      Delete all saved profiles and unset the environment variables."
             echo ""
 
     esac
