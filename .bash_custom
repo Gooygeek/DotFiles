@@ -174,9 +174,9 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
 declare -F | grep __git_ps1 > /dev/null
 if [ "$?" -eq 0 ]; then
-  export PS1=" \n\u:${LIGHTBLUE}[\w]${LIGHTMAGENTA}\$(__py_venv)${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}ʃ${RESET_EFFECTS} "
+  export PS1=" \n${LIGHTBLUE}[\W]${LIGHTMAGENTA}\$(__py_venv)${LIGHTRED}\$(__git_ps1 '(%s)') ${LIGHTGREEN}ʃ${RESET_EFFECTS} "
 else
-  export PS1=" \n\u:${LIGHTBLUE}[\w] ${GREEN}${BOLD}ʃ${RESET_EFFECTS} "
+  export PS1=" \n${LIGHTBLUE}[\W] ${GREEN}${BOLD}ʃ${RESET_EFFECTS} "
 fi
 
 # Multiline promt
