@@ -6,7 +6,6 @@
     if [ ! -f ~/.bashrc.backup ]; then
         mv ~/.bashrc ~/.bashrc.backup
     fi
-    mv ~/.bash_profile.backup ~/.bash_profile; mv ~/.bash_profile ~/.bash_profile.backup
     echo "Copying configs"
     cp -rf .vimrc ~/
     cp -rf .vim ~/
@@ -27,17 +26,6 @@ if [ -f ~/.bash_custom ]; then
 fi
 EOF
     } >| ~/.bashrc
-    {
-    cat << EOF
-if [ -f ~/.bash_profile.backup ]; then 
-    . ~/.bash_profile.backup
-fi
-if [ -f ~/.bash_custom ]; then 
-    . ~/.bash_custom
-fi
-EOF
-    } >| ~/.bash_profile 
-    echo "Installation completed"
 } || { # Catch
 echo "Somthing went wrong"
 }
