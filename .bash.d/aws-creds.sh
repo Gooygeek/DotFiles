@@ -77,7 +77,7 @@ aws-creds() {
             export AWS_SESSION_TOKEN=`echo $res | jq -r '.Credentials.SessionToken'`
             export AWS_REGION=`aws configure get region --profile $PROFILE`
             ;;
-        e | export ) # Export given creds to env vars
+        p | prompt ) # Export given creds to env vars
             read -p "Access Key ID = " ACCESSKEYID
             read -p "Secret Access Key = " SECRETACCESSKEY
             read -p "Session Token = " SESSIONTOKEN
@@ -112,7 +112,7 @@ aws-creds() {
             ;;
         * )  # Else print help
             echo ""
-            echo "  aws-creds [ init | load | reload | assume | export | show | swap | clear ]"
+            echo "  aws-creds [ init | load | reload | assume | prompt | show | swap | clear ]"
             echo ""
             echo "  aws-creds is a tool for quickly switching between AWS cli profiles."
             echo "  It exports the credentials into environment variables for easy use with most AWS tools."
@@ -135,8 +135,8 @@ aws-creds() {
             echo "    a | assume )"
             echo "      Assume the given role and export the creds to the command line."
             echo ""
-            echo "    e | export )"
-            echo "      Prompted for the 3 parts of the credential and will export it to the environment variables"
+            echo "    p | prompt )"
+            echo "      Prompted for the 3 parts of the credential and will export it to the environment variables."
             echo ""
             echo "    s | show )"
             echo "      Shows the currently loaded profile."
