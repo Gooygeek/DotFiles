@@ -88,13 +88,13 @@ aws-creds() {
         s | show)  # Show the currently loaded profile
             PROFILE=$AWS_CREDS_PROFILE
             echo "Currently loaded profile: $PROFILE"
+            echo "Caller ID: $(aws sts get-caller-identity)"
             echo "Credentials:"
-            echo "AWS_ACCESS_KEY_ID = ${AWS_ACCESS_KEY_ID}"
-            echo "AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}"
-            echo "AWS_SESSION_TOKEN = ${AWS_SESSION_TOKEN}"
-            echo "AWS_REGION = ${AWS_REGION}"
-            echo ""
-            echo "Note: The details above are taken from your environment variables; if you have manally exported credentials then the api keys might not match the profile."
+            echo " export AWS_ACCESS_KEY_ID=\"${AWS_ACCESS_KEY_ID}\""
+            echo " export AWS_SECRET_ACCESS_KEY=\"${AWS_SECRET_ACCESS_KEY}\""
+            echo " export AWS_SESSION_TOKEN=\"${AWS_SESSION_TOKEN}\""
+            echo " export AWS_REGION=\"${AWS_REGION}\""
+            ;;
             ;;
         c | clear)  # Delete all current profiles
             rm $HOME/.aws/cached-creds/*
