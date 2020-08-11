@@ -95,6 +95,12 @@ aws-creds() {
             echo " export AWS_SESSION_TOKEN=\"${AWS_SESSION_TOKEN}\""
             echo " export AWS_REGION=\"${AWS_REGION}\""
             ;;
+        swap)  # Change the currently loaded config & credentials set
+            SETS=$(\ls $HOME/.aws/config-sets/)
+            select SET in $SETS; do
+                cp $HOME/.aws/config-sets/$SET/* $HOME/.aws/
+                break
+            done
             ;;
         c | clear)  # Delete all current profiles
             rm $HOME/.aws/cached-creds/*
@@ -106,7 +112,7 @@ aws-creds() {
             ;;
         * )  # Else print help
             echo ""
-            echo "  aws-creds [ init | load | reload | assume | export | show ]"
+            echo "  aws-creds [ init | load | reload | assume | export | show | swap | clear ]"
             echo ""
             echo "  aws-creds is a tool for quickly switching between AWS cli profiles."
             echo "  It exports the credentials into environment variables for easy use with most AWS tools."
@@ -123,18 +129,20 @@ aws-creds() {
             echo "      Gives a selection of profiles configured in the users AWS cli config file."
             echo "      If an auto-rotated credential exists for that profile, use that."
             echo ""
-            echo "  Options:"
             echo "    r | reload )"
             echo "      Load the auto-rotated creds of the most recent profile of the current shell session."
             echo ""
             echo "    a | assume )"
-            echo "      Assume the given role and export the creds to the command line"
+            echo "      Assume the given role and export the creds to the command line."
             echo ""
             echo "    e | export )"
             echo "      Prompted for the 3 parts of the credential and will export it to the environment variables"
             echo ""
             echo "    s | show )"
             echo "      Shows the currently loaded profile."
+            echo ""
+            echo "    swap )"
+            echo "      Change the currently loaded config & credentials set."
             echo ""
             echo "    c | clear )"
             echo "      Delete all saved profiles and unset the environment variables."
