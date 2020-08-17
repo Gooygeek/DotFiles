@@ -5,7 +5,7 @@
 
 
 # Assume a role/profile and export the creds to environment variables
-aws-creds() {
+awse() {
 
     case $1 in
         i | init) # Create folders
@@ -112,7 +112,7 @@ aws-creds() {
             ;;
         * )  # Else print help
             echo ""
-            echo "  aws-creds [ init | load | reload | assume | prompt | show | swap | clear ]"
+            echo "  awse [ init | load | reload | assume | prompt | show | swap | clear ]"
             echo ""
             echo "  aws-creds is a tool for quickly switching between AWS cli profiles."
             echo "  It exports the credentials into environment variables for easy use with most AWS tools."
