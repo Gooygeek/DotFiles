@@ -95,7 +95,7 @@ awse() {
             echo " export AWS_SESSION_TOKEN=\"${AWS_SESSION_TOKEN}\""
             echo " export AWS_REGION=\"${AWS_REGION}\""
             ;;
-        swap)  # Change the currently loaded config & credentials set
+        S |swap)  # Change the currently loaded config & credentials set
             SETS=$(\ls $HOME/.aws/config-sets/)
             select SET in $SETS; do
                 cp $HOME/.aws/config-sets/$SET/* $HOME/.aws/
@@ -141,7 +141,7 @@ awse() {
             echo "    s | show )"
             echo "      Shows the currently loaded profile."
             echo ""
-            echo "    swap )"
+            echo "    S |swap )"
             echo "      Change the currently loaded config & credentials set."
             echo ""
             echo "    c | clear )"
