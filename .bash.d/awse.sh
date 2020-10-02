@@ -27,10 +27,11 @@ awse() {
                 if [ -f "$HOME/.aws/cached-creds/$PROFILE" ]  # if auto-rotated creds exist, load; else create
                 then
                     timeSinceLastMod=$(expr $(date +%s) - $(stat -c %Y "$HOME/.aws/cached-creds/$PROFILE"))
-                    echo $timeSinceLastMod
+                    echo "Time since last cached: ${timeSinceLastMod}"
                     if [ $timeSinceLastMod -gt 3600 ]
                     then
-                        res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+                        read -p "MFA Code: " MFA_CODE
+                        res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name kgol --profile $(aws configure get $PROFILE.source_profile) --serial-number $(aws configure get $PROFILE.mfa_serial) --token-code $MFA_CODE`
                         echo "$res" >| $HOME/.aws/cached-creds/$PROFILE
                         export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
                         export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
@@ -46,7 +47,8 @@ awse() {
                     fi
 
                 else
-                    res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+                    read -p "MFA Code: " MFA_CODE
+                    res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name kgol --profile $(aws configure get $PROFILE.source_profile) --serial-number $(aws configure get $PROFILE.mfa_serial) --token-code $MFA_CODE`
                     echo "$res" >| $HOME/.aws/cached-creds/$PROFILE
                     export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
                     export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
@@ -63,7 +65,8 @@ awse() {
             ;;
         r | reload)  # Reload creds for most recent profile
             PROFILE=$AWS_CREDS_PROFILE
-            res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name my_profile_session --profile $PROFILE`
+            read -p "MFA Code: " MFA_CODE
+            res=`aws sts assume-role --role-arn $(aws configure get $PROFILE.role_arn) --role-session-name kgol --profile $(aws configure get $PROFILE.source_profile) --serial-number $(aws configure get $PROFILE.mfa_serial) --token-code $MFA_CODE`
             echo "$res" >| $HOME/.aws/cached-creds/$PROFILE
             export AWS_ACCESS_KEY_ID=`echo $res | jq -r '.Credentials.AccessKeyId'`
             export AWS_SECRET_ACCESS_KEY=`echo $res | jq -r '.Credentials.SecretAccessKey'`
