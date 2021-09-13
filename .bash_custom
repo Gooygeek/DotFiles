@@ -128,6 +128,7 @@ alias kaf='kubectl apply -f'
 alias kci='kubectl cluster-info'
 alias kgc='kubectl config get-contexts'
 alias ksc='kubectl config set-context'
+alias awsk8='aws eks update-kubeconfig --name'
 alias kexec='kubectl exec -it'
 
 # }}}
