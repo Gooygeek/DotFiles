@@ -109,6 +109,23 @@ alias ssh-start='eval `ssh-agent -s`'
 # Check which ports are open
 alias openports='netstat -plntae --inet'
 
+
+# Kubectl
+alias k='kubectl'
+alias kg='kubectl get'
+alias klf='kubectl logs --tail=200  -f'
+alias kgs='kubectl get service -o wide'
+alias kgd='kubectl get deployment -o wide'
+alias kgp='kubectl get pod -o wide'
+alias kgn='kubectl get node -o wide'
+alias kdp='kubectl describe pod'
+alias kds='kubectl describe service'
+alias kdd='kubectl describe deployment'
+alias kdf='kubectl delete -f'
+alias kaf='kubectl apply -f'
+alias kci='kubectl cluster-info'
+alias kgc='kubectl config get-contexts'
+
 # }}}
 
 ######  MISC. FUNCTIONS  ######
@@ -240,6 +257,24 @@ function safevi() {
   cp  ${1} ${1}.$(date +"%Y%m%d-%H%M%S")
   vi ${1}
 }
+# }}}
+
+######  Terraform  ######
+
+# tf {{{
+
+# Add tfenv to the PATH
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+# }}}
+
+######  Kuberenetes  ######
+
+# k8 {{{
+
+# Kuberenetes bash autocomplete
+source <(kubectl completion bash)
+
 # }}}
 
 ######  OTHER  ######
