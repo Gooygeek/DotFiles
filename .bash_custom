@@ -130,6 +130,8 @@ alias kgc='kubectl config get-contexts'
 alias ksc='kubectl config set-context'
 alias awsk8='aws eks update-kubeconfig --name'
 alias kexec='kubectl exec -it'
+# Bash Auto Completion
+complete -F __start_kubectl k
 
 # }}}
 
