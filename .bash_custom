@@ -266,6 +266,26 @@ function safevi() {
 }
 # }}}
 
+###### ssh ######
+
+# SSH {{{
+
+# Generate the auto-load folder
+
+if [ ! -e ~/.ssh/auto ]; then
+  mkdir ~/.ssh/auto
+  chmod 700 ~/.ssh/auto
+fi
+
+# Start the agent on login
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+  ssh-add ~/.ssh/auto/*
+fi
+
+# }}}
+
 ######  Terraform  ######
 
 # tf {{{
