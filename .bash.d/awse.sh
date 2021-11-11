@@ -105,6 +105,14 @@ awse() {
                 break
             done
             ;;
+        o | open)  # Open the AWS console with the current credentials
+            if command -v python3 &> /dev/null
+            then
+                python3 -m webbrowser "$(python3 ~/.local/bin/aws-creds-to-console.py)"
+            else
+                echo "Python3 is required to run this function"
+            fi
+            ;;
         c | clear)  # Delete all current profiles
             rm $HOME/.aws/cached-creds/*
             unset AWS_ACCESS_KEY_ID
@@ -115,7 +123,7 @@ awse() {
             ;;
         * )  # Else print help
             echo ""
-            echo "  awse [ init | load | reload | assume | prompt | show | swap | clear ]"
+            echo "  awse [ init | load | reload | assume | prompt | show | swap | open | clear ]"
             echo ""
             echo "  aws-creds is a tool for quickly switching between AWS cli profiles."
             echo "  It exports the credentials into environment variables for easy use with most AWS tools."
@@ -144,8 +152,11 @@ awse() {
             echo "    s | show )"
             echo "      Shows the currently loaded profile."
             echo ""
-            echo "    S |swap )"
+            echo "    S | swap )"
             echo "      Change the currently loaded config & credentials set."
+            echo ""
+            echo "    o | open )"
+            echo "      Open the AWS Console using the current environment credentials."
             echo ""
             echo "    c | clear )"
             echo "      Delete all saved profiles and unset the environment variables."

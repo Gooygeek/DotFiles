@@ -15,13 +15,14 @@
     cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
+    cp -rf .local/bin ~/
     echo "Generating default files"
     {
     cat << EOF
-if [ -f ~/.bashrc.backup ]; then 
+if [ -f ~/.bashrc.backup ]; then
     . ~/.bashrc.backup
 fi
-if [ -f ~/.bash_custom ]; then 
+if [ -f ~/.bash_custom ]; then
     . ~/.bash_custom
 fi
 EOF
