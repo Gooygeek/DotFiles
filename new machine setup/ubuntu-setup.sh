@@ -11,6 +11,7 @@ sudo apt install make
 sudo apt install unzip
 sudo apt install python3
 sudo apt install python3-pip
+sudo apt install dos2unix
 
 # Install full Vim
 sudo apt remove --assume-yes vim-tiny
