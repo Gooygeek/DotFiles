@@ -5,6 +5,7 @@
     # set vim as the default editor for commit messagees
 	editor = vim
     autocrlf = input
+    eol = lf
 [include]
     # if my username and email are different for some reason use those stored in...
     path = .gitconfig.local
@@ -21,7 +22,7 @@
 [alias]
     # Loads more at:
     # https://github.com/gitalias/gitalias
-    
+
     # Add #
     a = add
     aa = add --all
@@ -85,28 +86,28 @@
     # preserve-vs-flatten question is moot anyway.
     pp = pull --rebase=preserve
     rb = rebase
-    
+
     # Merge #
     m = merge
     mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
-    
+
     # Commit #
     c = commit
     ci = commit --interactive
     ac = !git add --all && git commit -a  # aka Add + Commit
     fmaacp = !git fetch && git merge && git add --all && git commit -a && git push
     cp = cherry-pick
-    
+
     # Checkout #
     co = checkout
-    
+
     # Status #
     s = status
     stat = status
     ss = status --short --branch
     sstat = status --short --branch
     w = whatchanged
-    
+
     # Diff #
     d = diff
     dh = diff HEAD
@@ -125,7 +126,7 @@
             git difftool $last_modified_commit_hash^ $filepath -y; \
        }; f"
 
-    
+
     # Grep #
     g = grep
     gg = grep --break --heading --line-number --color  # grep group - search with our preferred options.
@@ -136,7 +137,7 @@
     l = log
     lg = log --graph --topo-order --date=short --abbrev-commit --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    
+
     # Stash #
     st = stash
     sta = stash apply
@@ -144,25 +145,25 @@
     std = stash drop
     stp = stash push --message
     scheckpoint = "!bash -c \"git stash save $(date +%Y-%m-%d-%H:%M:%S) - $1 && git stash apply && git stash list -5 && echo 'Stopped at 5 (there may be more stashes) ...'\""
-    
+
     # Ls #
     ls = ls-files
     ls-ignored = ls-files --others --i --exclude-standard
     rl = reflog
-    
+
     # submodule - enables foreign repositories to be embedded within a dedicated subdirectory of the source tree.
     sm = submodule
 
     # Alias #
     alias = "!git config --get-regexp '^alias\\.' | cut -c 7- | sed 's/ / = /'"
-    
+
     # Other #
     r = remote
     type = cat-file -t
     dump = cat-file -p
-    
+
     # Advanced Log and Summary #
-    
+
     # Show log of changes, most recent first
     log-changes = log --oneline --reverse
     # Show log of new commits after you fetched, with stats, excluding merges
@@ -405,4 +406,3 @@
     assume-all = "!git st -s | awk {'print $2'} | xargs git assume"
     unassume-all = "!git assumed | xargs git update-index --no-assume-unchanged"
     assumed  = !"git ls-files -v | grep ^h | cut -c 3-"
-
