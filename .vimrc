@@ -82,7 +82,7 @@ endfunction
 set laststatus=2
 set statusline=
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
-set statusline+=%8*\ %<%F\ %m\ %w\        " File+path +[is modified]+[is preview] 
+set statusline+=%8*\ %<%F\ %m\ %w\        " File+path +[is modified]+[is preview]
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline+=%9*\ %=                                  " Space
@@ -106,7 +106,7 @@ set autoindent "automatically tabulate when coding
 vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
-" Show text in multiple visual lines (soft wrap) but don't hard-wrap lines automatically 
+" Show text in multiple visual lines (soft wrap) but don't hard-wrap lines automatically
 set wrap "visually wrap lines that are longer than the window width
 set textwidth=0 "maximum line length (0 disables it)
 set wrapmargin=0 "number of chars from right window border where wrapping starts
