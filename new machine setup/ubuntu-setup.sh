@@ -20,7 +20,7 @@ sudo apt install --assume-yes vim
 
 ##  DotFiles  ##
 
-# Install dot files (if you have this script it is assumedc that you already have this repo)
+# Install dot files (if you have this script it is assumed that you already have this repo)
 # mkdir ~/projects
 # cd ~/projects
 # git clone https://github.com/gooygeek/Dotfiles.git
