@@ -287,6 +287,14 @@ fi
 
 # }}}
 
+###### gpg ######
+
+# GPG {{{
+
+export GPG_TTY=$(tty)
+
+# }}}
+
 ######  Terraform  ######
 
 # tf {{{
