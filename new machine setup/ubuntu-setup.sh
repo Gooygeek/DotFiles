@@ -47,8 +47,7 @@ mkdir ~/.aws
 
 ##  Other tools  ##
 
-mkdir ~/.local
-mkdir ~/.local/bin
+mkdir -p ~/.local/bin
 cd ~/.local/bin
 
 # terraform
