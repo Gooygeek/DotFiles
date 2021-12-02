@@ -1,9 +1,10 @@
 [user]
-	name = KGoldsworthy
-	email = KieranG@kgol.xyz
+    name = Kieran Goldsworthy
+    email = KieranG@kgol.xyz
+    signkey = 02D593760BD11087E481F55206828A9E8F1261BC
 [core]
     # set vim as the default editor for commit messagees
-	editor = vim
+    editor = vim
     autocrlf = input
     eol = lf
 [include]

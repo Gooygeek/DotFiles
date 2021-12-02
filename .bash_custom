@@ -1,5 +1,8 @@
 ######  INIT  ######
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 shopt -s expand_aliases
 
 # Easy way to reload the Bash Config
