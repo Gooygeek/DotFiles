@@ -67,9 +67,3 @@ mv jq-linux64 jq
 chmod a+x ~/.local/bin/ -R
 
 
-##  Additional config  ##
-
-# mkdir ~/bin
-# echo "export PATH=\"\$PATH:$HOME/bin:~/.local/bin\"" > ~/.bash.d/dxc-wsl.sh
-# echo "alias gotocust='cd /mnt/c/Users/kgoldsworthy/projects/anzaws-client-environments/'" >> ~/.bash.d/dxc-wsl.sh
-# echo "alias gotoinfra='cd /mnt/c/Users/kgoldsworthy/projects/infrastructure-modules/'" >> ~/.bash.d/dxc-wsl.sh
