@@ -20,6 +20,7 @@
     default = simple
 [commit]
     template = ~/.gitmessage
+    gpgSign = true
 [alias]
     # Loads more at:
     # https://github.com/gitalias/gitalias
