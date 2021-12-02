@@ -63,7 +63,21 @@ mv terragrunt_linux_amd64 terragrunt
 curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 mv jq-linux64 jq
 
+# Gitui
+curl -L -O https://github.com/extrawurst/gitui/releases/download/v0.18.0/gitui-linux-musl.tar.gz
+tar -xvf gitui-linux-musl.tar.gz
+rm gitui-linux-musl.tar.gz
+
 # Make recently installs tools executable
 chmod a+x ~/.local/bin/ -R
 
+# Starship prompt
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+eval "$(starship init bash)" >> ~/.bash_profile
 
+## WSL Symlinks ##
+
+# ln -s ~/projects XXXX
+# ln -s ~/Downloads XXXX
+# ln -s ~/Documents XXXX
+# ln -s ~/.aws XXXX
