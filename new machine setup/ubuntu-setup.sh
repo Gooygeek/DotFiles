@@ -59,14 +59,6 @@ rm terraform_0.12.21_linux_amd64.zip
 curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
 mv terragrunt_linux_amd64 terragrunt
 
-#  OPA
-curl -L https://openpolicyagent.org/downloads/latest/opa_linux_amd64 -o opa
-
-# Regula
-curl -L https://github.com/fugue/regula/archive/v0.2.0.tar.gz -o regula.tar.gz
-tar -xzf regula.tar.gz
-rm regula.tar.gz
-
 # jq
 curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
 mv jq-linux64 jq
