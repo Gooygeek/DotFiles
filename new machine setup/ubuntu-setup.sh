@@ -36,10 +36,10 @@ sudo apt-get install -y nodejs npm
 
 
 ##  AWS CLI  ##
-# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# unzip awscliv2.zip
-# sudo ./aws/install
-pip3 install awscli --upgrade --user
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+# pip3 install awscli --upgrade --user
 mkdir ~/.aws
 # cp /mnt/c/Users/kgoldsworthy/.aws/config ~/.aws/config
 # cp /mnt/c/Users/kgoldsworthy/.aws/credentials ~/.aws/credentials
