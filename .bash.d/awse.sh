@@ -59,6 +59,7 @@ awse() {
                 fi
 
                 export AWS_CREDS_PROFILE=$PROFILE
+                export AWS_PROFILE=$PROFILE
 
                 break
             done
