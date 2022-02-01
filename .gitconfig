@@ -37,7 +37,7 @@
     br = branch
 
     # Pull & Push #
-    pl = pull
+    pl = pull --tags
     ps = push
     f = fetch
     sy = !git fetch && git merge && git push  # Sync - Pulls then pushes

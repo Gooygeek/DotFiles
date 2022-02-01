@@ -121,6 +121,7 @@ awse() {
             unset AWS_SESSION_TOKEN
             unset AWS_REGION
             unset AWS_CREDS_PROFILE
+            unset AWS_PROFILE
             ;;
         * )  # Else print help
             echo ""
