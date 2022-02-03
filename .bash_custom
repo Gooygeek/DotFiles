@@ -194,6 +194,13 @@ shopt -s histappend
 # Append commands to the history every time a prompt is shown, instead of after closing the session.
 PROMPT_COMMAND='history -a'
 
+# }}}
+
+
+######  Bash Prompt  ######
+
+# prompt {{{
+
 # Better prompt (with git AND python venv support)
 export GIT_PS1_SHOWDIRTYSTATE=true
 export export GIT_PS1_SHOWSTASHSTATE=true
@@ -214,6 +221,10 @@ export PS2="» "
 # ʃ
 # ˧
 # »
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
 
 # }}}
 
