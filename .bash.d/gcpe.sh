@@ -3,7 +3,7 @@
 # sudo yum install jq
 
 # Assume a GCP CLI configuration set
-gce() {
+gcpe() {
 
     case $1 in
         i | init) # Create gcp configuration set
