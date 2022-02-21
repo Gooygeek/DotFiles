@@ -6,6 +6,10 @@
     if [ ! -f ~/.bashrc.backup ]; then
         mv ~/.bashrc ~/.bashrc.backup
     fi
+    if [ ! -d ~/.config.backup ]; then
+        mkdir ~/.config.backup
+        cp -rf ~/.config/* ~/.config.backup/
+    fi
     echo "Copying configs"
     cp -rf .vimrc ~/
     cp -rf .vim ~/
@@ -16,6 +20,7 @@
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
     cp -rf .local/bin ~/
+    cp -rf .config ~
     echo "Generating default files"
     {
     cat << EOF
@@ -27,6 +32,7 @@ if [ -f ~/.bash_custom ]; then
 fi
 EOF
     } >| ~/.bashrc
+    . ~/.bashrc
 } || { # Catch
 echo "Somthing went wrong"
 }

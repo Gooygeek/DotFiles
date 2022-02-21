@@ -19,7 +19,7 @@ reset: # Resets the directory to the last commit
 
 restorebash: # Restores the bash config file
 	cp -rf ~/.bashrcOLD ~/.bashrc
-	
+
 spell: # Copies the current working vim spellfile into this repository
 	cp -r ~.vim/spell* ~/DotFiles/.vim/spell/
 
