@@ -9,7 +9,7 @@ style = "bold 214"
 symbol = "☁️"
 
 [gcloud]
-format = '[| GCP $symbol$account(@$domain)(\($region\))]($style) '
+format = '[| GCP $symbol$project]($style) '
 style = "bold blue"
 symbol = "🌩️"
 
