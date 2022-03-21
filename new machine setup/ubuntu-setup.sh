@@ -75,6 +75,10 @@ chmod a+x ~/.local/bin/ -R
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 eval "$(starship init bash)" >> ~/.bash_profile
 
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+yes | ~/.fzf/install
+
 ## WSL Symlinks ##
 
 # ln -s ~/projects XXXX
