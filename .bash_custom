@@ -306,6 +306,18 @@ export GPG_TTY=$(tty)
 
 # }}}
 
+######  fd  ######
+
+# fd {{{
+
+if command -v fd >/dev/null 2>&1; then
+  alias find='fd'
+  fd_default_command_options="--hidden --follow --ignore-file ~/.config/fd/ignore"
+  alias fd="fd $fd_default_command_options"
+fi
+
+# }}}
+
 ######  fzf  ######
 
 # fzf {{{

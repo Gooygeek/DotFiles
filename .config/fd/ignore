@@ -1,0 +1,12 @@
+# Git
+*.git/**
+
+# Javascript
+*node_modules/**
+
+# Python
+*pyenv/**
+
+# Rust
+*.rustup/**
+*.cargo/**
