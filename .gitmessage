@@ -1,13 +1,24 @@
 
 
-# Capitalized, short (50 chars or less) summary
+# HEADER
 #
-# More detailed explanatory text, if necessary.  Wrap it to about 72
-#     characters or so.  The blank line separating the summary from 
-#    the body is critical.
+# <type>(<scope>): <short summary>
+#  │      │         │
+#  │      │         └─⫸ Summary in present, imperative tense. Not capitalized. No period at the end.
+#  │      │
+#  │      └─⫸ Commit Scope: What component was changed, 1-2 words
+#  │
+#  └─⫸ Commit Type: 'feat' bumps minor, anything else (e.g. docs, fix, refactor) bumps patch
 #
-# Write your commit message in the imperative: "Fix bug" and not 
-#     "Fixed bug" or "Fixes bug".
+# See the following documentation for more information:
+#   https://github.com/semantic-release/semantic-release
+#   https://github.com/angular/angular/blob/master/CONTRIBUTING.md
+#   https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular
+#
+# BODY
+#
+# More detailed explanatory text, if necessary.  Wrap it to about 72 characters or so.
+# A blank line separating the HEADER from the BODY is critical.
 #
 # The body should include the following parts (where relevent):
 # * Description of the change
@@ -17,6 +28,4 @@
 # * What side effects does this change have?
 # * Coauthors
 #
-# Bullet points are okay. They the line should start with either 
-#     '-' or '*'.
-
+# Bullet points are okay. They the line should start with '-'.
