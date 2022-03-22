@@ -56,7 +56,7 @@ sshk() {
             echo ""
             echo "    i | init )"
             echo "      Create folders."
-
+            echo ""
             echo "    g | generate )"
             echo "      Create an SSH Key."
             echo ""
