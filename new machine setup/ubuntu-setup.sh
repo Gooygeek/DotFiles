@@ -49,11 +49,13 @@ mkdir ~/.aws
 
 mkdir -p ~/.local/bin
 cd ~/.local/bin
+## terraform
+#curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
+#unzip terraform_0.12.21_linux_amd64.zip
+#rm terraform_0.12.21_linux_amd64.zip
+git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+ln -s ~/.tfenv/bin/* /usr/local/bin
 
-# terraform
-curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
-unzip terraform_0.12.21_linux_amd64.zip
-rm terraform_0.12.21_linux_amd64.zip
 
 # Terragrunt
 curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
