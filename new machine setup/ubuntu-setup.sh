@@ -4,14 +4,11 @@
 sudo apt update
 sudo apt upgrade
 
-# Install packages known to be in the repos
+# Prerequisites
 sudo apt install curl
 # sudo apt install git  # Required to get this script
 sudo apt install make
 sudo apt install unzip
-sudo apt install python3
-sudo apt install python3-pip
-sudo apt install dos2unix
 
 # Install full Vim
 sudo apt remove --assume-yes vim-tiny
@@ -28,27 +25,35 @@ cd ~/projects/Dotfiles
 make init
 make install
 
+## Via package manager ##
 
-##  Nodejs (and NPM)  ##
+sudo apt install -y python3
+sudo apt install -y python3-pip
 
+sudo apt install -y dos2unix
+
+sudo apt install -y ripgrep
+
+sudo apt install -y fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
+
+##  Misc tools  ##
+
+## Initialize bin folder
+mkdir -p ~/.local/bin
+cd ~/.local/bin
+
+##  Nodejs (and NPM)
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs npm
 
-
-##  AWS CLI  ##
+##  AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 # pip3 install awscli --upgrade --user
-mkdir ~/.aws
-# cp /mnt/c/Users/kgoldsworthy/.aws/config ~/.aws/config
-# cp /mnt/c/Users/kgoldsworthy/.aws/credentials ~/.aws/credentials
+# ln -s /mnt/c/Users/kieran/.aws .aws
 
-
-##  Other tools  ##
-
-mkdir -p ~/.local/bin
-cd ~/.local/bin
 ## terraform
 #curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
 #unzip terraform_0.12.21_linux_amd64.zip
@@ -56,8 +61,7 @@ cd ~/.local/bin
 git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 ln -s ~/.tfenv/bin/* /usr/local/bin
 
-
-# Terragrunt
+## Terragrunt
 curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
 mv terragrunt_linux_amd64 terragrunt
 
@@ -77,19 +81,12 @@ chmod a+x ~/.local/bin/ -R
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 eval "$(starship init bash)" >> ~/.bash_profile
 
-# fd
-sudo apt install fd-find -y
-ln -s $(which fdfind) ~/.local/bin/fd
-
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes | ~/.fzf/install
 
-# Ripgrep
-sudo apt install -y ripgrep
 ## WSL Symlinks ##
 
-# ln -s ~/projects XXXX
-# ln -s ~/Downloads XXXX
-# ln -s ~/Documents XXXX
-# ln -s ~/.aws XXXX
+# ln -s XXXX ~/projects
+# ln -s XXXX ~/Downloads
+# ln -s XXXX ~/Documents
