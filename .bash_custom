@@ -49,10 +49,6 @@ WHITE='\[\e[97m\]'
 ######  MISC. ALIAS  ######
 
 # Aliases {{{
-
-# Easier switch to root
-alias sr='sudo su root'
-
 # Allows Aliases to be expanded when using a bare sudo <command>
 alias sudo='sudo '
 
@@ -63,21 +59,14 @@ alias tg='terragrunt'
 # Curl sends back 3XX errors be default, '-L' means it will automatically follow the redirect.
 alias curl='curl -L'
 
-# A bit qucker and easier by to resolve dns names
-alias dns='nslookup'
-
 # ensure tmux used 256 colours
 alias tmux='tmux -2'
 alias t='tmux -2'
 alias tn='tmux -2 new -s'
 alias ta='tmux -2 a -t'
-alias taw='tmux -2 a -t webserver'
 
 # small git shortcut
 alias g='git'
-alias gitp='git push'
-alias gp='git push'
-alias gc='gitc'
 
 # Python
 if which python3 > /dev/null 2>&1; then
@@ -97,21 +86,8 @@ alias mktar='tar -cvf'
 alias mkbz2='tar -cvjf'
 alias mkgz='tar -cvzf'
 
-# Aliases for functions defined below
-
-# Either start an ssh-agent for every terminal or have a simple command to start it
-#SSHAGENT=/usr/bin/ssh-agent
-#SSHAGENTARGS="-s"
-#if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-#    eval `$SSHAGENT $SSHAGENTARGS`
-#    trap "kill $SSH_AGENT_PID" 0
-#fi
-alias ssh-start='eval `ssh-agent -s`'
-
-
 # Check which ports are open
 alias openports='netstat -plntae --inet'
-
 
 # Kubectl
 alias k='kubectl'
@@ -195,7 +171,6 @@ shopt -s histappend
 PROMPT_COMMAND='history -a'
 
 # }}}
-
 
 ######  Bash Prompt  ######
 
@@ -282,18 +257,9 @@ function safevi() {
 
 # SSH {{{
 
-# Generate the auto-load folder
-
-if [ ! -e ~/.ssh/auto ]; then
-  mkdir ~/.ssh/auto
-  chmod 700 ~/.ssh/auto
-fi
-
 # Start the agent on login
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
-  ssh-add
-  ssh-add ~/.ssh/auto/*
 fi
 
 # }}}
