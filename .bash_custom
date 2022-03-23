@@ -264,6 +264,15 @@ fi
 
 # }}}
 
+###### git ######
+
+# Git {{{
+
+# Adopt new push behaviour and don't show message about it not being set
+git config --global push.default simple
+
+# }}}
+
 ###### gpg ######
 
 # GPG {{{
@@ -386,9 +395,6 @@ bind "set prefer-visible-bell"
 
 # Disable XON/XOFF control flow i.e. Ctrl-s wont hang the terminal (if it does, use Ctrl-q to resume)
 stty -ixon
-
-# Adopt new push behaviour and don't show message about it not being set
-git config --global push.default simple
 
 # Check the window size after each command and, if necessary,
 #   update the values of LINES and COLUMNS.
