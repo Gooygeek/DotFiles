@@ -64,6 +64,8 @@ alias tmux='tmux -2'
 alias t='tmux -2'
 alias tn='tmux -2 new -s'
 alias ta='tmux -2 a -t'
+alias tl='tmux list-sessions'
+alias tks='tmux kill-session -t'
 
 # small git shortcut
 alias g='git'
