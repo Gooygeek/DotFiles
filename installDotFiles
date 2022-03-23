@@ -14,7 +14,7 @@
     cp -rf .vimrc ~/
     cp -rf .vim ~/
     cp -rf .tmux.conf ~/
-    cp -rf .tmux_colours* ~/
+    cp -rf .tmux ~/
     cp -rf .gitconfig ~/
     cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
