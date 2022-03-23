@@ -6,8 +6,8 @@ let mapleader=","
 syntax enable "make pretty colours
 set  t_Co=256 "set terminal to use 256 colour
 "colorscheme peaksea
-colorscheme badwolf
-"colorscheme monokai
+"colorscheme badwolf
+colorscheme monokai
 " solarized requires the following lines
 "colorscheme solarized
 "set background=dark "tell vim the background will be dark
