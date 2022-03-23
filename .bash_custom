@@ -312,8 +312,8 @@ if command -v fzf >/dev/null 2>&1; then
     --layout=reverse
     --info=inline
     --height=70%
-    --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
     --prompt='∼ ' --pointer='▶'
+    --color='hl:148,hl+:154,pointer:#a1efe4,marker:010,bg+:#383830,bg:#272822'
 
     --multi --marker='✓'
 
@@ -327,6 +327,7 @@ if command -v fzf >/dev/null 2>&1; then
     --bind 'ctrl-v:execute(code {+})'
     "
 fi
+
 # If fd is installed, use that over the find command
 if command -v fd >/dev/null 2>&1; then
   # Show hidden files, follow links
