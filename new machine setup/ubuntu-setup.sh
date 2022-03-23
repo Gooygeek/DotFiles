@@ -32,6 +32,8 @@ sudo apt install -y python3-pip
 
 sudo apt install -y dos2unix
 
+sudo apt install -y tmux
+
 sudo apt install -y ripgrep
 
 sudo apt install -y fd-find
