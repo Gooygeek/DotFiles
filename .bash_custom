@@ -62,10 +62,9 @@ alias curl='curl -L'
 # ensure tmux used 256 colours
 alias tmux='tmux -2'
 alias t='tmux -2'
-alias tn='tmux -2 new -s'
-alias ta='tmux -2 a -t'
-alias tl='tmux list-sessions'
-alias tks='tmux kill-session -t'
+# alias tm='tmux -2' # See the .bash.d folder for a better script
+alias tml='tmux list-sessions'
+alias tmk='tmux kill-session -t'
 
 # small git shortcut
 alias g='git'
