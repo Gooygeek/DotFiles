@@ -75,6 +75,7 @@ mv jq-linux64 jq
 curl -L -O https://github.com/extrawurst/gitui/releases/download/v0.18.0/gitui-linux-musl.tar.gz
 tar -xvf gitui-linux-musl.tar.gz
 rm gitui-linux-musl.tar.gz
+mv gitui ~/.local/bin/gitui
 
 # Lazygit
 curl -L -O https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz
