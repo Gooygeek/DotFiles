@@ -1,0 +1,15 @@
+[core]
+    pager = delta
+
+[interative]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = calochortus-lyallii
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+# Add Themes
+[include]
+    path = ~/.config/delta/themes.gitconfig
