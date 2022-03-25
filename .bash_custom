@@ -68,6 +68,7 @@ alias tmk='tmux kill-session -t'
 
 # small git shortcut
 alias g='git'
+alias lg='lazygit'
 
 # Python
 if which python3 > /dev/null 2>&1; then

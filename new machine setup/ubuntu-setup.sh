@@ -76,6 +76,12 @@ curl -L -O https://github.com/extrawurst/gitui/releases/download/v0.18.0/gitui-l
 tar -xvf gitui-linux-musl.tar.gz
 rm gitui-linux-musl.tar.gz
 
+# Lazygit
+curl -L -O https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz
+tar -xvf lazygit_0.34_Linux_x86_64.tar.gz
+rm lazygit_0.34_Linux_x86_64.tar.gz
+mv lazygit ~/.local/bin/lazygit
+
 # Make recently installs tools executable
 chmod a+x ~/.local/bin/ -R
 
