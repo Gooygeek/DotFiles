@@ -36,6 +36,8 @@ sudo apt install -y tmux
 
 sudo apt install -y ripgrep
 
+sudo apt install -y tree
+
 sudo apt install -y fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 
