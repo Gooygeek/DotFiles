@@ -28,4 +28,4 @@
 
 # Add Aliases
 [include]
-    path = ~/.config/git/aliases.gitconfig
+    path = ~/.config/git/alias.gitconfig
