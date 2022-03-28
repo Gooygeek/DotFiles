@@ -86,7 +86,8 @@ mv lazygit ~/.local/bin/lazygit
 # delta (diff viewer)
 curl -L -O https://github.com/dandavison/delta/releases/download/0.12.1/delta-0.12.1-x86_64-unknown-linux-gnu.tar.gz
 tar -xvf delta-0.12.1-x86_64-unknown-linux-gnu.tar.gz
-rm delta-0.12.1-x86_64-unknown-linux-gnu.tar.gz
+mv delta-0.12.1-x86_64-unknown-linux-gnu/delta ~/.local/bin
+rm delta-0.12.1-x86_64-unknown-linux-gnu*
 
 # Make recently installs tools executable
 chmod a+x ~/.local/bin/ -R
