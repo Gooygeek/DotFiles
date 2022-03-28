@@ -51,6 +51,13 @@ cd ~/.local/bin
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs npm
 
+## Go ##
+
+curl -L -O https://go.dev/dl/go1.18.linux-amd64.tar.gz
+sudo tar -C /usr/local -xvf go1.18.linux-amd64.tar.gz
+rm go1.18.linux-amd64.tar.gz
+/usr/local/go/bin/go install -v golang.org/x/tools/gopls@latest
+
 ##  AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
