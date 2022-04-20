@@ -70,6 +70,11 @@ sudo ./aws/install
 # pip3 install awscli --upgrade --user
 # ln -s /mnt/c/Users/kieran/.aws .aws
 
+## gcloud CLI
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-379.0.0-linux-x86_64.tar.gz
+tar -xf google-cloud-sdk-379.0.0-linux-x86.tar.gz
+./google-cloud-sdk/install.sh
+
 ## terraform
 #curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
 #unzip terraform_0.12.21_linux_amd64.zip
