@@ -1,3 +1,6 @@
+
+# %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
+
 ##  APT Update/Install  ##
 
 # Update & Upgrade
