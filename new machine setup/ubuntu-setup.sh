@@ -8,8 +8,8 @@ sudo apt update
 sudo apt upgrade
 
 # Prerequisites
-sudo apt install curl
 # sudo apt install git  # Required to get this script
+sudo apt install curl
 sudo apt install make
 sudo apt install unzip
 
