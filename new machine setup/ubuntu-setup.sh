@@ -47,34 +47,34 @@ ln -s $(which fdfind) ~/.local/bin/fd
 mkdir -p ~/.local/bin
 cd ~/.local/bin
 
-##  Nodejs (and NPM)
+# Nodejs (and NPM)
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs npm
 
-## Go ##
-
+# Go
 curl -L -O https://go.dev/dl/go1.18.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.18.linux-amd64.tar.gz
 rm go1.18.linux-amd64.tar.gz
 /usr/local/go/bin/go install -v golang.org/x/tools/gopls@latest
 
-##  AWS CLI
+# AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 # pip3 install awscli --upgrade --user
 # ln -s /mnt/c/Users/kieran/.aws .aws
 
-## terraform
+# terraform
 #curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
 #unzip terraform_0.12.21_linux_amd64.zip
 #rm terraform_0.12.21_linux_amd64.zip
 git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 ln -s ~/.tfenv/bin/* /usr/local/bin
 
-## Terragrunt
-curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
-mv terragrunt_linux_amd64 terragrunt
+# Terragrunt
+# curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
+# mv terragrunt_linux_amd64 terragrunt
+
 
 # jq
 curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
