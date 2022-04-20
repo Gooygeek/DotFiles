@@ -56,35 +56,48 @@ cd ~/.local/bin
 # sudo apt install -y npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-## Go ##
-
+# Go
 curl -L -O https://go.dev/dl/go1.18.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.18.linux-amd64.tar.gz
 rm go1.18.linux-amd64.tar.gz
 /usr/local/go/bin/go install -v golang.org/x/tools/gopls@latest
 
-##  AWS CLI
+# AWS CLI
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 # pip3 install awscli --upgrade --user
 # ln -s /mnt/c/Users/kieran/.aws .aws
 
+<<<<<<< HEAD
 ## gcloud CLI
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-379.0.0-linux-x86_64.tar.gz
 tar -xf google-cloud-sdk-379.0.0-linux-x86.tar.gz
 ./google-cloud-sdk/install.sh
 
-## terraform
+# terraform
+=======
+# terraform
+>>>>>>> c5cdf238feddb79e6acab1a5daf027018151e622
 #curl -L -O https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
 #unzip terraform_0.12.21_linux_amd64.zip
 #rm terraform_0.12.21_linux_amd64.zip
 git clone https://github.com/tfutils/tfenv.git ~/.tfenv
 ln -s ~/.tfenv/bin/* /usr/local/bin
 
-## Terragrunt
-curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
-mv terragrunt_linux_amd64 terragrunt
+# Terragrunt
+# curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
+# mv terragrunt_linux_amd64 terragrunt
+
+# Kubernetes
+## kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+## K9
+curl -L -O https://github.com/derailed/k9s/releases/download/v0.25.18/k9s_Linux_x86_64.tar.gz
+tar -xvf /k9s_Linux_x86_64.tar.gz
+rm k9s_Linux_x86_64.tar.gz
+mv k9s ~/.local/bin/k9s
 
 # jq
 curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
@@ -113,7 +126,6 @@ chmod a+x ~/.local/bin/ -R
 
 # Starship prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-eval "$(starship init bash)" >> ~/.bash_profile
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
