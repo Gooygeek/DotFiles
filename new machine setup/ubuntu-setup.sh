@@ -51,8 +51,10 @@ mkdir -p ~/.local/bin
 cd ~/.local/bin
 
 ##  Nodejs (and NPM)
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs npm
+# curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+# sudo apt-get install -y nodejs npm
+# sudo apt install -y npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 ## Go ##
 
