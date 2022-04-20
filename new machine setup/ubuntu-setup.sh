@@ -75,6 +75,15 @@ ln -s ~/.tfenv/bin/* /usr/local/bin
 # curl -L -O https://github.com/gruntwork-io/terragrunt/releases/download/v0.22.5/terragrunt_linux_amd64
 # mv terragrunt_linux_amd64 terragrunt
 
+# Kubernetes
+## kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+## K9
+curl -L -O https://github.com/derailed/k9s/releases/download/v0.25.18/k9s_Linux_x86_64.tar.gz
+tar -xvf /k9s_Linux_x86_64.tar.gz
+rm k9s_Linux_x86_64.tar.gz
+mv k9s ~/.local/bin/k9s
 
 # jq
 curl -L -O https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
