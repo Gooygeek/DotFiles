@@ -115,6 +115,7 @@ awse() {
             fi
             ;;
         c | clear)  # Delete all current profiles
+            touch $HOME/.aws/cached-creds/tmp
             rm $HOME/.aws/cached-creds/*
             unset AWS_ACCESS_KEY_ID
             unset AWS_SECRET_ACCESS_KEY
@@ -122,6 +123,8 @@ awse() {
             unset AWS_REGION
             unset AWS_CREDS_PROFILE
             unset AWS_PROFILE
+            rm $HOME/.aws/config
+            rm $HOME/.aws/credentials
             ;;
         * )  # Else print help
             echo ""
