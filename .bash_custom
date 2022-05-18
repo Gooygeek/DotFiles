@@ -300,7 +300,7 @@ fi
 
 # fzf {{{
 
-# Kuberenetes bash autocomplete
+# Kubernetes bash autocomplete
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if command -v fzf >/dev/null 2>&1; then
   # Display at the top of the screen
