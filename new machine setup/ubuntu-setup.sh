@@ -44,6 +44,9 @@ sudo apt install -y tree
 sudo apt install -y fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 
+# kubectx and kubens
+sudo apt install kubectx -y
+
 ##  Misc tools  ##
 
 ## Initialize bin folder
