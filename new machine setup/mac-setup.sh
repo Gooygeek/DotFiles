@@ -58,7 +58,9 @@ mv temp $HOME/.bash_custom
 echo "PATH=\"\$PATH:/usr/local/bin\"" >> $HOME/.bashrc
 echo "PATH=\"\$PATH:/opt/homebrew/bin\"" >> $HOME/.bashrc
 
-echo "source \"/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc\"" >> $HOME/.bashrc
+export gcloud_dir="$(brew --caskroom google-cloud-sdk)/$(brew list --cask --versions google-cloud-sdk | awk '{print $2}')/google-cloud-sdk"
+echo "source \"$gcloud_dir/completion.bash.inc\"" >> $HOME/.bashrc
+echo "source \"$gcloud_dir/path.bash.inc\"" >> $HOME/.bashrc
 
 export fzf_git_dir="$(brew --cellar fzf)/$(brew list --versions fzf | awk '{print $2}')"
 echo "[[ \$- == *i* ]] && source \"$fzf_git_dir/shell/completion.bash\" 2> /dev/null" >> $HOME/.fzf.bash
