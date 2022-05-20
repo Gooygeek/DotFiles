@@ -70,3 +70,5 @@ echo "eval \"\$(starship init bash)\"" >> $HOME/.bashrc
 echo "export {http,https,all}_proxy=http://localhost:3128" >> $HOME/.bashrc
 echo "export {HTTP,HTTPS,ALL}_PROXY=\$http_proxy" >> $HOME/.bashrc
 rm $HOME/.bash.d/fix_dns.sh
+
+cp ~/.config/lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
