@@ -57,6 +57,7 @@ mv temp $HOME/.bash_custom
 
 echo "PATH=\"\$PATH:/usr/local/bin\"" >> $HOME/.bashrc
 echo "PATH=\"\$PATH:/opt/homebrew/bin\"" >> $HOME/.bashrc
+echo "PATH=\"\$PATH:\$HOME/Library/Python/3.8/bin\"" >> $HOME/.bashrc
 
 export gcloud_dir="$(brew --caskroom google-cloud-sdk)/$(brew list --cask --versions google-cloud-sdk | awk '{print $2}')/google-cloud-sdk"
 echo "source \"$gcloud_dir/completion.bash.inc\"" >> $HOME/.bashrc
