@@ -9,7 +9,7 @@ style = "bold 214"
 symbol = "☁️"
 
 [gcloud]
-format = '[| GCP $symbol$project]($style) '
+format = '[| GCP $symbol $project]($style) '
 style = "bold blue"
 symbol = "🌩️"
 
@@ -18,3 +18,9 @@ symbol = "🌩️"
 #symbol = "🛠️"
 disabled = true
 
+[custom.git_email]
+format = '[| $symbol $output]($style) '
+command = "git config user.email"
+symbol = "📧"
+style = "bold pink"
+detect_folders = ['.git']
