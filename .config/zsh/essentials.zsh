@@ -1,3 +1,5 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # Easy way to reload the zsh Config
 alias rezsh='source ~/.zshrc'
@@ -8,6 +10,8 @@ for file in ~/.config/zsh/env_vars/*.zsh; do
 done
 
 # Load aliases
+# Allows Aliases to be expanded when using a bare sudo <command>
+alias sudo='sudo '
 for file in ~/.config/zsh/aliases/*.zsh; do
     . $file
 done
@@ -24,6 +28,7 @@ autoload -Uz compinit && compinit
 for file in ~/.config/zsh/completions/*.zsh; do
     . $file
 done
+fpath=(~/.config/zsh/completions $fpath)
 
 # Load keybindings
 for file in ~/.config/zsh/keybindings/*.zsh; do
@@ -40,3 +45,6 @@ fi
 
 # fzf keybindings and auto-completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zsh-syntax-highlighting
+source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
