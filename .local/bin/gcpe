@@ -1,0 +1,115 @@
+#!/bin/bash
+
+SELF_CMD=$0
+
+usage() {
+    echo ""
+    echo "  gcpe [ init | load | show | deactivate ]"
+    echo ""
+    echo "  gcpe is a tool for quickly switching between GCP cli configuration sets."
+    echo ""
+    echo "    i | init )"
+    echo "      Create gcp configuration set."
+    echo ""
+    echo "    l | load )"
+    echo "      Load a gcp configuration set."
+    echo "      Gives a selection of configuration sets."
+    echo ""
+    echo "    s | show )"
+    echo "      Shows the currently loaded configuration set."
+    echo ""
+    echo "    c | clear )"
+    echo "      Deactivate the active configuration set."
+    echo ""
+}
+
+choose_or_list_configs() {
+  if [[ -t 1 && -z ${KUBECTX_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        choose_config_interactive
+      else
+        list_configs
+      fi
+}
+
+choose_config_interactive() {
+  local choice
+  choice="$(_KUBECTX_FORCE_COLOR=1 \
+    FZF_DEFAULT_COMMAND="${SELF_CMD}" \
+    fzf --ansi --no-preview || true)"
+  if [[ -z "${choice}" ]]; then
+    echo 2>&1 "error: you did not choose any of the options"
+    exit 1
+  else
+    set_config "${choice}"
+  fi
+}
+
+list_configs() {
+  local yellow darkbg normal
+  yellow=$(tput setaf 3 || true)
+  darkbg=$(tput setab 0 || true)
+  normal=$(tput sgr0 || true)
+
+  local cur_config_fg cur_config_bg
+  cur_config_fg=${KUBECTX_CURRENT_FGCOLOR:-$yellow}
+  cur_config_bg=${KUBECTX_CURRENT_BGCOLOR:-$darkbg}
+
+  local cur config_list
+  cur="$(current_config)" || exit_err "error getting current config"
+  config_list=$(get_configs) || exit_err "error getting config list"
+
+  for c in $config_list; do
+  if [[ -n "${_KUBECTX_FORCE_COLOR:-}" || \
+       -t 1 && -z "${NO_COLOR:-}" ]]; then
+    colored output mode
+    if [[ "${c}" = "${cur}" ]]; then
+      echo "${cur_config_bg}${cur_config_fg}${c}${normal}"
+    else
+      echo "${c}"
+    fi
+  else
+    echo "${c}"
+  fi
+  done
+}
+
+current_config() {
+  gcloud config configurations list --format=json | jq -r '.[] | select(.is_active == true)' | jq -r '.name'
+}
+
+get_configs() {
+  gcloud config configurations list --format json | jq -r '.[].name'
+}
+
+set_config() {
+  gcloud config configurations activate $1
+}
+
+main() {
+  if [[ "$#" -eq 0 ]]; then
+    choose_or_list_configs $@
+
+  elif [[ "$#" -ge 1 ]]; then
+    if [[ "${1}" == 'l' || "${1}" == 'load' ]]; then
+      if [[ "$#" -eq 1 ]]; then
+      choose_or_list_configs $@
+      elif [[  "$#" -eq 2 ]]; then
+        set_config "${2}"
+      fi
+
+    elif [[ "${1}" == 'c' || "${1}" == 'clear' ]]; then
+      rm ~/.config/gcloud/active_config
+
+    elif [[ "${1}" == 's' || "${1}" == 'show' ]]; then
+      gcloud config list
+
+    elif [[ "${1}" == 'i' || "${1}" == 'init' ]]; then
+      gcloud init
+
+    else
+      usage
+    fi
+  fi
+}
+
+main $@
