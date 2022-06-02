@@ -4,24 +4,26 @@
 # Easy way to reload the zsh Config
 alias rezsh='source ~/.zshrc'
 
-# Load Environment Variables
+## Load Environment Variables
 for file in ~/.config/zsh/env_vars/*.zsh; do
     . $file
 done
 
-# Load aliases
+## Load aliases
 # Allows Aliases to be expanded when using a bare sudo <command>
 alias sudo='sudo '
 for file in ~/.config/zsh/aliases/*.zsh; do
     . $file
 done
+# Allow completions to work for aliases
+unsetopt completealiases
 
-# Load functions (sh and zsh)
+## Load functions (sh and zsh)
 # for file in ~/.config/zsh/functions/*; do
 #     . $file
 # done
 
-# Load autocompletions
+## Load autocompletions
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
@@ -30,12 +32,12 @@ for file in ~/.config/zsh/completions/*.zsh; do
 done
 fpath=(~/.config/zsh/completions $fpath)
 
-# Load keybindings
+## Load keybindings
 for file in ~/.config/zsh/keybindings/*.zsh; do
     . $file
 done
 
-# Load plugins
+## Load plugins
 . ~/.config/zsh/plugins/_load_and_config.zsh
 
 # Start the agent on login
