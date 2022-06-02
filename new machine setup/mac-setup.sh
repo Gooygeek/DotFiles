@@ -14,18 +14,15 @@ brew install gnupg
 brew install dos2unix
 brew install tree
 brew install jq
-brew install jsonnet
 brew install fzf
 brew install lazygit
 brew install git-delta
 brew install ripgrep
-brew install ripgrep-all
 brew install fd
 brew install tmux
 brew install kubenetes-cli
 brew install helm
 brew install kustomize
-brew install t
 brew install k9s
 brew install tfenv
 brew install starship
@@ -34,9 +31,13 @@ brew install go
 brew install awscli
 brew install --cask google-cloud-sdk
 
+brew tap codefresh-io/cli
 brew install codefresh
+brew install jsonnet
 
 # Post install config
+
+$(brew --prefix)/opt/fzf/install
 
 ln -s $(which fdfind) ~/.local/bin/fd
 
