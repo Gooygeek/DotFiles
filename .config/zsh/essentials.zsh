@@ -1,0 +1,42 @@
+
+# Easy way to reload the zsh Config
+alias rezsh='source ~/.zshrc'
+
+# Load Environment Variables
+for file in ~/.config/zsh/env_vars/*.zsh; do
+    . $file
+done
+
+# Load aliases
+for file in ~/.config/zsh/aliases/*.zsh; do
+    . $file
+done
+
+# Load functions (sh and zsh)
+# for file in ~/.config/zsh/functions/*; do
+#     . $file
+# done
+
+# Load autocompletions
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+for file in ~/.config/zsh/completions/*.zsh; do
+    . $file
+done
+
+# Load keybindings
+for file in ~/.config/zsh/keybindings/*.zsh; do
+    . $file
+done
+
+# Load plugins
+. ~/.config/zsh/plugins/_load_and_config.zsh
+
+# Start the agent on login
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+fi
+
+# fzf keybindings and auto-completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

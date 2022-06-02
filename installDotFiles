@@ -22,8 +22,7 @@
     cp -rf .local/bin ~/
     cp -rf .config ~
     echo "Generating default files"
-    {
-    cat << EOF
+    cat >| ~/.bashrc << EOF
 if [ -f ~/.bashrc.backup ]; then
     . ~/.bashrc.backup
 fi
@@ -31,8 +30,13 @@ if [ -f ~/.bash_custom ]; then
     . ~/.bash_custom
 fi
 EOF
-    } >| ~/.bashrc
-    . ~/.bashrc
+    cat >| ~/.zshrc << EOF
+for file in ~/.config/zsh/*.zsh; do
+    . \$file
+done
+
+eval "\$(starship init zsh)"
+EOF
 } || { # Catch
 echo "Something went wrong"
 }
