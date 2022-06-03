@@ -41,6 +41,12 @@ done
 ## Load plugins
 . ~/.config/zsh/plugins/_load_and_config.zsh
 
+# Enable field splitting
+# I.E. for loops over a list of stings will consider each element separated by $IFS
+# This is done for greater bash compatibility in functions and scripts
+# https://zsh.sourceforge.io/FAQ/zshfaq03.html
+setopt shwordsplit
+
 # Start the agent on login
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh_find_agent -a || eval $(ssh-agent) > /dev/null
