@@ -4,6 +4,15 @@
 # Easy way to reload the zsh Config
 alias rezsh='source ~/.zshrc'
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
 ## Load Environment Variables
 for file in ~/.config/zsh/env_vars/*.zsh; do
     . $file
