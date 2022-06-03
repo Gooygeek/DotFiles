@@ -9,6 +9,7 @@ cd ~/.local/bin
 # brew update --force --quiet
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install zsh
 brew install make
 brew install gnupg
 brew install dos2unix

@@ -30,6 +30,8 @@ make install
 
 ## Via package manager ##
 
+sudo apt install -y zsh
+
 sudo apt install -y python3
 sudo apt install -y python3-pip
 
