@@ -6,6 +6,9 @@
     if [ ! -f ~/.bashrc.backup ]; then
         mv ~/.bashrc ~/.bashrc.backup
     fi
+    if [ ! -f ~/.bash_profile.backup ]; then
+        mv ~/.bash_profile ~/.bash_profile.backup
+    fi
     if [ ! -d ~/.config.backup ]; then
         mkdir ~/.config.backup
         cp -rf ~/.config/* ~/.config.backup/
@@ -22,10 +25,8 @@
     cp -rf .local/bin ~/
     cp -rf .config ~
     echo "Generating default files"
+    echo ". ~/.bashrc" >| ~/.bash_profile
     cat >| ~/.bashrc << EOF
-if [ -f ~/.bashrc.backup ]; then
-    . ~/.bashrc.backup
-fi
 if [ -f ~/.bash_custom ]; then
     . ~/.bash_custom
 fi
