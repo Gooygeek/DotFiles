@@ -43,7 +43,7 @@ done
 
 # Start the agent on login
 if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent -s`
+    ssh_find_agent -a || eval $(ssh-agent) > /dev/null
 fi
 
 # fzf keybindings and auto-completion
