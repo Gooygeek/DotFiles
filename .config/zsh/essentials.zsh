@@ -31,6 +31,7 @@ for file in ~/.config/zsh/completions/*.zsh; do
     . $file
 done
 fpath=(~/.config/zsh/completions $fpath)
+compinit
 
 ## Load keybindings
 for file in ~/.config/zsh/keybindings/*.zsh; do
