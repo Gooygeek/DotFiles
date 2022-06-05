@@ -4,7 +4,7 @@ SELF_CMD=$0
 
 usage() {
     echo ""
-    echo "  gcpe [ init | load | show | deactivate ]"
+    echo "  gcpe [ init | load | show | clear ]"
     echo ""
     echo "  gcpe is a tool for quickly switching between GCP cli configuration sets."
     echo ""
@@ -24,7 +24,7 @@ usage() {
 }
 
 choose_or_list_configs() {
-  if [[ -t 1 && -z ${KUBECTX_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+  if [[ -t 1 && -z ${GCPE_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
         choose_config_interactive
       else
         list_configs
@@ -33,7 +33,7 @@ choose_or_list_configs() {
 
 choose_config_interactive() {
   local choice
-  choice="$(_KUBECTX_FORCE_COLOR=1 \
+  choice="$(_GCPE_FORCE_COLOR=1 \
     FZF_DEFAULT_COMMAND="${SELF_CMD}" \
     fzf --ansi --no-preview || true)"
   if [[ -z "${choice}" ]]; then
@@ -51,15 +51,15 @@ list_configs() {
   normal=$(tput sgr0 || true)
 
   local cur_config_fg cur_config_bg
-  cur_config_fg=${KUBECTX_CURRENT_FGCOLOR:-$yellow}
-  cur_config_bg=${KUBECTX_CURRENT_BGCOLOR:-$darkbg}
+  cur_config_fg=${GCPE_CURRENT_FGCOLOR:-$yellow}
+  cur_config_bg=${GCPE_CURRENT_BGCOLOR:-$darkbg}
 
   local cur config_list
   cur="$(current_config)" || exit_err "error getting current config"
   config_list=$(get_configs) || exit_err "error getting config list"
 
   for c in $config_list; do
-  if [[ -n "${_KUBECTX_FORCE_COLOR:-}" || \
+  if [[ -n "${_GCPE_FORCE_COLOR:-}" || \
        -t 1 && -z "${NO_COLOR:-}" ]]; then
     colored output mode
     if [[ "${c}" = "${cur}" ]]; then
