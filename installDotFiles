@@ -22,7 +22,7 @@
     cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
-    cp -rf .local/bin ~/
+    cp -rf .local ~/
     cp -rf .config ~
     echo "Generating default files"
     echo ". ~/.bashrc" >| ~/.bash_profile
