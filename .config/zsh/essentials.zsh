@@ -67,10 +67,5 @@ setopt PUSHD_SILENT
 # Great for adding tags to commands for fzf history searching
 setop INTERACTIVE_COMMENTS
 
-# Start the agent on login
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    ssh_find_agent -a || eval $(ssh-agent) > /dev/null
-fi
-
 # Set file to save history
 HISTFILE=~/.zsh_history
