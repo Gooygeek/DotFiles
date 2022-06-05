@@ -1,0 +1,170 @@
+#!/bin/bash
+
+SELF_CMD=$0
+
+usage() {
+    echo ""
+    echo "  gite [ load | new | delete | show | clear ]"
+    echo ""
+    echo "  gite is a tool for quickly switching between different git configs getting loaded, focused on changing the user."
+    echo ""
+    echo "    l | load )"
+    echo "      Load a configuration set."
+    echo "      Gives a selection of configuration sets."
+    echo ""
+    echo "    n | new )"
+    echo "      Create a new configuration set."
+    echo ""
+    echo "    d | delete )"
+    echo "      Delete a configuration set."
+    echo ""
+    echo "    s | show )"
+    echo "      Shows the currently loaded configuration set."
+    echo ""
+    echo "    c | clear )"
+    echo "      Deactivate the active configuration set."
+    echo ""
+}
+
+choose_or_list_configs() {
+  if [[ -t 1 && -z ${GITE_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        choose_config_interactive
+      else
+        list_configs
+      fi
+}
+
+choose_config_interactive() {
+  local choice
+  choice="$(_GITE_FORCE_COLOR=1 \
+    FZF_DEFAULT_COMMAND="${SELF_CMD}" \
+    fzf --ansi --no-preview || true)"
+  if [[ -z "${choice}" ]]; then
+    echo 2>&1 "error: you did not choose any of the options"
+    exit 1
+  else
+    set_config "${choice}"
+  fi
+}
+
+list_configs() {
+  local yellow darkbg normal
+  yellow=$(tput setaf 3 || true)
+  darkbg=$(tput setab 0 || true)
+  normal=$(tput sgr0 || true)
+
+  local cur_config_fg cur_config_bg
+  cur_config_fg=${GITE_CURRENT_FGCOLOR:-$yellow}
+  cur_config_bg=${GITE_CURRENT_BGCOLOR:-$darkbg}
+
+  local cur config_list
+  cur="$(current_config)" || exit_err "error getting current config"
+  config_list=$(get_configs) || exit_err "error getting config list"
+
+  for c in $config_list; do
+  if [[ -n "${_GITE_FORCE_COLOR:-}" || \
+       -t 1 && -z "${NO_COLOR:-}" ]]; then
+    colored output mode
+    if [[ "${c}" = "${cur}" ]]; then
+      echo "${cur_config_bg}${cur_config_fg}${c}${normal}"
+    else
+      echo "${c}"
+    fi
+  else
+    echo "${c}"
+  fi
+  done
+}
+
+current_config() {
+  if [ -f ~/.config/git/users/ACTIVE ]; then
+    # search for email line in currently active, get right side of '=', trim whitespace
+    grep "email" ~/.config/git/users/ACTIVE | cut -d'=' -f2 | xargs
+  else
+    echo ""
+  fi
+}
+
+get_configs() {
+  ls ~/.config/git/users | grep -v 'ACTIVE'
+}
+
+set_config() {
+  cp ~/.config/git/users/$1 ~/.config/git/users/ACTIVE
+  echo "loaded config $1"
+}
+
+print_current_config() {
+    if [ -f ~/.config/git/users/ACTIVE ]; then
+      cat ~/.config/git/users/ACTIVE
+    else
+      echo "No active config"
+    fi
+}
+
+create_new_config() {
+  read -p "Email: " email
+  if [ -f ~/.config/git/users/$email ]; then
+    echo "ERROR: A config already exists under that email"
+  else
+    read -p "Username: " username
+    read -p "Use Signing Key? [y/n]: " enable_signing_key
+    if [ $enable_signing_key = "y" ]; then
+      read -p "Signing Key: " signingkey
+    fi
+
+    echo "[user]" >> .config/git/users/$email
+    echo "    name = $username" >> .config/git/users/$email
+    echo "    email = $email" >> .config/git/users/$email
+
+    if [ $enable_signing_key = "y" ]; then
+      echo "    signingkey = $signingkey" >> .config/git/users/$email
+    fi
+  fi
+}
+
+delete_config() {
+  local choice
+  choice="$(_GITE_FORCE_COLOR=1 \
+    FZF_DEFAULT_COMMAND="${SELF_CMD}" \
+    fzf --ansi --no-preview || true)"
+  if [[ -z "${choice}" ]]; then
+    echo 2>&1 "error: you did not choose any of the options"
+    exit 1
+  else
+    rm .config/git/users/${choice}
+    echo "Deleted config: ${choice}"
+  fi
+}
+
+main() {
+  if [[ "$#" -eq 0 ]]; then
+    choose_or_list_configs $@
+
+  elif [[ "$#" -ge 1 ]]; then
+    if [[ "${1}" == 'l' || "${1}" == 'load' ]]; then
+      if [[ "$#" -eq 1 ]]; then
+      choose_or_list_configs $@
+      elif [[  "$#" -eq 2 ]]; then
+        set_config "${2}"
+      fi
+
+    elif [[ "${1}" == 'c' || "${1}" == 'clear' ]]; then
+      rm ~/.config/git/users/ACTIVE
+
+    elif [[ "${1}" == 's' || "${1}" == 'show' ]]; then
+      print_current_config
+
+    elif [[ "${1}" == 'n' || "${1}" == 'new' ]]; then
+      create_new_config
+
+    elif [[ "${1}" == 'd' || "${1}" == 'delete' ]]; then
+      delete_config
+
+    else
+      usage
+    fi
+  fi
+}
+
+main $@

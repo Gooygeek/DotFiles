@@ -1,10 +1,5 @@
-[user]
-    name = Kieran Goldsworthy
-    email = KieranG@kgol.xyz
-    signingkey = 02D593760BD11087E481F55206828A9E8F1261BC
-[include]
-    # if my username and email are different for some reason use those stored in...
-    path = .gitconfig.local
+[include] # Link to current user
+    path = ~/.config/git/users/ACTIVE
 [core]
     # set vim as the default editor for commit messagees
     editor = vim
