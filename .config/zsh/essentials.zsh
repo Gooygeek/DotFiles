@@ -72,3 +72,5 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh_find_agent -a || eval $(ssh-agent) > /dev/null
 fi
 
+# Set file to save history
+HISTFILE=~/.zsh_history
