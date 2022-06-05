@@ -61,9 +61,6 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh_find_agent -a || eval $(ssh-agent) > /dev/null
 fi
 
-# fzf keybindings and auto-completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # zsh-syntax-highlighting
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
