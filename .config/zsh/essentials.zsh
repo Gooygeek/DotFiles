@@ -56,6 +56,13 @@ done
 # https://zsh.sourceforge.io/FAQ/zshfaq03.html
 setopt shwordsplit
 
+# Automatically use pushd when calling cd
+setopt AUTO_PUSHD
+# Don't push multiple copies of the same directory onto the directory stack
+setopt PUSHD_IGNORE_DUPS
+# Do not print the directory stack after pushd or popd
+setopt PUSHD_SILENT
+
 # Start the agent on login
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh_find_agent -a || eval $(ssh-agent) > /dev/null
