@@ -65,7 +65,7 @@ setopt PUSHD_SILENT
 
 # Ignore everything after `#` in a line (unless quoted), but still save to history
 # Great for adding tags to commands for fzf history searching
-setop INTERACTIVE_COMMENTS
+setopt INTERACTIVE_COMMENTS
 
 # Set file to save history
 HISTFILE=~/.zsh_history
