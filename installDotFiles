@@ -23,20 +23,14 @@
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
     cp -rf .local ~/
-    cp -rf .config ~
+    cp -rf .config ~/
+    cp -rf .zshrc ~/
     echo "Generating default files"
     echo ". ~/.bashrc" >| ~/.bash_profile
     cat >| ~/.bashrc << EOF
 if [ -f ~/.bash_custom ]; then
     . ~/.bash_custom
 fi
-EOF
-    cat >| ~/.zshrc << EOF
-for file in ~/.config/zsh/*.zsh; do
-    . \$file
-done
-
-eval "\$(starship init zsh)"
 EOF
 } || { # Catch
 echo "Something went wrong"
