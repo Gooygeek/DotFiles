@@ -1,8 +1,8 @@
 
 
 # History Search
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+bindkey "\eOA" history-search-backward
+bindkey "\eOB" history-search-forward
 # Insert last argument of previous command
 bindkey '\e.' insert-last-word
 
