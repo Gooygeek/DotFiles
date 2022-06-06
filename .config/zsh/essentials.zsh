@@ -49,4 +49,6 @@ done
 . ~/.config/zsh/plugins/_load_and_config.zsh
 
 # Set file to save history
-HISTFILE=~/.zsh_history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=2000 # The maximum number of events stored in the internal history list.
+export SAVEHIST=1000 # The maximum number of history events to save in the history file.
