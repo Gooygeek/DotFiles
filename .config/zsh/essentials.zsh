@@ -24,8 +24,6 @@ alias sudo='sudo '
 for file in ~/.config/zsh/aliases/*.zsh; do
     . $file
 done
-# Allow completions to work for aliases
-unsetopt completealiases
 
 ## Load functions (sh and zsh)
 # for file in ~/.config/zsh/functions/*; do
@@ -49,23 +47,6 @@ done
 
 ## Load plugins
 . ~/.config/zsh/plugins/_load_and_config.zsh
-
-# Enable field splitting
-# I.E. for loops over a list of stings will consider each element separated by $IFS
-# This is done for greater bash compatibility in functions and scripts
-# https://zsh.sourceforge.io/FAQ/zshfaq03.html
-setopt shwordsplit
-
-# Automatically use pushd when calling cd
-setopt AUTO_PUSHD
-# Don't push multiple copies of the same directory onto the directory stack
-setopt PUSHD_IGNORE_DUPS
-# Do not print the directory stack after pushd or popd
-setopt PUSHD_SILENT
-
-# Ignore everything after `#` in a line (unless quoted), but still save to history
-# Great for adding tags to commands for fzf history searching
-setopt INTERACTIVE_COMMENTS
 
 # Set file to save history
 HISTFILE=~/.zsh_history
