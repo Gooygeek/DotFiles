@@ -13,10 +13,12 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
+
 ## Load Environment Variables
 for file in ~/.config/zsh/env_vars/*.zsh; do
     . $file
 done
+
 
 ## Load aliases
 # Allows Aliases to be expanded when using a bare sudo <command>
@@ -25,10 +27,12 @@ for file in ~/.config/zsh/aliases/*.zsh; do
     . $file
 done
 
+
 ## Load functions (sh and zsh)
 # for file in ~/.config/zsh/functions/*; do
 #     . $file
 # done
+
 
 ## Load autocompletions
 autoload bashcompinit && bashcompinit
@@ -40,13 +44,18 @@ done
 fpath=(~/.config/zsh/completions $fpath)
 compinit
 
+
 ## Load keybindings
 for file in ~/.config/zsh/keybindings/*.zsh; do
     . $file
 done
 
+
 ## Load plugins
 . ~/.config/zsh/plugins/_load_and_config.zsh
+
+
+## Other
 
 # Set file to save history
 export HISTFILE=~/.zsh_history
