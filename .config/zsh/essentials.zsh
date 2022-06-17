@@ -61,3 +61,6 @@ done
 export HISTFILE=~/.zsh_history
 export HISTSIZE=2000 # The maximum number of events stored in the internal history list.
 export SAVEHIST=1000 # The maximum number of history events to save in the history file.
+
+# Load super useful file renamer
+autoload zmv
