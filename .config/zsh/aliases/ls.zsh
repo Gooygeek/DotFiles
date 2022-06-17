@@ -5,7 +5,6 @@
 # 	- Filetype
 # 	- Horizonal
 alias ls='ls -AF --format=horizontal --color=auto'
-alias ls='ls -AF'
 
 # List dir with:
 # 	- Long format
@@ -14,4 +13,3 @@ alias ls='ls -AF'
 # 	- Human readable filesize
 # 	- Nicer timestamp
 alias lls='ls -AFltrh --time-style long-iso --color=auto'
-alias lls='ls -AFltrh'
