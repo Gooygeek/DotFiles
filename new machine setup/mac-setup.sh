@@ -57,21 +57,25 @@ mv temp $HOME/.bash_custom
 sed "s/alias lls='ls -AFltrh --time-style long-iso --color=auto'/alias lls='ls -AFltrh --color=auto'/g" $HOME/.bash_custom >| temp
 mv temp $HOME/.bash_custom
 
-echo "PATH=\"\$PATH:/usr/local/bin\"" >> $HOME/.bashrc
-echo "PATH=\"\$PATH:/opt/homebrew/bin\"" >> $HOME/.bashrc
-echo "PATH=\"\$PATH:\$HOME/Library/Python/3.8/bin\"" >> $HOME/.bashrc
-
 export gcloud_dir="$(brew --caskroom google-cloud-sdk)/$(brew list --cask --versions google-cloud-sdk | awk '{print $2}')/google-cloud-sdk"
-echo "source \"$gcloud_dir/completion.bash.inc\"" >> $HOME/.bashrc
-echo "source \"$gcloud_dir/path.bash.inc\"" >> $HOME/.bashrc
+
+cat >| ~/.bashrc <<EOF
+PATH="\$PATH:/usr/local/bin"
+PATH="\$PATH:/opt/homebrew/bin"
+PATH="\$PATH:\$HOME/Library/Python/3.8/bin"
+export {http,https,all}_proxy=http://localhost:3128
+export {HTTP,HTTPS,ALL}_PROXY=\$http_proxy
+source "$gcloud_dir/completion.bash.inc"
+source "$gcloud_dir/path.bash.inc"
+if [ -f ~/.bash_custom ]; then
+    . ~/.bash_custom
+fi
+EOF
 
 export fzf_git_dir="$(brew --cellar fzf)/$(brew list --versions fzf | awk '{print $2}')"
 echo "[[ \$- == *i* ]] && source \"$fzf_git_dir/shell/completion.bash\" 2> /dev/null" >> $HOME/.fzf.bash
 echo "source \"$fzf_git_dir/shell/key-bindings.bash\" 2> /dev/null" >> $HOME/.fzf.bash
 
-echo "eval \"\$(starship init bash)\"" >> $HOME/.bashrc
-echo "export {http,https,all}_proxy=http://localhost:3128" >> $HOME/.bashrc
-echo "export {HTTP,HTTPS,ALL}_PROXY=\$http_proxy" >> $HOME/.bashrc
 rm $HOME/.bash.d/fix_dns.sh
 
 cp ~/.config/lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
