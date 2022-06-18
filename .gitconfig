@@ -14,7 +14,7 @@
 [push]
     default = simple
 [commit]
-    template = ~/.gitmessage
+    template = ~/.config/git/gitmessage
     gpgSign = true
 
 # Add delta as the diff tool
