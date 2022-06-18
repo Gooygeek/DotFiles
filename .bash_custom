@@ -407,15 +407,6 @@ shopt -s checkwinsize
 
 # }}}
 
-
-# OPTIONAL
-
-# Awesome command prompt
-# . ~/.bash_prompt_advanced
-
-# Short Prompt
-# . ~/.bash_prompt_short
-
 ######  TEST SECTION  ######
 
 
