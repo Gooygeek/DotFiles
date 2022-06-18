@@ -29,9 +29,9 @@ done
 
 
 ## Load functions (sh and zsh)
-# for file in ~/.config/zsh/functions/*; do
-#     . $file
-# done
+for file in ~/.config/zsh/functions/*; do
+    . $file
+done
 
 
 ## Load autocompletions
