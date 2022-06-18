@@ -138,6 +138,7 @@
 
     # Other #
     r = remote
+    untrack = branch --unset-upstream
     type = cat-file -t
     dump = cat-file -p
 
