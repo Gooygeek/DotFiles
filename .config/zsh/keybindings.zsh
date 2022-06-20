@@ -3,8 +3,19 @@
 bindkey -v
 
 # History Search with up and down arrows
-bindkey '\eOA' history-search-backward
-bindkey '\eOB' history-search-forward
+# [up/down]-line-or-beginning-search combines [up/down]-line-or-search and history-beginning-search-[backward/forward]
+# This allows to search from the start to the cursor (not just the first word) AND move through multi-line commands
+# It does need to be activated though as these widgets are not enabled by default
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+# Bind to both keycodes
+bindkey "^[OA" up-line-or-beginning-search # Up
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[OB" down-line-or-beginning-search # Down
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # `ESC, .` = Insert last argument of previous command
 bindkey '\e.' insert-last-word
 
