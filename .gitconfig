@@ -5,6 +5,7 @@
     editor = vim
     autocrlf = input
     eol = lf
+    excludesFile = ~/.config/git/gitignore_global
 [merge]
     # using vim as my editor, it makes sense to use vimdiff as the merger
     tool = vimdiff
