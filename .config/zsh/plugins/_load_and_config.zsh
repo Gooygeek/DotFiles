@@ -4,6 +4,11 @@
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50 # Don't suggest really long strings
 
+# zsh-autopair
+# https://github.com/hlissner/zsh-autopair
+. ~/.config/zsh/plugins/zsh-autopair/autopair.zsh
+autopair-init
+
 # zsh-syntax-highlighting
 # Needs to be sourced after everything else. Thus it's been pushed to the root .zshrc file.
 
