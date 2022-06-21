@@ -49,5 +49,3 @@ if command -v fd >/dev/null 2>&1; then
       fd --type d . "$1"
   }
 fi
-
-_fzf_setup_completion path ag git kubectl lls
