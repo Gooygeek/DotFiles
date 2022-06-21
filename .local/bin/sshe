@@ -1,0 +1,161 @@
+#!/bin/bash
+
+SELF_CMD=$0
+SSHE_HOME="$HOME/.ssh/sshe-keys"
+
+usage() {
+  echo ""
+  echo "  sshe [ init | generate | load | add | show | clear | remove]"
+  echo ""
+  echo "  sshe is a tool for quickly switching between SSH Keys loaded into the agent."
+  echo ""
+  echo "    i | init )"
+  echo "      Create folders."
+  echo ""
+  echo "    g | generate )"
+  echo "      Create an SSH Key."
+  echo ""
+  echo "    l | load )"
+  echo "      Drop all existing keys and select a key to load."
+  echo ""
+  echo "    s | show )"
+  echo "      Shows the currently loaded keys."
+  echo ""
+  echo "    c | clear )"
+  echo "      Drops all keys."
+  echo ""
+  echo "    r | remove )"
+  echo "      Deletes a set of keys."
+  echo ""
+}
+
+choose_or_list_configs() {
+  if [[ -t 1 && -z ${SSHE_IGNORE_FZF:-} && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
+        choose_config_interactive
+      else
+        list_configs
+      fi
+}
+
+choose_config_interactive() {
+  local choice
+  choice="$(_SSHE_FORCE_COLOR=1 \
+    FZF_DEFAULT_COMMAND="${SELF_CMD}" \
+    fzf --ansi --no-preview || true)"
+  if [[ -z "${choice}" ]]; then
+    echo 2>&1 "error: you did not choose any of the options"
+    exit 1
+  else
+    set_config "${choice}"
+  fi
+}
+
+list_configs() {
+  local yellow darkbg normal
+  yellow=$(tput setaf 3 || true)
+  darkbg=$(tput setab 0 || true)
+  normal=$(tput sgr0 || true)
+
+  local cur_config_fg cur_config_bg
+  cur_config_fg=${SSHE_CURRENT_FGCOLOR:-$yellow}
+  cur_config_bg=${SSHE_CURRENT_BGCOLOR:-$darkbg}
+
+  local cur config_list
+  cur="$(current_config)" || exit_err "error getting current config"
+  config_list=$(get_configs) || exit_err "error getting config list"
+
+  for c in $config_list; do
+  if [[ -n "${_SSHE_FORCE_COLOR:-}" || \
+       -t 1 && -z "${NO_COLOR:-}" ]]; then
+    colored output mode
+    if [[ "${c}" = "${cur}" ]]; then
+      echo "${cur_config_bg}${cur_config_fg}${c}${normal}"
+    else
+      echo "${c}"
+    fi
+  else
+    echo "${c}"
+  fi
+  done
+}
+
+current_config() {
+  if [ -f $SSHE_HOME/ACTIVE ]; then
+    cat $SSHE_HOME/ACTIVE
+  else
+    echo ""
+  fi
+}
+
+get_configs() {
+  ls -1 "$SSHE_HOME" | grep -v ".pub" | grep -v 'ACTIVE'
+}
+
+set_config() {
+  ssh-add -D
+  ssh-add $SSHE_HOME/$1
+  echo $1 >| $SSHE_HOME/ACTIVE
+  echo "Loaded Key: $1"
+}
+
+print_current_config() {
+  ssh-add -l
+}
+
+create_new_config() {
+  read -p "Key Name: " KEYNAME
+  read -p "Comment (email): " KEYCOMMENT
+  ssh-keygen -f $SSHE_HOME/$KEYNAME -C $KEYCOMMENT
+  $SELF_CMD l $KEYNAME
+}
+
+delete_config() {
+  local choice
+  choice="$(_SSHE_FORCE_COLOR=1 \
+    FZF_DEFAULT_COMMAND="${SELF_CMD}" \
+    fzf --ansi --no-preview || true)"
+  if [[ -z "${choice}" ]]; then
+    echo 2>&1 "error: you did not choose any of the options"
+    exit 1
+  else
+    rm $SSHE_HOME/${choice}
+    rm $SSHE_HOME/${choice}.pub
+    echo "Deleted Key: ${choice}"
+  fi
+}
+
+main() {
+  if [[ "$#" -eq 0 ]]; then
+    choose_or_list_configs $@
+
+  elif [[ "$#" -ge 1 ]]; then
+    if [[ "${1}" == 'l' || "${1}" == 'load' ]]; then
+      if [[ "$#" -eq 1 ]]; then
+      choose_or_list_configs $@
+      elif [[  "$#" -eq 2 ]]; then
+        set_config "${2}"
+      fi
+
+    elif [[ "${1}" == 'i' || "${1}" == 'init' ]]; then
+      mkdir -p $SSHE_HOME
+
+    elif [[ "${1}" == 'g' || "${1}" == 'generate' ]]; then
+    create_new_config
+
+    elif [[ "${1}" == 's' || "${1}" == 'show' ]]; then
+      print_current_config
+
+    elif [[ "${1}" == 'c' || "${1}" == 'clear' ]]; then
+      ssh-add -D
+      rm $SSHE_HOME/ACTIVE
+
+    elif [[ "${1}" == 'r' || "${1}" == 'remove' ]]; then
+      delete_config
+
+    else
+      usage
+    fi
+  fi
+}
+
+main $@
