@@ -32,6 +32,12 @@ bindkey -M vicmd "^[" vi-insert
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
 
+# Configure Home and End keys ( Fn+<left> and Fn+<right> on Mac )
+bindkey "^[OH" vi-beginning-of-line
+bindkey "^[[H" vi-beginning-of-line
+bindkey "^[OF" vi-end-of-line
+bindkey "^[[F" vi-end-of-line
+
 # Entering a ` ` after a `!` or `^` history expansion comand will perform the expansion inline.
 # Default, history expansion only occurs when you run the command.
 bindkey ' ' magic-space
