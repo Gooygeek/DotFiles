@@ -34,3 +34,4 @@ EOF
 } || { # Catch
 echo "Something went wrong"
 }
+tput bel
