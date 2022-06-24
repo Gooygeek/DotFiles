@@ -19,7 +19,6 @@
     cp -rf .tmux.conf ~/
     cp -rf .tmux ~/
     cp -rf .gitconfig ~/
-    cp -rf .gitmessage ~/
     cp -rf .bash_custom ~/
     cp -rf .bash.d ~/
     cp -rf .local ~/
