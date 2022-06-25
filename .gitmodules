@@ -19,3 +19,6 @@
 [submodule "zsh-autopair"]
 	path = .config/zsh/plugins/zsh-autopair
 	url = https://github.com/hlissner/zsh-autopair
+[submodule "fzf-tab"]
+	path = .config/zsh/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

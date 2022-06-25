@@ -1,3 +1,7 @@
+# fzf-tab
+#https://github.com/Aloxaf/fzf-tab
+. ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
 # zsh autosuggest
 # https://github.com/zsh-users/zsh-autosuggestions
 . ~/.config/zsh/plugins/zsh-autosuggestions.zsh
