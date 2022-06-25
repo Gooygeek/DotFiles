@@ -13,8 +13,10 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50 # Don't suggest really long strings
 . ~/.config/zsh/plugins/zsh-autopair/autopair.zsh
 autopair-init
 
-# zsh-syntax-highlighting
-# Needs to be sourced after everything else. Thus it's been pushed to the root .zshrc file.
+# fast syntax highlighting
+# https://github.com/zdharma-continuum/fast-syntax-highlighting
+# *Might* be a bit better than the other highlighting plugin, but it's too hard to choose between them, I'll stick with the current for now
+# . ~/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Load ssh sock if it exists, rather than start a new ssh agent
 # See ssh.zsh file for where it's used
