@@ -45,12 +45,6 @@ fpath=(~/.config/zsh/completions $fpath)
 compinit
 
 
-## Load keybindings
-for file in ~/.config/zsh/keybindings/*.zsh; do
-    . $file
-done
-
-
 ## Load plugins
 . ~/.config/zsh/plugins/_load_and_config.zsh
 
