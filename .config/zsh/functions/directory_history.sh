@@ -12,7 +12,3 @@ backdir() {
 }
 
 alias bd='backdir'
-
-# List directory navigation history with numbers
-# This makes it easy to enter a number in bd to go back to that dir
-alias dh='dirs -v'
