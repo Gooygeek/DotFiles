@@ -1,0 +1,235 @@
+{
+    "asciidecorator.defaultFont": "Big",
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.startOnNewLine": true,
+    "blockman.n01LineHeight": 0,
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.filePath": "on",
+    "breadcrumbs.symbolPath": "on",
+    "cSpell.userWords": [
+        "CIDR",
+        "Executables",
+        "Lifecycle",
+        "NACL",
+        "OnPrem",
+        "SG",
+        "Splunk",
+        "Unscanned",
+        "behaviour",
+        "cluster",
+        "customisation",
+        "customise",
+        "io",
+        "kubernetes",
+        "poc",
+        "subnet",
+        "utilised",
+        "amazonaws"
+    ],
+    "css.lint.idSelector": "warning",
+    "debug.inlineValues": true,
+    "debug.toolBarLocation": "docked",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.wordWrap": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.columnSelection": false,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.fontFamily": "'ComicMono Nerd Font', 'consolas', 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.guides.bracketPairs": false,
+    "editor.guides.highlightActiveIndentation": false,
+    "editor.guides.indentation": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.minimap.renderCharacters": true,
+    "editor.minimap.maxColumn": 200,
+    "editor.renderLineHighlight": "all",
+    "editor.renderWhitespace": "all",
+    "editor.smoothScrolling": true,
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.preview": true,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "off",
+    "editor.wrappingIndent": "indent",
+    "explorer.incrementalNaming": "smart",
+    "explorer.openEditors.visible": 0,
+    "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        "**/*.hcl": "terraform"
+    },
+    "files.autoSave": "onWindowChange",
+    "files.eol": "\n",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.mergeEditor": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.currentLine.format": "${message} • ${author}, ${agoOrDate}",
+    "gitlens.defaultDateFormat": "YYYY-MMM-DD-kk:mm:ssZZ",
+    "gitlens.mode.statusBar.enabled": false,
+    "gitlens.statusBar.alignment": "left",
+    "gitlens.views.repositories.files.layout": "tree",
+    "git.ignoreMissingGitWarning": true,
+    "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
+    "indentRainbow.ignoreErrorLanguages": [
+        "plaintext"
+    ],
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "problems.showCurrentInStatus": false,
+    "python.analysis.completeFunctionParens": true,
+    "python.autoComplete.addBrackets": true,
+    "python.formatting.yapfArgs": [
+        "--style",
+        "{blank_line_before_nested_class_or_def: True, column_limit: 180, dedent_closing_brackets: True, indent_dictionary_value: True, split_complex_comprehension: True}"
+    ],
+    "python.jediEnabled": false,
+    "python.languageServer": "Pylance",
+    "python.testing.pytestEnabled": true,
+    "redhat.telemetry.enabled": false,
+    "remote.SSH.defaultExtensions": [],
+    "remote.SSH.showLoginTerminal": true,
+    "svelte.enable-ts-plugin": true,
+    "sync.autoDownload": false,
+    "sync.autoUpload": false,
+    "sync.forceDownload": false,
+    "sync.forceUpload": true,
+    "sync.gist": "8fc8e20a442ec4f38832449ea9cb0177",
+    "sync.quietSync": false,
+    "sync.removeExtensions": true,
+    "sync.syncExtensions": true,
+    "tabnine.experimentalAutoImports": true,
+    "telemetry.telemetryLevel": "off",
+    "terraform.languageServer": {
+        "external": true,
+        "pathToBinary": "",
+        "args": [
+            "serve"
+        ],
+        "maxNumberOfProblems": 100,
+        "trace.server": "off"
+    },
+    "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "terminal.integrated.cursorBlinking": true,
+    "vsicons.associations.files": [
+        {
+            "icon": "cloudformation",
+            "extensions": [
+                "cf.yaml",
+                "cf.json"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "cloudformation-bad",
+            "extensions": [
+                "cf.yml"
+            ],
+            "format": "svg"
+        },
+        {
+            "icon": "terraform",
+            "extensions": [
+                "tf",
+                "tfvars"
+            ],
+            "format": "svg"
+        }
+    ],
+    "vsicons.dontShowNewVersionMessage": true,
+    "vsicons.presets.angular": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "vs-kubernetes": {
+        "vscode-kubernetes.minikube-path.windows": "C:\\Users\\kgoldsworthy\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
+    },
+    "window.commandCenter": true,
+    "window.titleBarStyle": "custom",
+    "window.title": "${activeEditorMedium}${separator}${dirty}",
+    "workbench.activityBar.visible": true,
+    "workbench.colorCustomizations": {
+        "tab.unfocusedActiveBorder": "#fff0",
+        "editor.lineHighlightBackground": "#1073cf2d",
+        "editor.lineHighlightBorder": "#9fced11f"
+    },
+    "workbench.colorTheme": "Monokai",
+    "workbench.editor.focusRecentEditorAfterClose": false,
+    "workbench.editor.openPositioning": "last",
+    "workbench.editor.scrollToSwitchTabs": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.settings.editor": "json",
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.startupEditor": "none",
+    "yaml.customTags": [
+        "!Ref",
+        "!GetAtt",
+        "!FindInMap sequence",
+        "!FindInMap scalar",
+        "!GetAtt sequence",
+        "!GetAtt scalar",
+        "!GetAZs",
+        "!Cidr",
+        "!ImportValue",
+        "!Join sequence",
+        "!Select sequence",
+        "!Split",
+        "!Sub sequence",
+        "!Sub scalar",
+        "!And",
+        "!Equals sequence",
+        "!If",
+        "!Not",
+        "!Or",
+        "!Base64"
+    ],
+    "yaml.format.enable": true,
+    "yaml.format.proseWrap": "always",
+    "yaml.format.singleQuote": true,
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.wordWrap": "off",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "python.formatting.provider": "black"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust",
+        "editor.formatOnSave": true
+    },
+    "[terraform]": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "hashicorp.terraform"
+    }
+}
