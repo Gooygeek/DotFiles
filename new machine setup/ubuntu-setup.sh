@@ -111,9 +111,9 @@ rm gitui-linux-musl.tar.gz
 mv gitui ~/.local/bin/gitui
 
 # Lazygit
-curl -L -O https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz
-tar -xvf lazygit_0.34_Linux_x86_64.tar.gz
-rm lazygit_0.34_Linux_x86_64.tar.gz
+curl -L -O https://github.com/jesseduffield/lazygit/releases/download/v0.35/lazygit_0.35_Linux_x86_64.tar.gz
+tar -xvf lazygit_0.35_Linux_x86_64.tar.gz
+rm lazygit_0.35_Linux_x86_64.tar.gz
 mv lazygit ~/.local/bin/lazygit
 
 # delta (diff viewer)
