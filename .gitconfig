@@ -19,8 +19,8 @@
     gpgSign = true
 
 # Add delta as the diff tool
-[include]
-    path = ~/.config/delta/delta.gitconfig
+#[include]
+#    path = ~/.config/delta/delta.gitconfig
 
 # Add Aliases
 [include]
