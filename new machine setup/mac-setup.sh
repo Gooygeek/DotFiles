@@ -9,6 +9,13 @@ cd ~/.local/bin
 # brew update --force --quiet
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+if [[ -d /opt/homebrew/ ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+if [[ -d /home/linuxbrew/ ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 brew install zsh
 brew install make
 brew install gnupg
@@ -21,26 +28,29 @@ brew install git-delta
 brew install ripgrep
 brew install fd
 brew install tmux
-brew install kubenetes-cli
+brew install kubernetes-cli
+brew install kubectx
 brew install helm
-brew install kustomize
 brew install k9s
 brew install tfenv
 brew install starship
 brew install go
+brew install shellcheck
+brew install pre-commit
 
 brew install awscli
 brew install --cask google-cloud-sdk
 
-brew tap codefresh-io/cli
-brew install codefresh
-brew install jsonnet
+brew install python3
+brew install pipenv
+pip3 install wheel
+pip3 install black flake8
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Post install config
 
 $(brew --prefix)/opt/fzf/install
-
-ln -s $(which fdfind) ~/.local/bin/fd
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
