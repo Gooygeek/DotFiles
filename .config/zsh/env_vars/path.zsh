@@ -7,9 +7,3 @@ fi
 if [[ -d /home/linuxbrew/ ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-
-PATH="$PATH:$HOME/.fzf/bin"
-
-PATH="$PATH:/usr/local/go/bin"
-
-PATH="$PATH:$HOME/.tfenv/bin"
