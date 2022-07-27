@@ -1,7 +1,7 @@
 " Used for file specific configurations such as remaps
 
 " HTML {{{
-autocmd Filetype html source ~/.vim/configs/html.vim 
+autocmd Filetype html source ~/.vim/configs/html.vim
 " }}}
 
 " Javascript {{{

@@ -12,7 +12,7 @@ Solarized Colorscheme					   *solarized*
 Solarized is a carefully designed selective contrast colorscheme with dual
 light and dark modes that runs in both GUI, 256 and 16 color modes.
 
-See the homepage at http://ethanschoonover.com/solarized for screenshots and 
+See the homepage at http://ethanschoonover.com/solarized for screenshots and
 details.
 
 0. Install				|solarized-install|
@@ -24,15 +24,15 @@ details.
 ==============================================================================
 0. Install						*solarized-install*
 
-Note: I recommend using Tim Pope's pathogen plugin to install this 
-colorscheme. See https://github.com/tpope/vim-pathogen . If you've installed 
-pathogen properly you can install Solarized with the following commands, 
+Note: I recommend using Tim Pope's pathogen plugin to install this
+colorscheme. See https://github.com/tpope/vim-pathogen . If you've installed
+pathogen properly you can install Solarized with the following commands,
 followed by the .vimrc configuration below.
 
 	$ cd ~/.vim/bundle
 	$ git clone https://github.com/altercation/vim-colors-solarized.git
 
-If you aren't using pathogen, you can use the following three steps to install 
+If you aren't using pathogen, you can use the following three steps to install
 Solarized:
 
 1.  Download the solarized distribution (available on the homepage above)
@@ -60,10 +60,10 @@ or, for the light background mode of Solarized:
 ==============================================================================
 1. Solarized Menu					*solarized-menu*
 
-Solarized makes available a menu when used in Vim GUI mode (gvim, macvim).  
-This menu includes many of the options detailed below so that you can test out 
-different values quickly without modifying your .vimrc file. If you wish to 
-turn off this menu permanently, simply place the following line in your .vimrc 
+Solarized makes available a menu when used in Vim GUI mode (gvim, macvim).
+This menu includes many of the options detailed below so that you can test out
+different values quickly without modifying your .vimrc file. If you wish to
+turn off this menu permanently, simply place the following line in your .vimrc
 above the "colorscheme solarized" line.
 
 	let g:solarized_menu=0
@@ -73,9 +73,9 @@ above the "colorscheme solarized" line.
 							*toggle-bg* *togglebg*
 							*toggle-background*
 
-Solarized comes with Toggle Background, a simple plugin to switch between 
-light and dark background modes and reset the colorscheme. This is most useful 
-for colorschemes that support both light and dark modes and in terminals or 
+Solarized comes with Toggle Background, a simple plugin to switch between
+light and dark background modes and reset the colorscheme. This is most useful
+for colorschemes that support both light and dark modes and in terminals or
 gui vim windows where the background will be properly set.
 
 Toggle Background can be accessed by:
@@ -87,45 +87,45 @@ Toggle Background can be accessed by:
     * custom key mapping you set in your .vimrc (see below)
     * command line via ":ToggleBG" (no quotes)
 
-Toggle Background starts with a default mapping to function key <F5>. If you 
-are already using this in a mapping, Toggle Background will not map itself to 
-a default and you will have to map it manually in your .vimrc file, or 
-remove/change your existing <F5> mapping to another value. To customize the 
-keyboard mapping in your .vimrc file, use the following line, changing the 
+Toggle Background starts with a default mapping to function key <F5>. If you
+are already using this in a mapping, Toggle Background will not map itself to
+a default and you will have to map it manually in your .vimrc file, or
+remove/change your existing <F5> mapping to another value. To customize the
+keyboard mapping in your .vimrc file, use the following line, changing the
 "<F5>" value to the key or key combination you wish to use:
 
 	call togglebg#map("<F5>")
 
-Note that you'll want to use a single function key or equivalent if you want 
+Note that you'll want to use a single function key or equivalent if you want
 the plugin to work in all modes (normal, insert, visual).
 
-When using the plugin during normal, visual, or insert mode, there should be 
-no interruption in workflow. However, if you activate the plugin during 
-REPLACE mode, you will switch to standard insert mode (you will leave the 
+When using the plugin during normal, visual, or insert mode, there should be
+no interruption in workflow. However, if you activate the plugin during
+REPLACE mode, you will switch to standard insert mode (you will leave the
 overwrite replace mode).
 
 ==============================================================================
 3. Solarized Terminal Issues				*solarized-term*
 
-If you are going to use Solarized in Terminal mode (i.e. not in a GUI version 
-like gvim or macvim), **please please please** consider setting your terminal 
-emulator's colorscheme to used the Solarized palette. I've included palettes 
-for some popular terminal emulator as well as Xdefaults in the official 
-Solarized download available from the Solarized homepage listed at the top of 
-this help document. If you use Solarized *without* these colors, Solarized 
-will need to be told to degrade its colorscheme to a set compatible with the 
-limited 256 terminal palette (whereas by using the terminal's 16 ansi color 
+If you are going to use Solarized in Terminal mode (i.e. not in a GUI version
+like gvim or macvim), **please please please** consider setting your terminal
+emulator's colorscheme to used the Solarized palette. I've included palettes
+for some popular terminal emulator as well as Xdefaults in the official
+Solarized download available from the Solarized homepage listed at the top of
+this help document. If you use Solarized *without* these colors, Solarized
+will need to be told to degrade its colorscheme to a set compatible with the
+limited 256 terminal palette (whereas by using the terminal's 16 ansi color
 values, you can set the correct, specific values for the Solarized palette).
 
-If you do use the custom terminal colors, solarized.vim should work out of 
-the box for you. If you are using a terminal emulator that supports 256 
-colors and don't want to use the custom Solarized terminal colors, you will 
-need to use the degraded 256 colorscheme. To do so, simply add the following 
+If you do use the custom terminal colors, solarized.vim should work out of
+the box for you. If you are using a terminal emulator that supports 256
+colors and don't want to use the custom Solarized terminal colors, you will
+need to use the degraded 256 colorscheme. To do so, simply add the following
 line *before* the `colorschem solarized` line:
 
     let g:solarized_termcolors=256
 
-Again, I recommend just changing your terminal colors to Solarized values 
+Again, I recommend just changing your terminal colors to Solarized values
 either manually or via one of the many terminal schemes available for import.
 
 ==============================================================================
@@ -134,10 +134,10 @@ either manually or via one of the many terminal schemes available for import.
 
 AUTOGENERATE OPTIONS
 
-You can easily modify and experiment with Solarized display options using the 
-Solarized menu when using Vim in gui mode. Once you have things set to your 
-liking, you can autogenerate the current option list in a format ready for 
-insertion into your .vimrc file using the Solarized menu "Autogenerate 
+You can easily modify and experiment with Solarized display options using the
+Solarized menu when using Vim in gui mode. Once you have things set to your
+liking, you can autogenerate the current option list in a format ready for
+insertion into your .vimrc file using the Solarized menu "Autogenerate
 Options" command or at the command line with:
 
     :SolarizedOptions
@@ -191,8 +191,8 @@ isn't displaying the background color transparently, set this to 1 and
 Solarized will use the default (transparent) background of the terminal
 emulator. *urxvt* required this in my testing; iTerm2 did not.
 
-Note that on Mac OS X Terminal.app, solarized_termtrans is set to 1 by 
-default as this is almost always the best option. The only exception to this 
+Note that on Mac OS X Terminal.app, solarized_termtrans is set to 1 by
+default as this is almost always the best option. The only exception to this
 is if the working terminfo file supports 256 colors (xterm-256color).
 
 ------------------------------------------------
@@ -224,20 +224,20 @@ or down in order to expand or compress the tonal range displayed.
 ------------------------------------------------
 g:solarized_visibility =  "normal"|   "high" or "low" *'solarized_visibility'*
 ------------------------------------------------
-Special characters such as trailing whitespace, tabs, newlines, when 
-displayed using ":set list" can be set to one of three levels depending on 
+Special characters such as trailing whitespace, tabs, newlines, when
+displayed using ":set list" can be set to one of three levels depending on
 your needs.
 
 ------------------------------------------------
 g:solarized_hitrail   =   0       |   1			*'solarized_hitrail'*
 ------------------------------------------------
-Visibility can make listchar entities more visible, but if one has set 
-cursorline on, these same listchar values standout somewhat less due to the 
-background color of the cursorline. g:solarized_hitrail enables highlighting 
-of trailing spaces (only one of the listchar types, but a particularly 
-important one) while in the cursoline in a different manner in order to make 
-them more visible. This may not work consistently as Solarized is using 
-a pattern match than can be overridden by a more encompassing syntax-native 
+Visibility can make listchar entities more visible, but if one has set
+cursorline on, these same listchar values standout somewhat less due to the
+background color of the cursorline. g:solarized_hitrail enables highlighting
+of trailing spaces (only one of the listchar types, but a particularly
+important one) while in the cursoline in a different manner in order to make
+them more visible. This may not work consistently as Solarized is using
+a pattern match than can be overridden by a more encompassing syntax-native
 match such as a comment line.
 
 
