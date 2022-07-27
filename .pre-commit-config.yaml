@@ -1,0 +1,28 @@
+fail_fast: false
+exclude: ^.vim/bundle
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending # replaces or checks mixed line ending
+      - id: check-case-conflict # checks for files that would conflict in case-insensitive filesystems
+      - id: check-merge-conflict # checks for files that contain merge conflict strings
+      - id: check-yaml # checks yaml files for parseable syntax
+      - id: check-json # checks json files for parseable syntax
+      - id: check-toml # checks toml files for parseable syntax
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.74.1
+    hooks:
+      - id: terraform_validate
+      - id: terraform_fmt
+      - id: terraform_docs
