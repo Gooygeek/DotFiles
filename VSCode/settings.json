@@ -85,6 +85,9 @@
     "indentRainbow.ignoreErrorLanguages": [
         "plaintext"
     ],
+    "markdown.styles": [
+        "./github-markdown-dark.css"
+    ],
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
