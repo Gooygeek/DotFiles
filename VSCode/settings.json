@@ -43,9 +43,11 @@
     "editor.inlineSuggest.enabled": true,
     "editor.minimap.renderCharacters": true,
     "editor.minimap.maxColumn": 200,
+    "editor.minimap.showSlider": "always",
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "all",
     "editor.smoothScrolling": true,
+    "editor.stickyScroll.enabled": true,
     "editor.suggest.localityBonus": true,
     "editor.suggest.preview": true,
     "editor.suggestSelection": "first",
@@ -111,15 +113,7 @@
     "sync.syncExtensions": true,
     "tabnine.experimentalAutoImports": true,
     "telemetry.telemetryLevel": "off",
-    "terraform.languageServer": {
-        "external": true,
-        "pathToBinary": "",
-        "args": [
-            "serve"
-        ],
-        "maxNumberOfProblems": 100,
-        "trace.server": "off"
-    },
+    "terraform.languageServer.enable": true,
     "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "terminal.integrated.cursorBlinking": true,
     "vsicons.associations.files": [
