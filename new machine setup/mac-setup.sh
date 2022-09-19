@@ -54,6 +54,11 @@ $(brew --prefix)/opt/fzf/install
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+gcloud components install gke-gcloud-auth-plugin
+
+# Temporary, see: https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+echo "USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> ~/.zshrc
+
 # Install Dotfiles
 
 # ../installDotFiles.sh
