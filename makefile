@@ -27,5 +27,23 @@ init: # Prep the install
 	make pull_submod_init
 	make spell
 
-install: # Call the install script
-	./installDotFiles
+install: # Copy config files
+	@echo "Started installation"
+	@echo "Backing up current settings"
+	@echo "Copying configs"
+	@rsync -r -q .vimrc ~/
+	@rsync -r -q .vim ~/
+	@rsync -r -q .tmux.conf ~/
+	@rsync -r -q .tmux ~/
+	@rsync -r -q .gitconfig ~/
+	@rsync -r -q .bash_custom ~/
+	@rsync -r -q .bash.d ~/
+	@rsync -r -q .local ~/
+	@rsync -r -q .gnupg ~/
+	@rsync -r -q .config ~/
+	@rsync -r .zshrc ~/
+	@echo "Generating default files"
+	@echo ". ~/.bashrc" >| ~/.bash_profile
+	@echo ". ~/.bash_custom" >| ~/.bashrc
+	@echo "Done"
+	@tput bel
