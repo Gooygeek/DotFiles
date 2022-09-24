@@ -33,6 +33,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-379.0.0-linux-x86_64.tar.gz
 tar -xf google-cloud-sdk-379.0.0-linux-x86.tar.gz
 ./google-cloud-sdk/install.sh
+ln -s ~/.local/bin/google-cloud-sdk/bin/gcloud ~/.local/bin/gcloud
 
 # Make recently installs tools executable
 chmod a+x ~/.local/bin/ -R
