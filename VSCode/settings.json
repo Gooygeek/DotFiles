@@ -95,6 +95,7 @@
     "problems.showCurrentInStatus": false,
     "python.analysis.completeFunctionParens": true,
     "python.autoComplete.addBrackets": true,
+    "python.formatting.provider": "black",
     "python.formatting.yapfArgs": [
         "--style",
         "{blank_line_before_nested_class_or_def: True, column_limit: 180, dedent_closing_brackets: True, indent_dictionary_value: True, split_complex_comprehension: True}"
@@ -195,6 +196,9 @@
     "yaml.format.enable": true,
     "yaml.format.proseWrap": "always",
     "yaml.format.singleQuote": true,
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
     "[go]": {
         "editor.defaultFormatter": "golang.go"
     },
