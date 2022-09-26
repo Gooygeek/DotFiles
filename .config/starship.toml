@@ -19,6 +19,7 @@ symbol = "🌩️"
 disabled = true
 
 [custom.git_email]
+disabled = true
 format = '[| $symbol $output]($style) '
 command = "git config user.email"
 symbol = "📧"
@@ -26,6 +27,7 @@ style = "white"
 detect_folders = ['.git']
 
 [custom.ssh_key]
+disabled = true
 format = '[| $symbol $output]($style) '
 command = "ssh-add -l | head -n 1 | awk '{if ($3 == \"has\") {print \"NO KEY\"} else {print $3}}'"
 symbol = "🔑"
