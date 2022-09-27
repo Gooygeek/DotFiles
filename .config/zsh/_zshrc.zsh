@@ -29,7 +29,7 @@ done
 
 
 ## History
-. $config_root/display.zsh
+. $config_root/history.zsh
 
 
 ## Keybindings
