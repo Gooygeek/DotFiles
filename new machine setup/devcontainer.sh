@@ -1,6 +1,6 @@
 
 # Make local bin folder
-mkdir ~/.local/bin
+mkdir -p ~/.local/bin
 cd ~/.local/bin
 
 # Homebrew
