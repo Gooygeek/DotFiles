@@ -47,3 +47,8 @@ install: # Copy config files
 	@echo ". ~/.bash_custom" >| ~/.bashrc
 	@echo "Done"
 	@tput bel
+
+.PHONY: devcontainer-setup
+devcontainer-setup:
+	chmod +x ./new\ machine\ setup/devcontainer.sh
+	./new\ machine\ setup/devcontainer.sh
