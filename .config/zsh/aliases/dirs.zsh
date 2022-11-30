@@ -13,6 +13,7 @@ alias ls='ls -AF --format=horizontal --color=auto'
 # 	- Human readable filesize
 # 	- Nicer timestamp
 alias lls='ls -AFltrh --time-style long-iso --color=auto'
+alias ll='lls'
 
 # Create all parent directories too
 alias mkdir='mkdir -p'
