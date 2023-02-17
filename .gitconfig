@@ -17,6 +17,8 @@
 [commit]
     template = ~/.config/git/gitmessage
     gpgSign = true
+[diff]
+	wsErrorHighlight = all
 
 # Add delta as the diff tool
 #[include]
