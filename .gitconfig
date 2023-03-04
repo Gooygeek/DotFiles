@@ -3,6 +3,7 @@
 [core]
     # set vim as the default editor for commit messagees
     editor = vim
+    # Always use linux line endings
     autocrlf = input
     eol = lf
     excludesFile = ~/.config/git/gitignore_global
@@ -12,13 +13,31 @@
 [color]
     # enable colours
     ui = true
+[pull]
+    # This is GREAT… when you know what you're doing and are careful
+    # not to pull --no-rebase over a local line containing a true merge.
+    # rebase = true
+    # This option, which does away with the one gotcha of
+    # auto-rebasing on pulls, is only available from 1.8.5 onwards.
+    # rebase = preserve
+    # WARNING! This option, which is the latest variation, is only
+    # available from 2.18 onwards.
+    rebase = merges
 [push]
+    # Pushes the current branch with the same name on the remote.
     default = simple
 [commit]
     template = ~/.config/git/gitmessage
     gpgSign = true
 [diff]
-	wsErrorHighlight = all
+    # Highlight removed whitespace
+    wsErrorHighlight = all
+    # Use different colors for lines that have moved (instead of assuming they are deletion and addition)
+    colorMoved = zebra
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+    mnemonicPrefix = true
+    # Show renames/moves as such
+    renames = true
 
 # Add delta as the diff tool
 #[include]
