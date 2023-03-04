@@ -1,0 +1,12 @@
+[
+    {
+        "key": "cmd+f", // "ctrl+f" on Windows/Linux
+        "command": "-list.find",
+        "when": "listFocus && listSupportsFind"
+    },
+    {
+        "key": "ctrl+f", // "cmd+f" on Windows/Linux
+        "command": "-list.find",
+        "when": "listFocus && listSupportsFind"
+    }
+]
