@@ -14,18 +14,16 @@
     # enable colours
     ui = true
 [pull]
-    # This is GREAT… when you know what you're doing and are careful
-    # not to pull --no-rebase over a local line containing a true merge.
-    # rebase = true
-    # This option, which does away with the one gotcha of
-    # auto-rebasing on pulls, is only available from 1.8.5 onwards.
-    # rebase = preserve
-    # WARNING! This option, which is the latest variation, is only
-    # available from 2.18 onwards.
+    # Rebase when pulling rather than merging and fast-forwarding
+    # Setting to 'merges' will preserve any merges already on the local branch
     rebase = merges
 [push]
     # Pushes the current branch with the same name on the remote.
     default = simple
+    # --force-with-lease (used by default in lazygit but has no config to enforce) ensures that force pushes will fail if there are changes on the remote that are not fetched (local representation doesn't know about them)
+    # If combined with --force-if-includes, it will fail if there are changes on the remote that are not in the reflog (i.e. changes were fetched but not merged and thus a commit was not changed leading that needs to be forced)
+    # Fantastic explaination of this option: https://stackoverflow.com/a/65839129
+    useForceIfIncludes = true
 [commit]
     template = ~/.config/git/gitmessage
     gpgSign = true
