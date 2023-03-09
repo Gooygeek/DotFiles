@@ -9,4 +9,8 @@ if [[ -d /home/linuxbrew/ ]]; then
     PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 fi
 
+if [[ -d $HOME/.fzf/ ]]; then
+    PATH="$HOME/.fzf/bin:$PATH"
+fi
+
 PATH="$HOME/.local/bin:$PATH"
