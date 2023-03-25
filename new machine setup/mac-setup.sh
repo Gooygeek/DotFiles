@@ -24,7 +24,6 @@ brew install tree
 brew install jq
 brew install fzf
 brew install lazygit
-brew install git-delta
 brew install ripgrep
 brew install fd
 brew install tmux
