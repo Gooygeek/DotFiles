@@ -32,8 +32,6 @@
     wsErrorHighlight = all
     # Use different colors for lines that have moved (instead of assuming they are deletion and addition)
     colorMoved = zebra
-    # Use better, descriptive initials (c, i, w) instead of a/b.
-    mnemonicPrefix = true
     # Show renames/moves as such
     renames = true
 
