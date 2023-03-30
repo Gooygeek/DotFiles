@@ -26,6 +26,7 @@ brew install fzf
 brew install lazygit
 brew install ripgrep
 brew install fd
+brew install bat
 brew install tmux
 brew install kubernetes-cli
 brew install kubectx
