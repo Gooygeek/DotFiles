@@ -11,7 +11,7 @@ fi
 
 if command -v fzf >/dev/null 2>&1; then
   # Display at the top of the screen
-  # Toggle preview window visibility with '?'
+  # Toggle preview window visibility with '?' with shift up/down to scroll the preview
   # Select all entries with 'CTRL-A'
   # Copy the selected entries to the clipboard with 'CTRL-Y'
   # Open the selected entries in vim with 'CTRL-E'
@@ -28,7 +28,7 @@ if command -v fzf >/dev/null 2>&1; then
     --preview-window=:hidden
     --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 
-    --bind '?:toggle-preview'
+    --bind '?:toggle-preview,shift-up:preview-up,shift-down:preview-down'
     --bind 'ctrl-a:select-all'
     --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
     --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
