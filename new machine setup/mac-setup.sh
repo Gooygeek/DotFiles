@@ -23,6 +23,7 @@ brew install dos2unix
 brew install tree
 brew install jq
 brew install fzf
+brew install nnn
 brew install lazygit
 brew install ripgrep
 brew install fd
@@ -46,13 +47,15 @@ brew install pipenv
 pip3 install wheel
 pip3 install black flake8
 
+# tmux plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# nnn plugins
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
 # Post install config
 
 $(brew --prefix)/opt/fzf/install
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 gcloud components install gke-gcloud-auth-plugin
 
