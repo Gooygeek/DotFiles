@@ -1,0 +1,7 @@
+#compdef tm tmk
+
+__list_tmux_sessions() {
+    tmux list-sessions | cut -d ':' -f 1
+}
+
+_alternative "arguments:Sessions:($(__list_tmux_sessions))"
