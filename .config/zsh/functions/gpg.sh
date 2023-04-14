@@ -1,6 +1,6 @@
 
 # Unlock the gpg key used by the current git config to add it to the gpg-agent password cache
-unlock-current-git-gpg-key() {
+gpg-unlock-current-git-key() {
     KeyId=$(git config --get user.signingKey)
     KeyGrip=$(gpg --with-keygrip --list-secret-keys ${KeyId} | head -3 | tail -1 | awk '{print $3}')
     KeyEmail=$(gpg --with-keygrip --list-secret-keys ${KeyId} | grep -o "<.*@.*>")
@@ -10,10 +10,10 @@ unlock-current-git-gpg-key() {
 }
 
 # Reload config and clear password cache
-reload-gpg-agent() {
+gpg-reload-agent() {
     echo "RELOADAGENT" | gpg-connect-agent > /dev/null
 }
 
-kill-gpg-agent() {
+gpg-kill-agent() {
     pkill -9 gpg-agent ; gpg-agent --daemon >/dev/null
 }
