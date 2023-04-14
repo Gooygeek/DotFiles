@@ -4,3 +4,5 @@ alias g='git'
 
 # Unlock gpg key before opening lazygit
 alias lg='unlock-current-git-gpg-key; lazygit'
+
+alias gishe='gite;sshe'
