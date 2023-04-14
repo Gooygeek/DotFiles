@@ -15,6 +15,9 @@ usage() {
     echo "      Load a gcp configuration set."
     echo "      Gives a selection of configuration sets."
     echo ""
+    echo "    a | auth )"
+    echo "      Authenticate / login."
+    echo ""
     echo "    s | show )"
     echo "      Shows the currently loaded configuration set."
     echo ""
@@ -99,6 +102,9 @@ main() {
 
     elif [[ "${1}" == 'c' || "${1}" == 'clear' ]]; then
       rm ~/.config/gcloud/active_config
+
+    elif [[ "${1}" == 'a' || "${1}" == 'auth' ]]; then
+      gcloud auth login
 
     elif [[ "${1}" == 's' || "${1}" == 'show' ]]; then
       gcloud config list
