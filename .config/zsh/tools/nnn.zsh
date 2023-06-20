@@ -26,8 +26,10 @@ n ()
     # stty lwrap undef
     # stty lnext undef
 
-    # Only enable preview-tui if running within tmux
+    # Only enable preview-tui if running within a supported version of tmux or in kitty
     if [ -e "${TMUX%%,*}" ] && tmux -V | grep -q '[ -][3456789]\.'; then
+        _NNN_PLUG="p:preview-tui;$NNN_PLUG"
+    elif [ -n "$KITTY_LISTEN_ON" ]; then
         _NNN_PLUG="p:preview-tui;$NNN_PLUG"
     else
         _NNN_PLUG="$NNN_PLUG"
