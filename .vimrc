@@ -29,6 +29,21 @@ set scrolloff=3 "maintain a minimum of 3 lines above and below the cursor. Excep
 set visualbell "flash the screen if attempting an invlaid operation
 
 set nolist "list displays tabs and EOLs
+
+" Change cursor mode depending on the mode.
+" This uses weird vi variables set using particular escape sequences
+" Details here: https://gist.github.com/Gooygeek/5ec54b4b9b777dac06d8ef8441ffc4fa
+" Starting Vim (blinking block in normal mode):
+let &t_TI .= "\e[1 q"
+" Starting Insert Mode (blinking bar):
+let &t_SI .= "\e[5 q"
+" Starting Replace Mode (blicking underline):
+let &t_SR .= "\e[3 q"
+" Exiting Insert Mode (blicking block):
+let &t_EI .= "\e[1 q"
+" Exiting Vim (reset):
+let &t_TE .= "\e[0 q"
+
 " }}}
 
 " Statusline {{{
