@@ -38,6 +38,7 @@ install: # Copy config files
 	@rsync -r -q .local ~/
 	@rsync -r -q .gnupg ~/
 	@rsync -r -q .config ~/
+	@rsync -r -q .password-store ~/
 	@rsync -r .zshrc ~/
 	@echo "Done"
 	@tput bel
