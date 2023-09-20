@@ -8,11 +8,11 @@ config_root=~/.config/zsh
 # Determine platform
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     machine=Linux;;
-    Darwin*)    machine=Mac;;
-    CYGWIN*)    machine=Cygwin;;
-    MINGW*)     machine=MinGw;;
-    *)          machine="UNKNOWN:${unameOut}"
+    Linux*)     export machine=Linux;;
+    Darwin*)    export machine=Mac;;
+    CYGWIN*)    export machine=Cygwin;;
+    MINGW*)     export machine=MinGw;;
+    *)          export machine="UNKNOWN:${unameOut}"
 esac
 
 # Easy way to reload the zsh Config
