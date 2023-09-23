@@ -37,6 +37,9 @@ unsetopt CLOBBER
 # Great for adding tags to commands for fzf history searching
 setopt INTERACTIVE_COMMENTS
 
+# no c-s/c-q output freezing
+setopt NO_FLOW_CONTROL
+
 ## Prompting
 
 ## Scripts and Functions
@@ -52,3 +55,11 @@ setopt SH_WORD_SPLIT
 ## Shell State
 
 ## Zle
+
+## Other
+
+# display PID when suspending processes as well
+setopt LONG_LIST_JOBS
+
+# report the status of backgrounds jobs immediately
+setopt NOTIFY
