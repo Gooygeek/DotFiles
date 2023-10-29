@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Set the directory to scan
+DIR=$1
+
+QUARANTEEN_DIR="/VIRUS"
+EXCLUDE_DIR="torrent_files"
+
+# Set the maximum file size to scan in KB.
+# This limits the files that is passed to clamav.
+# Clamav is still set to the max limit,
+#     this accounts for extracting archives and different algorithms used to determine filesize.
+MAX_FILE_SIZE=$((1024*1024*1024/2)) # 500 MB
+
+# Get a list of files to scan
+FILES=$(find "$DIR" -type f -not -path "*/$EXCLUDE_DIR/*")
+if [[ -z "$FILES" ]]; then
+    echo "Error: Directory not found or no files to scan"
+    exit 1
+fi
+ALL_FILE_COUNT=$(wc -l <<< "$FILES")
+echo "Files detected: $ALL_FILE_COUNT"
+
+# Check if any files are too big
+while IFS= read -r -d $'\n' file; do
+    size=$(stat -c%s "$file")
+    if ((size > MAX_FILE_SIZE)); then
+        mime=$(file --mime-type --mime-encoding -b "$file")
+        if [[ $mime != video/* ]]; then
+            echo -e "\033[0;31mWARN\033[0m: Skipping $file {$mime}. File is too big to reliably scan and may contain a virus (non-video)."
+        else
+            echo -e "\033[0;33mINFO\033[0m: Skipping $file {$mime}. File is too big to reliably scan"
+        fi
+    else
+        FILE_LIST+=("$file")
+    fi
+done <<< "$FILES"
+
+
+FILE_COUNT=${#FILE_LIST[@]}
+echo "Files to scan: $FILE_COUNT"
+
+# Run clamscan on the remaining files
+if [[ -n "$FILE_LIST" ]]; then
+    i=0
+    clamscan -r --bell --move=$QUARANTEEN_DIR --max-filesize=4000M --max-scansize=4000M "${FILE_LIST[@]}" | while read line; do
+        i=$(($i+1))
+        progress=$((100*$i/$FILE_COUNT))
+        if [[ $i -le $FILE_COUNT ]]; then
+            echo -n "Scan progress: $i/$FILE_COUNT $progress% - "
+        fi
+        echo $line
+    done
+else
+    echo "No files to scan"
+fi
