@@ -1,0 +1,101 @@
+{
+    "CSS": {
+        "beautifiers": [
+            "Prettier", "Pretty Diff", "JS-Beautify"
+        ],
+        "indent_style": "space",
+        "align_assignments": true,
+        "break_chained_methods": true,
+        "end_with_comma": true,
+        "end_with_semicolon": true,
+        "indent_comments": true,
+        "newline_between_rules": true,
+        "no_leading_zero": false,
+        "pragma_insert": false,
+        "pragma_require": false,
+        "space_after_anon_function": true,
+        "end_with_newline": true,
+        "preserve_newlines": false,
+        "indent_size": 2
+    },
+    "JSON": {
+        "beautifiers": [
+            "Prettier", "Pretty Diff", "JS-Beautify"
+        ],
+        "indent_style": "space",
+        "wrap_line_length": 9,
+        "align_assignments": true,
+        "break_chained_methods": true,
+        "end_with_comma": true,
+        "end_with_semicolon": true,
+        "newline_between_rules": true,
+        "no_leading_zero": false,
+        "pragma_insert": false,
+        "pragma_require": false,
+        "space_after_anon_function": true,
+        "end_with_newline": true,
+        "preserve_newlines": false,
+        "arrow_parens": "as-needed",
+        "brace_style": "expand",
+        "comma_first": false,
+        "keep_array_indentation": true,
+        "object_curly_spacing": true,
+        "space_in_empty_paren": false,
+        "indent_size": 2
+    },
+    "Markdown": {
+        "beautifiers": ["Prettier"],
+        "indent_style": "space",
+        "wrap_line_length": 16,
+        "pragma_insert": false,
+        "pragma_require": false,
+        "indent_size": 4
+    },
+    "Less": {
+        "beautifiers": [
+            "Prettier", "Pretty Diff"
+        ],
+        "indent_style": "space",
+        "align_assignments": true,
+        "break_chained_methods": true,
+        "end_with_comma": true,
+        "end_with_semicolon": true,
+        "indent_comments": true,
+        "newline_between_rules": true,
+        "no_leading_zero": false,
+        "pragma_insert": false,
+        "pragma_require": false,
+        "space_after_anon_function": true,
+        "indent_size": 2
+    },
+    "SCSS": {
+        "beautifiers": [
+            "Prettier", "Pretty Diff"
+        ],
+        "indent_style": "space",
+        "align_assignments": true,
+        "break_chained_methods": true,
+        "end_with_comma": true,
+        "end_with_semicolon": true,
+        "indent_comments": true,
+        "newline_between_rules": true,
+        "no_leading_zero": false,
+        "pragma_insert": false,
+        "pragma_require": false,
+        "space_after_anon_function": true,
+        "indent_size": 2
+    },
+    "Sass": {
+        "beautifiers": ["Pretty Diff"],
+        "indent_style": "space",
+        "align_assignments": true,
+        "break_chained_methods": true,
+        "end_with_comma": true,
+        "indent_comments": true,
+        "max_preserve_newlines": 0,
+        "newline_between_rules": true,
+        "no_leading_zero": false,
+        "space_after_anon_function": true,
+        "indent_size": 2
+    }
+}

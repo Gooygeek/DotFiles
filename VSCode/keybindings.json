@@ -8,5 +8,35 @@
         "key": "ctrl+f", // "cmd+f" on Windows/Linux
         "command": "-list.find",
         "when": "listFocus && listSupportsFind"
+    },
+    {
+        "key": "shift+alt+t",
+        "command": "extension.changeCase.commands"
+    },
+    {
+        "key": "shift+alt+y shift+alt+j",
+        "command": "json2yaml.toJSON"
+    },
+    {
+        "key": "shift+alt+j shift+alt+y",
+        "command": "json2yaml.toYAML"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "toggleVim"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorTextFocus &&  editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+c shift+alt+c",
+        "command": "editor.action.toggleColumnSelection"
     }
 ]
