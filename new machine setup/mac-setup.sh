@@ -35,9 +35,14 @@ brew install helm
 brew install k9s
 brew install tfenv
 brew install starship
-brew install go
 brew install shellcheck
 brew install pre-commit
+brew install unzip
+
+brew install hugo
+
+brew install yt-dlp
+brew install ffmpeg
 
 brew install awscli
 brew install --cask google-cloud-sdk
@@ -46,6 +51,8 @@ brew install python3
 brew install pipenv
 pip3 install wheel
 pip3 install black flake8
+
+brew install go
 
 # tmux plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
