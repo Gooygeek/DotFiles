@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+if [[ -z $1 ]] || [[ $1 == "-" ]]; then
+    input=$(mktemp)
+    trap 'rm -f "$input"' EXIT
+    cat /dev/stdin > $input
+else
+    input=$1
+fi
+
+echo '' \
+    | fzf --disabled \
+        --preview-window='up:90%' \
+        --print-query \
+        --query="." \
+        --preview \
+        "jq --color-output -r {q} $input" \
+        --bind "shift-right:become(jq --color-output -r {q} $input)"
