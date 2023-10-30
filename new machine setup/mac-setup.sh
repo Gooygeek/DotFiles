@@ -20,6 +20,7 @@ brew install zsh
 brew install make
 brew install gnupg
 brew install dos2unix
+brew install moreutils
 brew install tree
 brew install jq
 brew install fzf
