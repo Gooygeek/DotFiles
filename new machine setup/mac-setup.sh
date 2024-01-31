@@ -39,6 +39,7 @@ brew install starship
 brew install shellcheck
 brew install pre-commit
 brew install unzip
+brew install pass
 
 brew install hugo
 
