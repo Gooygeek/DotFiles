@@ -51,7 +51,7 @@ brew install --cask google-cloud-sdk
 brew install python3
 brew install pipenv
 pip3 install wheel
-pip3 install black flake8
+pip3 install black yapf flake8
 
 brew install go
 
