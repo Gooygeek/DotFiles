@@ -1,0 +1,52 @@
+[window]
+padding = {x = 5, y = 5}
+#dynamic_padding = true
+
+option_as_alt = "both"
+
+[font]
+normal = { family = "0xProto Nerd Font", style = "Regular" }
+
+[colors]
+
+#When true, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+
+foreground = "#F8F8F2"
+background = "#262626"
+bright_foreground = "#CCCCC6"
+
+[colors.normal]
+
+black = "#000000"
+red = "#F92672"
+green = "#97E123"
+yellow = "#DFD460"
+blue = "#0F7FCF"
+magenta = "#8700FF"
+cyan = "#43A7CF"
+white = "#BBBBBB"
+
+[colors.bright]
+
+black = "#75715E"
+red = "#F6669D"
+green = "#B3F361"
+yellow = "#FD971F"
+blue = "#00AFFF"
+magenta = "#AF81FF"
+cyan = "#66D9EF"
+white = "#FFFFFF"
+
+[bell]
+
+duration = 100
+
+animation = "EaseOutSine"
+
+[cursor]
+
+style = {shape = "block", blinking = "on"}
+
