@@ -8,6 +8,7 @@
     ai = add -i
     ap = add --patch  # Asked whether to add on a per-change basis
     unstage = reset HEAD --
+    prune-tags = !git tag -l | xargs git tag -d && git fetch -t # Delete local tags that are not on the remote
 
     # Branch #
     b = branch

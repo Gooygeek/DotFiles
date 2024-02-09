@@ -30,6 +30,7 @@ This will not be a complete enumeration of all aliases, but will cover some of t
 - `unstage`: Remove all files from the stage
 - `publish`: Push, but also set upstream (useful when pushing a branch for the first time)
 - `untrack`: Remove upstream branch information (useful when renaming a branch)
+- `prune-tags`: Remove all tags that exist locally but not on the remote (important, as a push would recreate those tags on the remote)
 
 ### Global ignore file
 
