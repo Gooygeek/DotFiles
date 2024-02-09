@@ -56,7 +56,8 @@ done
 
 ## Autocompletions
 autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -C
+# -C means it won't check to recreate the cache, which is a slow process
 
 for file in $config_root/completions/*.zsh; do
     . $file

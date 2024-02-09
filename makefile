@@ -40,6 +40,7 @@ install: # Copy config files
 	@rsync -r -q .config ~/
 	@rsync -r -q .password-store ~/
 	@rsync -r .zshrc ~/
+	@rm ~/.zcompdump # Needed to force a refresh of the completion cache
 	@echo "Done"
 	@tput bel
 
