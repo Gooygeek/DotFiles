@@ -39,7 +39,9 @@
     "editor.guides.bracketPairs": false,
     "editor.guides.highlightActiveIndentation": false,
     "editor.guides.indentation": false,
+    "editor.inlayHints.enabled": "off",
     "editor.inlineSuggest.enabled": true,
+    "editor.inlineSuggest.fontFamily": "'ComicMono Nerd Font', 'Courier New', monospace",
     "editor.minimap.renderCharacters": true,
     "editor.minimap.maxColumn": 200,
     "editor.minimap.showSlider": "always",
@@ -66,10 +68,7 @@
     "files.trimTrailingWhitespace": true,
     "git.mergeEditor": true,
     "github.copilot.enable": {
-        "*": true,
-        "yaml": true,
-        "plaintext": true,
-        "markdown": true
+        "*": true
     },
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
@@ -106,14 +105,6 @@
     "remote.SSH.defaultExtensions": [],
     "remote.SSH.showLoginTerminal": true,
     "svelte.enable-ts-plugin": true,
-    "sync.autoDownload": false,
-    "sync.autoUpload": false,
-    "sync.forceDownload": false,
-    "sync.forceUpload": true,
-    "sync.gist": "8fc8e20a442ec4f38832449ea9cb0177",
-    "sync.quietSync": false,
-    "sync.removeExtensions": true,
-    "sync.syncExtensions": true,
     "tabnine.experimentalAutoImports": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
@@ -155,7 +146,6 @@
     "window.commandCenter": true,
     "window.titleBarStyle": "custom",
     "window.title": "${activeEditorMedium}${separator}${dirty}",
-    "workbench.activityBar.visible": true,
     "workbench.colorCustomizations": {
         "tab.unfocusedActiveBorder": "#fff0",
         "editor.lineHighlightBackground": "#1073cf2d",
