@@ -1,0 +1,6 @@
+#compdef git-get
+#description get info about the git repo
+
+_git_get () {
+    compadd $(git get --list)
+}

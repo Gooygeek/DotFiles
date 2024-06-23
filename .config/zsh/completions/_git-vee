@@ -1,0 +1,24 @@
+#compdef git-vee
+#description create a log graph showing the divergence of 2 branches
+
+_git_vee () {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments '*:: :->args'
+
+    case $state in
+        args)
+            case $CURRENT in
+                1)
+                    # Complete with local and remote branches for the first argument
+                    compadd $(print "$(git branch --all --format='%(refname:short)')")
+                    ;;
+                2)
+                    # Complete with local branches only for the second argument
+                    compadd $(print "$(git branch --format='%(refname:short)')")
+                    ;;
+            esac
+            ;;
+    esac
+}

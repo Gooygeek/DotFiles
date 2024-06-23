@@ -1,0 +1,7 @@
+#compdef git-drift
+#description draw an ASCII art picture of two branches side by side, comparing commits.
+
+_git_drift () {
+    # Complete with local and remote branches
+    compadd $(print "$(git branch --all --format='%(refname:short)')")
+}
