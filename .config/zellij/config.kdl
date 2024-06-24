@@ -2,7 +2,8 @@
 keybinds {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
-        bind "Alt c" { Copy; }
+        // bind "Alt c" { Copy; }
+        bind "Ctrl x" { Copy; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
