@@ -33,3 +33,11 @@ command = "ssh-add -l | head -n 1 | awk '{if ($3 == \"has\") {print \"NO KEY\"} 
 symbol = "🔑"
 style = "bold yellow"
 detect_folders = ['.git']
+
+[custom.yazi]
+description = "Indicate the shell was launched by `yazi`"
+format = '[| $symbol depth:$output]($style) '
+command = "echo $YAZI_LEVEL"
+symbol = ""
+style = "bold yellow"
+when = """ test -n "$YAZI_LEVEL" """

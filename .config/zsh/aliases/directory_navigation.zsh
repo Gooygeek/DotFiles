@@ -28,3 +28,6 @@ alias ll='lls'
 
 # Create all parent directories too
 alias mkdir='mkdir -p'
+
+# yazi TUI file manager
+alias y='yazi'

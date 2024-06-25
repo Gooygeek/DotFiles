@@ -1,0 +1,51 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+# `=` to set permissions
+[[manager.prepend_keymap]]
+on = [ "=" ]
+run = """shell 'printf "chmod - Mode Bits: "; read ans; chmod $ans "$@"' --block --confirm"""
+desc = "set permissions via chmod"
+
+# Drop to a shell in the given directory
+[[manager.prepend_keymap]]
+on   = [ "!", "s" ]
+run  = 'shell "$SHELL" --block --confirm'
+desc = "Open shell in current folder"
+
+# Smart enter: enter for directory, open for file
+# See smart-enter plugin
+[[manager.prepend_keymap]]
+on   = [ "<Enter>" ]
+run  = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# Move preview using just page-up and page-down
+# This is overriding the default to move the cursor by a whole page
+# The reason for this is zellij captures many Alt+ keybindings so Alt+Page-Down won't work
+[[manager.prepend_keymap]]
+on   = [ "<PageUp>" ]
+run  = "seek -5"
+desc = "Move the preview up"
+[[manager.prepend_keymap]]
+on   = [ "<PageDown>" ]
+run  = "seek 5"
+desc = "Move the preview down"
+
+# Make tab creation and closure as subcommands under `t`
+# Ctrl+c won't close the tab (perhaps becuase )
+[[manager.prepend_keymap]]
+on   = [ "t", "c" ]
+run  = "tab_create --current"
+desc = "Create new a tab"
+[[manager.prepend_keymap]]
+on   = [ "t", "q" ]
+run  = "close"
+desc = "Close the current tab"
+
+# Close input on the first Esc press (usually takes 2)
+[[input.prepend_keymap]]
+on   = [ "<Esc>" ]
+run  = "close"
+desc = "Cancel input"

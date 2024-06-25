@@ -25,6 +25,8 @@ brew install tree
 brew install jq
 brew install fzf
 brew install nnn
+brew install yazi
+brew install unar
 brew install lazygit
 brew install ripgrep
 brew install fd
