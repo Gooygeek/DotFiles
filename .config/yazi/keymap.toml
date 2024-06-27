@@ -3,10 +3,18 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 # `=` to set permissions
+# Does not require a plugin
 [[manager.prepend_keymap]]
 on = [ "=" ]
 run = """shell 'printf "chmod - Mode Bits: "; read ans; chmod $ans "$@"' --block --confirm"""
 desc = "set permissions via chmod"
+
+# `c -> m` to set permissions
+# this is a nicer interface than the `=` version
+[[manager.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
 
 # Drop to a shell in the given directory
 [[manager.prepend_keymap]]
