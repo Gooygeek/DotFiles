@@ -44,9 +44,9 @@ desc = "Move the preview down"
 # Make tab creation and closure as subcommands under `t`
 # Ctrl+c won't close the tab (perhaps becuase )
 [[manager.prepend_keymap]]
-on   = [ "t", "c" ]
+on   = [ "t", "n" ]
 run  = "tab_create --current"
-desc = "Create new a tab"
+desc = "New tab"
 [[manager.prepend_keymap]]
 on   = [ "t", "q" ]
 run  = "close"
