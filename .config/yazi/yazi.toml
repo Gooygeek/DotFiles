@@ -9,7 +9,14 @@ sort_by        = "natural"
 sort_dir_first = true
 
 # Don't show the symlink target (this is replaced by the symlink in the status bar)
-show_symlink = false 
+show_symlink = false
 
 [preview]
 tab_size = 2
+
+[input]
+# Move the filter search box to the centre
+# The default is the top-center, but given the filtered items are shifted to the top
+#   this makes it hard to see when there are only a few items in the (remaining) list
+filter_origin  = "center"
+filter_offset  = [ 0, 0, 50, 3 ]
