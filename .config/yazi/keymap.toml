@@ -57,3 +57,11 @@ desc = "Close the current tab"
 on   = [ "<Esc>" ]
 run  = "close"
 desc = "Cancel input"
+
+# Activate Smart Filter plugin
+# This auto-opens folders/files when it's filtered to just 1 item
+[[manager.prepend_keymap]]
+on   = [ "F" ]
+run  = "plugin smart-filter"
+desc = "Smart Filter (plugin)"
+
