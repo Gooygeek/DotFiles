@@ -142,6 +142,7 @@
     untrack = branch --unset-upstream
     type = cat-file -t
     dump = cat-file -p
+    grr = reset --hard origin/$(git rev-parse --abbrev-ref HEAD) # Reset to the upstream
 
     # Advanced Log and Summary #
 
