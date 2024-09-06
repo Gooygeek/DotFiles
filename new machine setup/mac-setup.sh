@@ -26,7 +26,7 @@ brew install jq
 brew install fzf
 brew install nnn
 brew install yazi
-brew install unar
+brew install 7zip
 brew install lazygit
 brew install ripgrep
 brew install fd
