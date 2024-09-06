@@ -39,11 +39,10 @@
     "editor.guides.bracketPairs": false,
     "editor.guides.highlightActiveIndentation": false,
     "editor.guides.indentation": false,
-    "editor.inlayHints.enabled": "off",
     "editor.inlineSuggest.enabled": true,
     "editor.inlineSuggest.fontFamily": "'ComicMono Nerd Font', 'Courier New', monospace",
-    "editor.minimap.renderCharacters": true,
     "editor.minimap.maxColumn": 200,
+    "editor.minimap.renderCharacters": true,
     "editor.minimap.showSlider": "always",
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "all",
@@ -66,6 +65,7 @@
     "files.eol": "\n",
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "git.ignoreMissingGitWarning": true,
     "git.mergeEditor": true,
     "github.copilot.enable": {
         "*": true
@@ -78,7 +78,7 @@
     "gitlens.mode.statusBar.enabled": false,
     "gitlens.statusBar.alignment": "left",
     "gitlens.views.repositories.files.layout": "tree",
-    "git.ignoreMissingGitWarning": true,
+    "go.toolsManagement.autoUpdate": true,
     "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
     "indentRainbow.ignoreErrorLanguages": [
         "plaintext"
@@ -106,12 +106,10 @@
     "remote.SSH.showLoginTerminal": true,
     "svelte.enable-ts-plugin": true,
     "tabnine.experimentalAutoImports": true,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
     "telemetry.telemetryLevel": "off",
-    "terraform.languageServer.enable": true,
     "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "terminal.integrated.cursorBlinking": true,
+    "terraform.languageServer.enable": true,
     "vsicons.associations.files": [
         {
             "icon": "cloudformation",
@@ -129,12 +127,11 @@
             "format": "svg"
         },
         {
-            "icon": "terraform",
-            "extensions": [
-                "tf",
-                "tfvars"
-            ],
-            "format": "svg"
+        "filenamesGlob": ["Taskfile", "Taskfile.dist"],
+        "extensionsGlob": ["yml", "yaml"],
+        "filename": true,
+        "format": "svg",
+        "icon": "taskfile"
         }
     ],
     "vsicons.dontShowNewVersionMessage": true,
@@ -144,12 +141,12 @@
         "vscode-kubernetes.minikube-path.windows": "C:\\Users\\kgoldsworthy\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
     },
     "window.commandCenter": true,
-    "window.titleBarStyle": "custom",
     "window.title": "${activeEditorMedium}${separator}${dirty}",
+    "window.titleBarStyle": "custom",
     "workbench.colorCustomizations": {
-        "tab.unfocusedActiveBorder": "#fff0",
         "editor.lineHighlightBackground": "#1073cf2d",
-        "editor.lineHighlightBorder": "#9fced11f"
+        "editor.lineHighlightBorder": "#9fced11f",
+        "tab.unfocusedActiveBorder": "#fff0"
     },
     "workbench.colorTheme": "Monokai",
     "workbench.editor.focusRecentEditorAfterClose": false,
@@ -162,6 +159,7 @@
     "workbench.settings.editor": "json",
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.startupEditor": "none",
+    "workbench.tree.enableStickyScroll": true,
     "yaml.customTags": [
         "!Ref",
         "!GetAtt",
@@ -206,17 +204,17 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[markdown]": {
-        "editor.wordWrap": "off",
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
         "editor.quickSuggestions": {
             "comments": "off",
             "strings": "off",
             "other": "off"
         },
-        "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.wordWrap": "off"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
     },
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust",
