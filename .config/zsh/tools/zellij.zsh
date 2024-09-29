@@ -6,3 +6,11 @@ function zjm() {
         zj a main
     fi
 }
+
+
+# Delete and recreate main
+function zjrm() {
+    zj -d main
+    zj -l main -s main
+}
+
