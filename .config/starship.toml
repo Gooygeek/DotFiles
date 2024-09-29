@@ -3,14 +3,17 @@
 # The default timeout causes it to crash, thus you can increase the timeout
 #command_timeout = 10000
 
+[directory]
+style = "bright-cyan"
+
 [aws]
 format = '[| AWS $symbol ($profile )(\($region\) )(\[$duration\])]($style)'
-style = "bold 214"
+style = "214"
 symbol = "☁️"
 
 [gcloud]
 format = '[| GCP $symbol $project]($style) '
-style = "bold blue"
+style = "bright-blue"
 symbol = "🌩️"
 
 [terraform]
@@ -31,7 +34,7 @@ disabled = true
 format = '[| $symbol $output]($style) '
 command = "ssh-add -l | head -n 1 | awk '{if ($3 == \"has\") {print \"NO KEY\"} else {print $3}}'"
 symbol = "🔑"
-style = "bold yellow"
+style = "bright-yellow"
 detect_folders = ['.git']
 
 [custom.yazi]
@@ -39,5 +42,5 @@ description = "Indicate the shell was launched by `yazi`"
 format = '[| $symbol depth:$output]($style) '
 command = "echo $YAZI_LEVEL"
 symbol = ""
-style = "bold yellow"
+style = "bright-yellow"
 when = """ test -n "$YAZI_LEVEL" """
