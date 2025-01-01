@@ -65,3 +65,9 @@ on   = [ "F" ]
 run  = "plugin smart-filter"
 desc = "Filter but when filtered to a single item, it'll auto-open"
 
+# Activate the diff plugin
+# Generates a diff between the 'selected' and the 'hovered' items
+[[manager.prepend_keymap]]
+on   = [ "<C-d>" ]
+run  = "plugin diff"
+desc = "Diff the selected with the hovered file"
