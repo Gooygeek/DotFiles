@@ -1,3 +1,5 @@
+-- Makes filters smarter: continuous filtering, automatically enter unique directory, open file on submitting.
+
 local hovered = ya.sync(function()
 	local h = cx.active.current.hovered
 	if not h then

@@ -39,7 +39,6 @@ local dynamic_input_position = ya.sync(function()
 	return position
 end)
 
-
 return {
 	entry = function()
 		ya.manager_emit("escape", { visual = true })

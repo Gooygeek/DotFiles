@@ -71,9 +71,9 @@ permissions_s = { fg = "#75715E" } # brightback (dark grey)
 # : }}}
 
 
-# : Select {{{
+# : Pick {{{
 
-[select]
+[pick]
 border   = { fg = "#BBBBBB" } # white (light grey)
 active   = { fg = "#AF81FF" } # brightmagenta
 inactive = {}
@@ -173,11 +173,11 @@ rules = [
     # Archives
     { mime = "application/zip",             fg = "#F92672" }, # red
     { mime = "application/gzip",            fg = "#F92672" }, # red
-    { mime = "application/x-tar",           fg = "#F92672" }, # red
-    { mime = "application/x-bzip",          fg = "#F92672" }, # red
-    { mime = "application/x-bzip2",         fg = "#F92672" }, # red
-    { mime = "application/x-7z-compressed", fg = "#F92672" }, # red
-    { mime = "application/x-rar",           fg = "#F92672" }, # red
+    { mime = "application/tar",           fg = "#F92672" }, # red
+    { mime = "application/bzip",          fg = "#F92672" }, # red
+    { mime = "application/bzip2",         fg = "#F92672" }, # red
+    { mime = "application/7z-compressed", fg = "#F92672" }, # red
+    { mime = "application/rar",           fg = "#F92672" }, # red
     { mime = "application/xz",              fg = "#F92672" }, # red
 
     # Documents

@@ -19,14 +19,14 @@ desc = "Chmod on selected files"
 # Drop to a shell in the given directory
 [[manager.prepend_keymap]]
 on   = [ "!", "s" ]
-run  = 'shell "$SHELL" --block --confirm'
+run  = 'shell "$SHELL" --block'
 desc = "Open shell in current folder"
 
 # Smart enter: enter for directory, open for file
 # See smart-enter plugin
 [[manager.prepend_keymap]]
 on   = [ "<Enter>" ]
-run  = "plugin --sync smart-enter"
+run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
 # Move preview using just page-up and page-down
@@ -42,7 +42,7 @@ run  = "seek 5"
 desc = "Move the preview down"
 
 # Make tab creation and closure as subcommands under `t`
-# Ctrl+c won't close the tab (perhaps becuase )
+# Ctrl+c won't close the tab (perhaps because)
 [[manager.prepend_keymap]]
 on   = [ "t", "n" ]
 run  = "tab_create --current"
@@ -63,5 +63,5 @@ desc = "Cancel input"
 [[manager.prepend_keymap]]
 on   = [ "F" ]
 run  = "plugin smart-filter"
-desc = "Smart Filter (plugin)"
+desc = "Filter but when filtered to a single item, it'll auto-open"
 
