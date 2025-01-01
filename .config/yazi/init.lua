@@ -24,3 +24,6 @@ function Status:render(area)
 		table.unpack(Progress:render(area, right:width())),
 	}
 end
+
+-- Show git status inline
+require("git"):setup()
