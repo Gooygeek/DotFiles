@@ -195,6 +195,7 @@ nnoremap <silent> <leader>ln :set invrelativenumber<CR>
 " Toggle spell checker
 nnoremap <silent> <leader>s :set invspell<CR>
 set spelllang=en_au "set the spelling language
+set spelloptions=camel "Split camelCase words and check spelling on subwords
 
 " Load filetype specific configs
 source ~/.vim/configs/.vimfiletype
