@@ -1,0 +1,50 @@
+
+# Note: Some of the settings are the same as the defaults, but I want to preserve them and to highlight that it's something I particularly like
+
+# FONT
+
+font-family = 0xProto
+
+# THEME
+
+theme = monokai-custom.theme
+
+# CURSOR
+
+# alt+click to move the cursor
+cursor-click-to-move = true
+
+# The following settings don't seem to be working on MacOS
+# cursor-color
+# cursor-invert-fg-bg
+# cursor-style
+
+# MOUSE
+
+mouse-hide-while-typing = true
+
+# LINKS
+
+# Does not work in zellij properly
+
+# WINDOW
+
+window-new-tab-position = end
+
+# MacOS apps often don't exit when you close the last window. I find this stupid, so lets fix it.
+quit-after-last-window-closed = true
+
+# KEYBOARD
+
+# Certain keyboard configurations default this to true, but this ensures it works as expected
+macos-option-as-alt = true
+
+# See keybinds import below
+
+
+# OTHER
+
+# Imported config files are always loaded last. The import statements are put at the end of the file to represent that.
+
+config-file = ?keybinds.conf
+config-file = ?system-specific.conf

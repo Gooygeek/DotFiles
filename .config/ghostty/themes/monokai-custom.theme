@@ -1,0 +1,50 @@
+background = #262626
+foreground = #f8f8f2
+
+selection-background = #fffacd
+selection-foreground = #000000
+
+cursor-color = #f8f8f2
+cursor-text = #FFFFFF
+
+# black
+palette = 0=#000000
+palette = 8=#75715e
+
+# red
+palette = 1=#f52068
+palette = 9=#ff2f81
+
+# green
+palette = 2=#97e123
+palette = 10=#b3f361
+
+# yellow
+palette = 3=#dfd460
+palette = 11=#fd971f
+
+# blue
+palette = 4=#0f7fcf
+palette = 12=#00afff
+
+# magenta
+palette = 5=#8700ff
+palette = 13=#ae81ff
+
+# cyan
+palette = 6=#42a7cf
+palette = 14=#66d9ef
+
+# white
+palette = 7=#f8f8f2
+palette = 15=#ffffff
+
+bold-is-bright = true
+
+# WINDOW
+
+background-opacity = 0.9
+# Blur only works on MacOS
+background-blur-radius = 20
+
+window-padding-balance = true
