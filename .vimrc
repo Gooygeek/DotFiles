@@ -12,6 +12,13 @@ colorscheme monokai
 "colorscheme solarized
 "set background=dark "tell vim the background will be dark
 "let g:solarized_termcolors=256
+
+" Set Spell Checker colors as to prevent clashes with syntax highlighting. Otherwise some text may become unreadable
+highlight SpellBad   cterm=underline ctermfg=White ctermbg=Red     gui=undercurl guisp=Red
+highlight SpellCap   cterm=underline ctermfg=White ctermbg=Yellow  gui=undercurl guisp=Yellow
+highlight SpellLocal cterm=underline ctermfg=White ctermbg=Magenta gui=undercurl guisp=Magenta
+highlight SpellRare  cterm=underline ctermfg=White ctermbg=Cyan    gui=undercurl guisp=Cyan
+
 " }}}
 
 " UI Layout {{{
