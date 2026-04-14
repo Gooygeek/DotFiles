@@ -195,7 +195,7 @@ iabbr flase false
 
 " Misc {{{
 set backspace=indent,eol,start "backspace works properly
-set modelines=1 "file-custom config line
+set modelines=0 "file-custom config line. Disabled as it's an RCE risk, see CVE-2007-2438.
 set nocompatible "don't try and act like vi
 " Toggle absolute and relative line numbers
 nnoremap <silent> <leader>ln :set invrelativenumber<CR>
