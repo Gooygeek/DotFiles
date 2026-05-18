@@ -6,6 +6,8 @@
     "breadcrumbs.enabled": true,
     "breadcrumbs.filePath": "on",
     "breadcrumbs.symbolPath": "on",
+    "chat.viewSessions.orientation": "stacked",
+    "cSpell.enabled": true,
     "cSpell.userWords": [
         "CIDR",
         "Executables",
@@ -27,20 +29,20 @@
         "amazonaws"
     ],
     "css.lint.idSelector": "warning",
-    "debug.inlineValues": true,
+    "debug.inlineValues": "auto",
     "debug.toolBarLocation": "docked",
     "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.wordWrap": "off",
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.fontFamily": "'0xProto Nerd Font', 'FiraMono Nerd Font', 'Consolas', 'ComicMono Nerd Font', 'Courier New', monospace",
+    "editor.fontFamily": "'0xProto', 'FiraMono Nerd Font', 'Consolas', 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.guides.bracketPairs": false,
     "editor.guides.highlightActiveIndentation": false,
     "editor.guides.indentation": false,
     "editor.inlineSuggest.enabled": true,
-    "editor.inlineSuggest.fontFamily": "'ComicMono Nerd Font', 'Courier New', monospace",
+    "editor.inlineSuggest.fontFamily": "'ComicMono Nerd Font', 'ComicShannsMono Nerd Font', 'Courier New', monospace",
     "editor.minimap.maxColumn": 200,
     "editor.minimap.renderCharacters": true,
     "editor.minimap.showSlider": "always",
@@ -70,15 +72,14 @@
     "github.copilot.enable": {
         "*": true
     },
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
+    "github.copilot.nextEditSuggestions.enabled": true,
     "gitlens.currentLine.format": "${message} • ${author}, ${agoOrDate}",
     "gitlens.defaultDateFormat": "YYYY-MMM-DD-kk:mm:ssZZ",
     "gitlens.mode.statusBar.enabled": false,
     "gitlens.statusBar.alignment": "left",
     "gitlens.views.repositories.files.layout": "tree",
     "go.toolsManagement.autoUpdate": true,
+    "go.goroot": "/opt/homebrew/opt/go/libexec",
     "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
     "indentRainbow.ignoreErrorLanguages": [
         "plaintext"
@@ -90,8 +91,10 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "notebook.lineNumbers": "on",
     "problems.showCurrentInStatus": false,
     "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "standard",
     "python.autoComplete.addBrackets": true,
     "python.formatting.provider": "black",
     "python.formatting.yapfArgs": [
@@ -105,7 +108,6 @@
     "remote.SSH.defaultExtensions": [],
     "remote.SSH.showLoginTerminal": true,
     "svelte.enable-ts-plugin": true,
-    "tabnine.experimentalAutoImports": true,
     "telemetry.telemetryLevel": "off",
     "terminal.external.windowsExec": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "terminal.integrated.cursorBlinking": true,
@@ -127,16 +129,21 @@
             "format": "svg"
         },
         {
-        "filenamesGlob": ["Taskfile", "Taskfile.dist"],
-        "extensionsGlob": ["yml", "yaml"],
-        "filename": true,
-        "format": "svg",
-        "icon": "taskfile"
+            "filenamesGlob": [
+                "Taskfile",
+                "Taskfile.dist"
+            ],
+            "extensionsGlob": [
+                "yml",
+                "yaml"
+            ],
+            "filename": true,
+            "format": "svg",
+            "icon": "taskfile"
         }
     ],
     "vsicons.dontShowNewVersionMessage": true,
     "vsicons.presets.angular": true,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vs-kubernetes": {
         "vscode-kubernetes.minikube-path.windows": "C:\\Users\\kgoldsworthy\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
     },
@@ -146,7 +153,24 @@
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#1073cf2d",
         "editor.lineHighlightBorder": "#9fced11f",
-        "tab.unfocusedActiveBorder": "#fff0"
+        "tab.unfocusedActiveBorder": "#fff0",
+        "activityBar.activeBackground": "#22aed0",
+        "activityBar.background": "#22aed0",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#c01fa0",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#22aed0",
+        "statusBar.background": "#1b89a4",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#22aed0",
+        "statusBarItem.remoteBackground": "#1b89a4",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#1b89a4",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#1b89a499",
+        "titleBar.inactiveForeground": "#e7e7e799"
     },
     "workbench.colorTheme": "Monokai",
     "workbench.editor.focusRecentEditorAfterClose": false,
@@ -188,6 +212,20 @@
     "[css]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
     "[go]": {
         "editor.defaultFormatter": "golang.go"
     },
@@ -214,7 +252,7 @@
         "editor.wordWrap": "off"
     },
     "[python]": {
-        "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
+        "editor.defaultFormatter": "charliermarsh.ruff",
     },
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust",
@@ -223,5 +261,8 @@
     "[terraform]": {
         "editor.tabSize": 2,
         "editor.defaultFormatter": "hashicorp.terraform"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "Glavin001.unibeautify-vscode"
     }
 }
