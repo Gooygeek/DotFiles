@@ -1,13 +1,16 @@
 
 # Note: Some of the settings are the same as the defaults, but I want to preserve them and to highlight that it's something I particularly like
 
+
 # FONT
 
 font-family = 0xProto
 
+
 # THEME
 
 theme = monokai-custom.theme
+
 
 # CURSOR
 
@@ -19,13 +22,16 @@ cursor-click-to-move = true
 # cursor-invert-fg-bg
 # cursor-style
 
+
 # MOUSE
 
 mouse-hide-while-typing = true
 
+
 # LINKS
 
 # Does not work in zellij properly
+
 
 # WINDOW
 
@@ -34,12 +40,20 @@ window-new-tab-position = end
 # MacOS apps often don't exit when you close the last window. I find this stupid, so lets fix it.
 quit-after-last-window-closed = true
 
+
 # KEYBOARD
 
 # Certain keyboard configurations default this to true, but this ensures it works as expected
 macos-option-as-alt = true
 
 # See keybinds import below
+
+
+# BELL
+
+# 'attention' means it silently highlights the taskbar icon (or bounces on macos) and adds a bell emoji to the window title
+# Makes no sound, does not flash the screen
+bell-features = attention
 
 
 # OTHER
