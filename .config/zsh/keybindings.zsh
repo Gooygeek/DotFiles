@@ -20,7 +20,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey '\e.' insert-last-word
 
 # `ESC + q` = 'Park' the current line
-# push-line is for simgle line, push-input works for multi-line
+# push-line is for single line, push-input works for multi-line
 bindkey '^q' push-input
 
 # `ESC` to toggle vi command / insert mode
@@ -28,7 +28,7 @@ bindkey '^[' vi-cmd-mode
 bindkey -M vicmd "^[" vi-insert
 
 # Using 'backward-delete-char' instead of 'vi-backward-delete-char' to properly delete past where vi-insert dropped the cursor to
-# The Backspace key can be mapped to either key combination depending on the system. Includoing both for compatiblity
+# The Backspace key can be mapped to either key combination depending on the system. Including both for compatibility
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
 
@@ -38,6 +38,6 @@ bindkey "^[[H" vi-beginning-of-line
 bindkey "^[OF" vi-end-of-line
 bindkey "^[[F" vi-end-of-line
 
-# Entering a ` ` after a `!` or `^` history expansion comand will perform the expansion inline.
+# Entering a ` ` after a `!` or `^` history expansion command will perform the expansion inline.
 # Default, history expansion only occurs when you run the command.
 bindkey ' ' magic-space
