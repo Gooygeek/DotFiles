@@ -39,7 +39,10 @@ palette = 14=#66d9ef
 palette = 7=#f8f8f2
 palette = 15=#ffffff
 
-bold-is-bright = true
+# Show the bright color set for bold text instead of actually thickening the text. 
+bold-color = bright
+# Deprecated version of this setting
+# bold-is-bright = true
 
 # WINDOW
 
