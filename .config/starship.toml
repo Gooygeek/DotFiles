@@ -10,11 +10,13 @@ style = "bright-cyan"
 format = '[| AWS $symbol ($profile )(\($region\) )(\[$duration\])]($style)'
 style = "214"
 symbol = "☁️"
+disabled = true
 
 [gcloud]
 format = '[| GCP $symbol $project]($style) '
 style = "bright-blue"
 symbol = "🌩️"
+disabled = true
 
 [terraform]
 # I don't use Terraform Workspaces often enough to need to know which workspace I'm in
